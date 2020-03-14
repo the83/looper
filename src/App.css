@@ -1,0 +1,25 @@
+.menu {
+  text-align: center;
+}
+
+.instruments {
+}
+
+.instrument {
+  text-align: center;
+  width: 100%;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+}
+
+.sequence {
+  width: 100%;
+  border: 1px solid black;
+}
+
+.active-step {
+  color: red;
+}
