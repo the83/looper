@@ -1,13 +1,23 @@
+/* https://github.com/chriskempson/tomorrow-theme */
+
+body {
+  background-color: #2a2a2a;
+  color: #eaeaea;
+  font-family: Helvetica;
+}
+
 .menu {
-  text-align: center;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .instruments {
 }
 
-.instrument {
-  text-align: center;
-  width: 100%;
+.track {
+  /* width: 100%; */
+  padding: 1em 0;
 }
 
 .buttons {
@@ -15,11 +25,36 @@
   align-items: center;
 }
 
-.sequence {
-  width: 100%;
-  border: 1px solid black;
+.active-step {
+  color: white;
+  font-weight: bold;
+  background-color: red;
 }
 
-.active-step {
-  color: red;
+.track-header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.track-footer {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+@keyframes shadow-pulse
+{
+  0% {
+    background-color: #eaeaea;
+  }
+}
+
+.loading-pulse
+{
+   animation: shadow-pulse 2s infinite;
+}
+
+h1 {
+  color: #d54e53;
 }

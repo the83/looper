@@ -1,11 +1,21 @@
+function bpmToDuration(bpm) {
+  const quarterNote = 60000 / bpm;
+  const sixteenthNote = quarterNote / 4;
+  return sixteenthNote;
+}
+
+const DEFAULT_RATE = 1;
+
 export default class Clock {
   onTick: Function;
-  duration: number;
+  bpm: number;
   intervalId: number = 0;
+  rate: number = 1;
 
-  constructor(onTick: Function, duration: number) {
+  constructor(onTick: Function, bpm: number, rate?: number) {
     this.onTick = onTick;
-    this.duration = duration;
+    this.bpm = bpm;
+    this.rate = rate || DEFAULT_RATE;
   }
 
   reset() {
@@ -16,12 +26,13 @@ export default class Clock {
     clearInterval(this.intervalId);
   }
 
-  setDuration(duration) {
-    this.duration = duration;
+  setBpm(bpm) {
+    this.bpm = bpm;
   }
 
   start() {
     this.stop();
-    this.intervalId = setInterval(this.onTick, this.duration);
+    const duration = bpmToDuration(this.bpm * this.rate);
+    this.intervalId = setInterval(this.onTick, duration);
   }
 }

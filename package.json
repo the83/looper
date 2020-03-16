@@ -13,14 +13,18 @@
     "@types/react-dom": "^16.9.5",
     "@types/uuid": "^7.0.0",
     "@types/webmidi": "^2.0.4",
+    "chart.js": "^2.9.3",
     "classnames": "^2.2.6",
     "lodash": "^4.17.15",
     "react": "^16.13.0",
+    "react-chartjs-2": "^2.9.0",
     "react-dom": "^16.13.0",
     "react-scripts": "3.4.0",
     "typescript": "^3.8.3",
     "uuid": "^7.0.2",
-    "webmidi": "^2.5.1"
+    "webmidi": "^2.5.1",
+    "yaml-loader": "^0.5.0",
+    "yamljs": "^0.3.0"
   },
   "scripts": {
     "start": "react-scripts start",

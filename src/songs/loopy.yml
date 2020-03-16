@@ -1,0 +1,98 @@
+title: loopy
+tracks:
+  - name: moog1
+    loop: true
+    rate: 1
+    patterns:
+      -
+        - value: 60
+          duration: 1
+        - value: 62
+          duration: 1
+        - value: 64
+          duration: 3
+        - value: 67
+          duration: 20
+        - value: 69
+          duration: 8
+      -
+        - value: 55
+          duration: 1
+        - value: 54
+          duration: 1
+        - value: 55
+          duration: 1
+        - value: 52
+          duration: 3
+      -
+        - value: 0
+          duration: 2
+        - value: 62
+          duration: 2
+        - value: 76
+          duration: 2
+
+  - name: moog2
+    loop: true
+    rate: 1.01
+    patterns:
+      -
+        - value: 60
+          duration: 1
+        - value: 62
+          duration: 1
+        - value: 64
+          duration: 3
+        - value: 67
+          duration: 20
+        - value: 69
+          duration: 8
+      -
+        - value: 55
+          duration: 1
+        - value: 54
+          duration: 1
+        - value: 55
+          duration: 1
+        - value: 52
+          duration: 3
+  - name: moog3
+    loop: false
+    rate: 1
+    patterns:
+      -
+        - value: 60
+          duration: 1
+        - value: 62
+          duration: 1
+        - value: 64
+          duration: 1
+        - value: 67
+          duration: 1
+      -
+        - value: 29
+          duration: 1
+        - value: 30
+          duration: 1
+        - value: 33
+          duration: 1
+        - value: 34
+          duration: 1
+      -
+        - value: 29
+          duration: 1
+        - value: 30
+          duration: 1
+        - value: 30
+          duration: 1
+        - value: 30
+          duration: 1
+      -
+        - value: 29
+          duration: 1
+        - value: 30
+          duration: 1
+        - value: 30
+          duration: 1
+        - value: 30
+          duration: 1
