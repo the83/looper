@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './App.css';
 import Track from './Track';
+import * as classNames from 'classnames';
 
 import song from './songs/loopy.json';
 
@@ -60,13 +61,15 @@ class App extends React.Component<IProps, IState> {
   }
 
   render() {
+    const playButtonClasses = classNames({
+      'play-button': true,
+      'stop-button': this.state.isPlaying,
+    });
+
     return (
       <div>
         <div className="menu">
           <div>
-            <label htmlFor="tempo">
-              Tempo
-            </label>
             <input
               type="range"
               min="0"
@@ -77,13 +80,16 @@ class App extends React.Component<IProps, IState> {
               id="tempo"
               name="tempo"
             />
-            <span>
-              {this.state.bpm}
-            </span>
+            <label className="bpm">
+              {this.state.bpm} BPM
+            </label>
           </div>
 
           <div>
-            <button onClick={this.togglePlay}>
+            <button
+              className={playButtonClasses}
+              onClick={this.togglePlay}
+            >
               {this.state.isPlaying ? 'Stop' : 'Play'}
             </button>
           </div>

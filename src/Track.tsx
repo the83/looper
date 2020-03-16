@@ -280,20 +280,15 @@ class Track extends React.Component<IProps, IState> {
         <div>
           <h1>{this.currentNote}</h1>
         </div>
-      </div>
-    );
-  }
-
-  renderFooter() {
-    return (
-      <div className="track-footer">
         <div>
           <button
+            className="track-button"
             onClick={() => this.setNextPattern(this.previousAvailablePattern)}
           >
             previous
           </button>
           <button
+            className="track-button"
             onClick={() => this.setNextPattern(this.nextAvailablePattern)}
           >
             next
@@ -316,7 +311,6 @@ class Track extends React.Component<IProps, IState> {
           {this.renderSequence(this.state.pattern)}
           {this.renderSequenceList()}
         </div>
-        {this.renderFooter()}
       </div>
     );
   }

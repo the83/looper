@@ -52,9 +52,70 @@ body {
 
 .loading-pulse
 {
-   animation: shadow-pulse 2s infinite;
+   animation: shadow-pulse 1s infinite;
 }
 
 h1 {
   color: #d54e53;
+}
+
+.track-button {
+  background-color: #e7c547;
+  border: none;
+  padding: 1em;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 2em 0 0 0.5em;
+  cursor: pointer;
+}
+
+.play-button {
+  background-color: #b9ca4a;
+  border: none;
+  padding: 1em;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.stop-button {
+  background-color: #d54e53;
+}
+
+.slider {
+  width: 20em;
+  -webkit-appearance: none;
+  height: 2em;
+  background: #eaeaea;
+  outline: none;
+  padding: 0.5em;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 2em;
+  height: 2em;
+  background: #70c0b1;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 2em;
+  height: 2em;
+  background: #70c0b1;
+  cursor: pointer;
+}
+
+.bpm {
+  margin: 0em 1em;
+  font-size: 2em;
+  font-weight: bold;
+  color: #eaeaea;
 }
