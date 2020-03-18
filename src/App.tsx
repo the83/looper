@@ -2,6 +2,7 @@ import * as React from 'react';
 import './App.css';
 import Track from './Track';
 import * as classNames from 'classnames';
+import autoDetectLaunchpad, { Launchpad } from 'web-midi-launchpad/src/launchpad.js';
 
 import song from './songs/loopy.json';
 
@@ -11,15 +12,7 @@ interface IProps {
 interface IState {
   bpm: number;
   isPlaying: boolean;
-}
-
-function onMIDISuccess(midiAccess: any) {
-  const { inputs, outputs } = midiAccess;
-  console.log({ inputs, outputs });
-}
-
-function onMIDIFailure(midiAccess) {
-  console.log('error', midiAccess);
+  launchpad: Launchpad;
 }
 
 const MAX_BPM = 300;
@@ -30,14 +23,29 @@ class App extends React.Component<IProps, IState> {
     this.state = {
       bpm: 120,
       isPlaying: false,
+      launchpad: null,
     };
 
     this.setBpm = this.setBpm.bind(this);
     this.togglePlay = this.togglePlay.bind(this);
+    this.onMidiSuccess = this.onMidiSuccess.bind(this);
+  }
+
+  onMidiSuccess(midiAccess) {
+    const launchpad = autoDetectLaunchpad(midiAccess) as Launchpad;
+
+    // Clear initial launchpad state
+    launchpad.clear();
+    // launchpad.onPadPress(pad => launchpad.ledOff(pad));
+    this.setState({ launchpad });
+  }
+
+  onMidiFailure(msg) {
+    console.log('Failed to get MIDI access - ' + msg);
   }
 
   componentDidMount() {
-    navigator.requestMIDIAccess().then(onMIDISuccess, onMIDIFailure);
+    navigator.requestMIDIAccess().then(this.onMidiSuccess, this.onMidiFailure);
   }
 
   setBpm(evt) {
@@ -55,6 +63,8 @@ class App extends React.Component<IProps, IState> {
           config={config}
           bpm={this.state.bpm}
           isPlaying={this.state.isPlaying}
+          index={idx}
+          launchpad={this.state.launchpad}
         />
       </div>
     ));

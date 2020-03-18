@@ -3,6 +3,7 @@ import Clock from './clock';
 import { isEqual, sumBy } from 'lodash';
 import { HorizontalBar } from 'react-chartjs-2';
 import * as classNames from 'classnames';
+import { Launchpad } from 'web-midi-launchpad/src/launchpad.js';
 
 interface INote {
   value: number;
@@ -20,6 +21,8 @@ interface IProps {
   bpm: number;
   isPlaying: boolean;
   config: ITrackConfig;
+  launchpad: Launchpad;
+  index: number;
 }
 
 interface IState {
@@ -28,6 +31,7 @@ interface IState {
   position: number;
   ticksElapsed: number;
   nextPattern: number;
+  lastPattern?: number;
 }
 
 const NOTE_NAMES = Object.freeze([
@@ -100,6 +104,40 @@ class Track extends React.Component<IProps, IState> {
     return next === 0 && pattern !== nextPattern;
   }
 
+  getPad(pattern) {
+    if (pattern === undefined) return null;
+    const { index } = this.props;
+    const column = index + 1;
+    const row = 8 - (pattern % 8);
+    return parseInt(row.toString() + column.toString());
+  }
+
+  drawLaunchpad() {
+    const {
+      pattern,
+      nextPattern,
+      lastPattern,
+    } = this.state;
+
+    const { launchpad } = this.props;
+    const currentPad = this.getPad(pattern);
+    const nextPad = this.getPad(nextPattern);
+    const lastPad = this.getPad(lastPattern);
+
+    if (currentPad !== nextPad) {
+      launchpad.ledOn(nextPad, 51, true); // green
+    }
+
+    if (currentPad !== lastPad) {
+      launchpad.ledOff(lastPad);
+    }
+
+    // needs to go last
+    launchpad.ledOn(currentPad, 6, true); // red
+
+    console.log({ currentPad, nextPad, lastPad });
+  }
+
   step() {
     const {
       position,
@@ -109,14 +147,16 @@ class Track extends React.Component<IProps, IState> {
     const next = this.getNextStep();
     const nextTicksElapsed = next !== position ? 0 : ticksElapsed + 1;
     const pattern = this.shouldUpdatePattern() ? this.nextPattern : this.state.pattern;
+    const lastPattern = position;
     const nextPattern = this.props.config.loop ? this.state.nextPattern : this.nextPattern;
 
     this.setState({
       pattern,
       nextPattern,
+      lastPattern,
       position: next,
       ticksElapsed: nextTicksElapsed,
-    });
+    }, () => this.drawLaunchpad());
   }
 
   updateClock() {
