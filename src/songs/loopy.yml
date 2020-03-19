@@ -31,6 +31,62 @@ tracks:
           duration: 2
         - value: 76
           duration: 2
+      -
+        - value: 0
+          duration: 2
+        - value: 62
+          duration: 2
+        - value: 76
+          duration: 2
+      -
+        - value: 0
+          duration: 2
+        - value: 62
+          duration: 2
+        - value: 76
+          duration: 2
+      -
+        - value: 0
+          duration: 2
+        - value: 62
+          duration: 2
+        - value: 76
+          duration: 2
+      -
+        - value: 0
+          duration: 2
+        - value: 62
+          duration: 2
+        - value: 76
+          duration: 2
+      -
+        - value: 0
+          duration: 2
+        - value: 62
+          duration: 2
+        - value: 76
+          duration: 2
+      -
+        - value: 0
+          duration: 2
+        - value: 62
+          duration: 2
+        - value: 76
+          duration: 2
+      -
+        - value: 0
+          duration: 2
+        - value: 62
+          duration: 2
+        - value: 76
+          duration: 2
+      -
+        - value: 0
+          duration: 2
+        - value: 62
+          duration: 2
+        - value: 76
+          duration: 2
 
   - name: moog2
     loop: true
