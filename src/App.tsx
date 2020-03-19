@@ -15,12 +15,20 @@ interface IProps {
 interface IState {
   bpm: number;
   isPlaying: boolean;
+  page: number,
   launchpad?: LaunchpadManager;
   clocks: Clock[];
 }
 
 const MAX_BPM = 300;
 const DEFAULT_BPM = 120;
+
+const PLAY_BUTTON_PAD_NUMBER = 19;
+const PAGE_UP_PAD_NUMBER = 91;
+const PAGE_DOWN_PAD_NUMBER = 92;
+const LAUNCHPAD_RED = 5;
+const LAUNCHPAD_GREEN = 15;
+const LAUNCHPAD_GREY = 1;
 
 class App extends React.Component<IProps, IState> {
   constructor(props: IProps) {
@@ -31,11 +39,13 @@ class App extends React.Component<IProps, IState> {
     this.togglePlay = this.togglePlay.bind(this);
     this.onMidiSuccess = this.onMidiSuccess.bind(this);
     this.onPadPress = this.onPadPress.bind(this);
+    this.onControlPadPress = this.onControlPadPress.bind(this);
     this.updateLaunchpad = this.updateLaunchpad.bind(this);
 
     this.state = {
       bpm: DEFAULT_BPM,
       isPlaying: false,
+      page: 0,
       clocks: song.tracks.map((trackConfig, idx) => {
         return new Clock(
           this.onClockTick,
@@ -49,22 +59,43 @@ class App extends React.Component<IProps, IState> {
 
   onPadPress({ column, row }) {
     const clock = this.state.clocks[column];
+    if (!clock) return;
     clock.setNextPattern(row);
+  }
+
+  onControlPadPress(value) {
+    if (!this.state.launchpad) return;
+
+    console.log({ value });
+
+    if (value === PLAY_BUTTON_PAD_NUMBER) {
+      const isPlaying = this.togglePlay();
+      const color = this.state.isPlaying ? 5 : 15;
+      this.state.launchpad.ctrlLedOn(value, color, true);
+    }
+
+    if (value === PAGE_UP_PAD_NUMBER) {
+      this.updatePage(-1);
+    }
+
+    if (value === PAGE_DOWN_PAD_NUMBER) {
+      this.updatePage(1);
+    }
   }
 
   onMidiSuccess(midiAccess) {
     const launchpad = autoDetectLaunchpad(midiAccess) as Launchpad;
 
     if (launchpad) {
-      const manager = new LaunchpadManager(launchpad, this.onPadPress);
-      // clear any previous state on the device
-      manager.clear();
-
-      // set up current session
+      const manager = new LaunchpadManager(
+        launchpad,
+        this.onPadPress,
+        this.onControlPadPress,
+      );
 
       this.setState({
         launchpad: manager,
-      }, () => this.state.clocks.forEach(this.updateLaunchpad));
+      }, this.initializeLaunchpad);
     }
   }
 
@@ -95,8 +126,29 @@ class App extends React.Component<IProps, IState> {
     this.setState({ isPlaying: !this.state.isPlaying });
   }
 
+  initializeLaunchpad() {
+    if (!this.state.launchpad) return;
+
+    this.state.launchpad.clear();
+    this.state.launchpad.ctrlLedOn(PLAY_BUTTON_PAD_NUMBER, LAUNCHPAD_GREEN, true);
+    this.state.launchpad.ctrlLedOn(PAGE_UP_PAD_NUMBER, LAUNCHPAD_GREY);
+    this.state.launchpad.ctrlLedOn(PAGE_DOWN_PAD_NUMBER, LAUNCHPAD_GREY);
+    this.state.clocks.forEach(this.updateLaunchpad);
+  }
+
+  updatePage(number) {
+    const page = this.state.page + number;
+    if (page < 0) return;
+
+    this.setState({
+      page,
+    }, () => this.state.clocks.forEach(clock => this.updateLaunchpad(clock)))
+  }
+
   updateLaunchpad(clock) {
     if (!this.state.launchpad) return;
+
+    const { page } = this.state;
 
     const {
       index,
@@ -106,7 +158,7 @@ class App extends React.Component<IProps, IState> {
       config,
     } = clock;
 
-    const offset = Math.floor(pattern / 8) * 8;
+    const offset = page * 8;
     const remaining = config.patterns.length - offset;
     const patternsAvailable = remaining > 8 ? 8 : remaining;
 
@@ -115,6 +167,7 @@ class App extends React.Component<IProps, IState> {
       pattern,
       nextPattern,
       index,
+      offset,
     );
   }
 

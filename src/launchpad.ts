@@ -1,5 +1,8 @@
 const STATIC_COLOR = 144;
 const PULSING_COLOR = 146;
+
+const STATIC_CONTROL_COLOR = 176;
+const PULSING_CONTROL_COLOR = 178;
 /**
  * The main launchpad interface.
  */
@@ -37,6 +40,15 @@ export class Launchpad {
 		this.send([0x80, note, 0x00]);
 	}
 
+  ctrlLedOn(note, color, pulse = false) {
+    const colorType = pulse ? PULSING_CONTROL_COLOR : STATIC_CONTROL_COLOR;
+		this.send([colorType, note, color]);
+	}
+
+	ctrlLedOff(note) {
+		this.send([0x90, note, 0x00]);
+	}
+
 	clear() {
     for (let row = 1; row < 10; row++) {
       for (let column = 1; column < 10; column++) {
@@ -53,11 +65,11 @@ export class Launchpad {
 		}
 		else if (event.data[0] === 0xb0 && event.data[2] === 0x7f) {
 			// Control Pad press
-			this.listeners.onControlPadPress.forEach(callback => callback(event.data[1] - 0x67));
+			this.listeners.onControlPadPress.forEach(callback => callback(event.data[1]));
 		}
 		else if (event.data[0] === 0xb0 && event.data[2] === 0x0) {
 			// Control Pad release
-			this.listeners.onControlPadRelease.forEach(callback => callback(event.data[1] - 0x67));
+			this.listeners.onControlPadRelease.forEach(callback => callback(event.data[1]));
 		}
 		else if (event.data[0] === 0x90 && event.data[2] === 0x7f) {
 			this.listeners.onPadPress.forEach(callback => callback(event.data[1]));
