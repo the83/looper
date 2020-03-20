@@ -9,11 +9,11 @@ function bpmToDuration(bpm) {
 const DEFAULT_RATE = 1;
 
 interface INote {
-  value: number;
+  value: string;
   duration: number; // in sixteenths
 }
 
-interface ITrackConfig {
+export interface ITrackConfig {
   name: string;
   patterns: INote[][];
   rate?: number;
@@ -34,9 +34,11 @@ export default class Clock {
   lastPattern: number = 0;
   config: ITrackConfig;
   isPlaying: boolean = false;
+  onNoteChange: Function;
 
   constructor(
     onTick: Function,
+    onNoteChange: Function,
     config: ITrackConfig,
     bpm: number,
     index: number,
@@ -46,6 +48,7 @@ export default class Clock {
     this.rate = config.rate || DEFAULT_RATE;
     this.config = config;
     this.index = index;
+    this.onNoteChange = onNoteChange;
     this.step = this.step.bind(this);
   }
 
@@ -88,15 +91,31 @@ export default class Clock {
   }
 
   start() {
-    clearInterval(this.intervalId);
+    const {
+      intervalId,
+      bpm,
+      rate,
+      step,
+      pattern,
+      position,
+    } = this;
 
-    const duration = bpmToDuration(this.bpm * this.rate);
+    clearInterval(intervalId);
+    const tickDuration = bpmToDuration(bpm * rate);
+    this.intervalId = window.setInterval(step, tickDuration);
 
-    this.intervalId = window.setInterval(this.step, duration);
+    this.setState({ isPlaying: true });
 
-    this.setState({
-      isPlaying: true,
-    });
+    // play first note if on first note but previously stopped
+    if (position == 0) {
+      const note = this.config.patterns[pattern][position];
+
+      this.onNoteChange(
+        this.index,
+        note.value,
+        note.duration * tickDuration,
+      );
+    }
   }
 
   get previousAvailablePattern() {
@@ -152,6 +171,8 @@ export default class Clock {
     const {
       position,
       ticksElapsed,
+      bpm,
+      rate,
     } = this;
 
     const next = this.getNextStep();
@@ -159,6 +180,17 @@ export default class Clock {
     const pattern = this.shouldUpdatePattern() ? this.nextPattern : this.pattern;
     const lastPattern = position;
     const nextPattern = this.config.loop ? this.nextPattern : this.nextAvailablePattern;
+
+    if (position !== next) {
+      const note = this.config.patterns[pattern][next];
+      const tickDuration = bpmToDuration(bpm * rate);
+
+      this.onNoteChange(
+        this.index,
+        note.value,
+        note.duration * tickDuration,
+      );
+    }
 
     const state = {
       pattern,
@@ -170,5 +202,6 @@ export default class Clock {
     };
 
     this.setState(state);
+
   }
 }

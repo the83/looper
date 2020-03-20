@@ -1,20 +1,8 @@
 import * as React from 'react';
-import Clock from './clock';
+import { ITrackConfig } from './clock';
 import { sumBy } from 'lodash';
 import { HorizontalBar } from 'react-chartjs-2';
 import * as classNames from 'classnames';
-
-interface INote {
-  value: number;
-  duration: number; // in sixteenths
-}
-
-interface ITrackConfig {
-  name: string;
-  patterns: INote[][];
-  rate?: number;
-  loop?: boolean;
-}
 
 interface IProps {
   config: ITrackConfig;
@@ -27,34 +15,10 @@ interface IProps {
   ticksElapsed: number;
 }
 
-interface IState {
-  clock: Clock;
-}
-
-const NOTE_NAMES = Object.freeze([
-  'C',
-  'C#',
-  'D',
-  'D#',
-  'E',
-  'F',
-  'F#',
-  'G',
-  'G#',
-  'A',
-  'A#',
-  'B'
-]);
-
-class Track extends React.Component<IProps, IState> {
+class Track extends React.Component<IProps, {}> {
   get currentNote() {
     const { pattern, position, config } = this.props;
-    const currentNote = config.patterns[pattern][position].value;
-    const octave = Math.ceil(currentNote / 12);
-    const noteIndex = (currentNote % 12);
-    const noteName = NOTE_NAMES[noteIndex];
-
-    return `${noteName}${octave}`;
+    return config.patterns[pattern][position].value;
   }
 
   renderSequence(pattern) {
