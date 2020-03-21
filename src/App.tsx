@@ -5,10 +5,10 @@ import * as classNames from 'classnames';
 import autoDetectLaunchpad, { Launchpad } from './launchpad';
 import Clock from './clock';
 import LaunchpadManager from './LaunchpadManager';
-import { compact } from 'lodash';
+import { compact, omit } from 'lodash';
 import WebMidi, { Output } from 'webmidi';
 
-import song from './songs/loopy.json';
+import loopy from './songs/loopy.json';
 
 interface IProps {
 }
@@ -33,6 +33,8 @@ const LAUNCHPAD_GREEN = 15;
 const LAUNCHPAD_GREY = 1;
 const MIDI_OUTPUT_MANUFACTURER = 'MOTU';
 const MIDI_PORT = 1;
+
+const song = omit(loopy, ['defaults']);
 
 class App extends React.Component<IProps, IState> {
   constructor(props: IProps) {
@@ -99,7 +101,9 @@ class App extends React.Component<IProps, IState> {
   onPadPress({ column, row }) {
     const clock = this.state.clocks[column];
     if (!clock) return;
-    clock.setNextPattern(row);
+
+    const offset = 8 * this.state.page;
+    clock.setNextPattern(row, offset);
   }
 
   onControlPadPress(value) {
@@ -193,7 +197,9 @@ class App extends React.Component<IProps, IState> {
 
   onNoteChange(index, note, duration) {
     const output = this.state.midiOutputs[index];
-    output.playNote(note, MIDI_PORT, { duration, velocity: 1 });
+    if (note) {
+      output.playNote(note, MIDI_PORT, { duration, velocity: 1 });
+    }
   }
 
   renderInstruments() {

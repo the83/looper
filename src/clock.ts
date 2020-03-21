@@ -75,16 +75,13 @@ export default class Clock {
     }
   }
 
-  setNextPattern(row) {
+  setNextPattern(row, offset) {
     // row will be 0-7. Need to add an offset to account for where
     // we are currently in the list of patterns
 
     const { pattern } = this;
-    const offset = Math.floor(pattern / 8) * 8;
     const nextPattern = row + offset
     const patternCount = this.config.patterns.length;
-
-    console.log({ pattern, offset, nextPattern, patternCount });
     if (nextPattern + 1 > patternCount) return;
 
     this.setState({ nextPattern });
@@ -107,7 +104,7 @@ export default class Clock {
     this.setState({ isPlaying: true });
 
     // play first note if on first note but previously stopped
-    if (position == 0) {
+    if (position === 0) {
       const note = this.config.patterns[pattern][position];
 
       this.onNoteChange(
@@ -157,6 +154,30 @@ export default class Clock {
     return next;
   }
 
+  private getNextTicksElapsed() {
+    const {
+      pattern,
+      position,
+      ticksElapsed,
+      config,
+    } = this;
+
+    const ticksInPattern = config.patterns[pattern][position].duration;
+    const next = ticksElapsed + 1;
+    if (next > ticksInPattern) return 0;
+    return next;
+  }
+
+  private endOfSingleNotePattern() {
+    const {
+      config,
+      pattern,
+    } = this;
+
+    if (config.patterns[pattern].length > 1) return false;
+    return this.getNextTicksElapsed() == 0;
+  }
+
   private shouldUpdatePattern() {
     const {
       pattern,
@@ -173,16 +194,17 @@ export default class Clock {
       ticksElapsed,
       bpm,
       rate,
+      config,
     } = this;
 
     const next = this.getNextStep();
-    const nextTicksElapsed = next !== position ? 0 : ticksElapsed + 1;
+    const nextTicksElapsed = this.getNextTicksElapsed();
     const pattern = this.shouldUpdatePattern() ? this.nextPattern : this.pattern;
     const lastPattern = position;
     const nextPattern = this.config.loop ? this.nextPattern : this.nextAvailablePattern;
 
-    if (position !== next) {
-      const note = this.config.patterns[pattern][next];
+    if (position !== next || this.endOfSingleNotePattern()) {
+      const note = config.patterns[pattern][next];
       const tickDuration = bpmToDuration(bpm * rate);
 
       this.onNoteChange(
@@ -202,6 +224,5 @@ export default class Clock {
     };
 
     this.setState(state);
-
   }
 }
