@@ -30,11 +30,11 @@ defaults: &defaults
         duration: 1
     -
       - value: E4
-        duration: 2
+        duration: 1
       - value: F4
         duration: 2
       - value: G4
-        duration: 2
+        duration: 1
     -
       - value: D4
         duration: 1
@@ -120,6 +120,9 @@ defaults: &defaults
       - value: E4
         duration: 1
     -
+      - value: D4
+        duration: 8
+    -
       - value: E5
         duration: 4
       - value: Bb4
@@ -173,13 +176,9 @@ defaults: &defaults
       - value: D4
         duration: 2
     -
-      - value: ''
-        duration: 1
       - value: Eb
         duration: 1
       - value: G4
-        duration: 1
-      - value: ''
         duration: 3
     -
       - value: C4
@@ -191,6 +190,9 @@ defaults: &defaults
         duration: 2
       - value: D4
         duration: 2
+    -
+      - value: Bb4
+        duration: 9
     -
       - value: ''
         duration: 1
@@ -246,15 +248,15 @@ defaults: &defaults
         duration: 1
 title: loopy
 tracks:
-  - name: track1
+  - name: Moog One
     loop: true
     rate: 1
     << : *defaults
-  - name: track1
+  - name: Moog Two
     loop: true
     rate: 1.01
     << : *defaults
-  - name: track1
+  - name: Moog Three
     loop: true
     rate: 1.02
     << : *defaults

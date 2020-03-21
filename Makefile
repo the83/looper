@@ -7,6 +7,7 @@ run:
 
 .PHONY: build
 build:
+	make compile-songs
 	yarn build
 
 .PHONY: compile-songs
