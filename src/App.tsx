@@ -1,13 +1,15 @@
-import * as React from 'react';
 import './App.css';
-import Track from './Track';
+import * as React from 'react';
 import * as classNames from 'classnames';
-import autoDetectLaunchpad, { Launchpad } from './launchpad';
 import Clock from './clock';
-import LaunchpadManager from './LaunchpadManager';
-import { compact, omit } from 'lodash';
+import Instrument from './instrument';
+import LaunchpadManager from './launchpad_manager';
+import Track from './Track';
 import WebMidi, { Output } from 'webmidi';
+import autoDetectLaunchpad, { Launchpad } from './launchpad';
+import { compact, omit } from 'lodash';
 
+// TODO: song management
 import loopy from './songs/loopy.json';
 
 interface IProps {
@@ -19,7 +21,7 @@ interface IState {
   page: number,
   launchpad?: LaunchpadManager;
   clocks: Clock[];
-  midiOutputs: Output[];
+  instruments: Instrument[];
 }
 
 const MAX_BPM = 300;
@@ -32,7 +34,6 @@ const LAUNCHPAD_RED = 5;
 const LAUNCHPAD_GREEN = 15;
 const LAUNCHPAD_GREY = 1;
 const MIDI_OUTPUT_MANUFACTURER = 'MOTU';
-const MIDI_PORT = 1;
 
 const song = omit(loopy, ['defaults']);
 
@@ -40,20 +41,11 @@ class App extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
 
-    this.onClockTick = this.onClockTick.bind(this);
-    this.setBpm = this.setBpm.bind(this);
-    this.togglePlay = this.togglePlay.bind(this);
-    this.onMidiSuccess = this.onMidiSuccess.bind(this);
-    this.onPadPress = this.onPadPress.bind(this);
-    this.onControlPadPress = this.onControlPadPress.bind(this);
-    this.updateLaunchpad = this.updateLaunchpad.bind(this);
-    this.onNoteChange = this.onNoteChange.bind(this);
-
     this.state = {
       bpm: DEFAULT_BPM,
       isPlaying: false,
       page: 0,
-      midiOutputs: [],
+      instruments: [],
       clocks: song.tracks.map((trackConfig, idx) => {
         return new Clock(
           this.onClockTick,
@@ -68,17 +60,9 @@ class App extends React.Component<IProps, IState> {
 
   componentDidMount() {
     navigator.requestMIDIAccess().then(this.onMidiSuccess, this.onMidiFailure);
-
-    WebMidi.enable((_err) => {
-      const midiOutputs = WebMidi.outputs.filter((output: Output) => {
-        return output.manufacturer === MIDI_OUTPUT_MANUFACTURER;
-      });
-
-      this.setState({ midiOutputs });
-    });
   }
 
-  onMidiSuccess(access) {
+  onMidiSuccess = (access) => {
     const launchpad = autoDetectLaunchpad(access) as Launchpad;
 
     if (launchpad) {
@@ -92,13 +76,29 @@ class App extends React.Component<IProps, IState> {
         launchpad: manager,
       }, this.initializeLaunchpad);
     }
+
+    WebMidi.enable((_err) => {
+      const midiOutputs = WebMidi.outputs.filter((output: Output) => {
+        return output.manufacturer === MIDI_OUTPUT_MANUFACTURER;
+      });
+
+      const instruments = compact(midiOutputs.map((output, idx) => {
+        const clock = this.state.clocks[idx];
+        if (!clock) return null;
+
+        const octaveOffset = clock.config.octaveOffset;
+        return new Instrument(output, octaveOffset);
+      }));
+
+      this.setState({ instruments });
+    });
   }
 
   onMidiFailure(msg) {
     console.log('Failed to get MIDI access - ' + msg);
   }
 
-  onPadPress({ column, row }) {
+  onPadPress = ({ column, row }) => {
     const clock = this.state.clocks[column];
     if (!clock) return;
 
@@ -106,14 +106,14 @@ class App extends React.Component<IProps, IState> {
     clock.setNextPattern(row, offset);
   }
 
-  onControlPadPress(value) {
+  onControlPadPress = (value) => {
     if (!this.state.launchpad) return;
 
     console.log({ value });
 
     if (value === PLAY_BUTTON_PAD_NUMBER) {
       const isPlaying = this.togglePlay();
-      const color = this.state.isPlaying ? LAUNCHPAD_RED : LAUNCHPAD_GREEN;
+      const color = isPlaying ? LAUNCHPAD_RED : LAUNCHPAD_GREEN;
       this.state.launchpad.ctrlLedOn(value, color, true);
     }
 
@@ -126,7 +126,7 @@ class App extends React.Component<IProps, IState> {
     }
   }
 
-  setBpm(evt) {
+  setBpm = (evt) => {
     const bpm = evt.target.value;
     this.setState(
       { bpm },
@@ -134,7 +134,7 @@ class App extends React.Component<IProps, IState> {
     );
   }
 
-  togglePlay() {
+  togglePlay = () => {
     this.state.clocks.forEach((clock) => {
       if (clock.isPlaying) {
         clock.stop();
@@ -142,7 +142,10 @@ class App extends React.Component<IProps, IState> {
         clock.start();
       }
     });
-    this.setState({ isPlaying: !this.state.isPlaying });
+
+    const isPlaying = !this.state.isPlaying
+    this.setState({ isPlaying });
+    return isPlaying;
   }
 
   initializeLaunchpad() {
@@ -164,7 +167,7 @@ class App extends React.Component<IProps, IState> {
     }, () => this.state.clocks.forEach(clock => this.updateLaunchpad(clock)))
   }
 
-  updateLaunchpad(clock) {
+  updateLaunchpad = (clock) => {
     if (!this.state.launchpad) return;
 
     const { page } = this.state;
@@ -173,7 +176,6 @@ class App extends React.Component<IProps, IState> {
       index,
       pattern,
       nextPattern,
-      lastPattern,
       config,
     } = clock;
 
@@ -190,32 +192,29 @@ class App extends React.Component<IProps, IState> {
     );
   }
 
-  onClockTick(clock) {
+  onClockTick = (clock) => {
     this.updateLaunchpad(clock);
     this.setState(this.state); // force re-render
   }
 
-  onNoteChange(index, note, duration) {
-    const output = this.state.midiOutputs[index];
-    if (note) {
-      output.playNote(note, MIDI_PORT, { duration, velocity: 1 });
-    }
+  onNoteChange = (index, note, duration) => {
+    const instrument = this.state.instruments[index];
+    instrument.playNote(note, duration, 1);
   }
 
   renderInstruments() {
     return this.state.clocks.map((clock, idx) => (
-      <div key={`track-${idx}`}>
-        <Track
-          config={clock.config}
-          index={idx}
-          isPlaying={clock.isPlaying}
-          lastPattern={clock.lastPattern}
-          nextPattern={clock.nextPattern}
-          pattern={clock.pattern}
-          position={clock.position}
-          ticksElapsed={clock.ticksElapsed}
-        />
-      </div>
+      <Track
+        config={clock.config}
+        index={idx}
+        isPlaying={clock.isPlaying}
+        lastPattern={clock.lastPattern}
+        nextPattern={clock.nextPattern}
+        pattern={clock.pattern}
+        position={clock.position}
+        ticksElapsed={clock.ticksElapsed}
+        key={`track-${idx}`}
+      />
     ));
   }
 

@@ -4,6 +4,38 @@
       [
         {
           "value": "D4",
+          "duration": 1
+        },
+        {
+          "value": "F4",
+          "duration": 1
+        },
+        {
+          "value": "",
+          "duration": 3
+        }
+      ],
+      [
+        {
+          "value": "D4",
+          "duration": 1
+        },
+        {
+          "value": "G4",
+          "duration": 1
+        },
+        {
+          "value": "Bb4",
+          "duration": 1
+        },
+        {
+          "value": "",
+          "duration": 1
+        }
+      ],
+      [
+        {
+          "value": "D4",
           "duration": 3
         },
         {
@@ -60,7 +92,7 @@
       [
         {
           "value": "E4",
-          "duration": 2
+          "duration": 1
         },
         {
           "value": "F4",
@@ -68,7 +100,7 @@
         },
         {
           "value": "G4",
-          "duration": 2
+          "duration": 1
         }
       ],
       [
@@ -139,12 +171,6 @@
         {
           "value": "D4",
           "duration": 8
-        }
-      ],
-      [
-        {
-          "value": "Bb4",
-          "duration": 9
         }
       ],
       [
@@ -163,6 +189,20 @@
       ],
       [
         {
+          "value": "G4",
+          "duration": 2
+        },
+        {
+          "value": "Bb4",
+          "duration": 1
+        },
+        {
+          "value": "C4",
+          "duration": 1
+        }
+      ],
+      [
+        {
           "value": "C5",
           "duration": 1
         },
@@ -173,6 +213,20 @@
         {
           "value": "",
           "duration": 8
+        }
+      ],
+      [
+        {
+          "value": "F4",
+          "duration": 1
+        },
+        {
+          "value": "Bb4",
+          "duration": 1
+        },
+        {
+          "value": "C4",
+          "duration": 3
         }
       ],
       [
@@ -201,6 +255,12 @@
         {
           "value": "A4",
           "duration": 1
+        }
+      ],
+      [
+        {
+          "value": "Bb4",
+          "duration": 9
         }
       ],
       [
@@ -241,6 +301,12 @@
       ],
       [
         {
+          "value": "D4",
+          "duration": 8
+        }
+      ],
+      [
+        {
           "value": "E5",
           "duration": 4
         },
@@ -255,6 +321,20 @@
         {
           "value": "G4",
           "duration": 4
+        }
+      ],
+      [
+        {
+          "value": "G4",
+          "duration": 1
+        },
+        {
+          "value": "Bb4",
+          "duration": 1
+        },
+        {
+          "value": "C4",
+          "duration": 1
         }
       ],
       [
@@ -303,6 +383,20 @@
         {
           "value": "",
           "duration": 2
+        }
+      ],
+      [
+        {
+          "value": "D4",
+          "duration": 1
+        },
+        {
+          "value": "G4",
+          "duration": 1
+        },
+        {
+          "value": "A4",
+          "duration": 1
         }
       ],
       [
@@ -326,6 +420,20 @@
       [
         {
           "value": "E4",
+          "duration": 1
+        },
+        {
+          "value": "F4",
+          "duration": 2
+        },
+        {
+          "value": "G4",
+          "duration": 1
+        }
+      ],
+      [
+        {
+          "value": "E4",
           "duration": 2
         },
         {
@@ -347,19 +455,11 @@
       ],
       [
         {
-          "value": "",
-          "duration": 1
-        },
-        {
-          "value": "Eb",
+          "value": "Eb4",
           "duration": 1
         },
         {
           "value": "G4",
-          "duration": 1
-        },
-        {
-          "value": "",
           "duration": 3
         }
       ],
@@ -369,7 +469,7 @@
           "duration": 2
         },
         {
-          "value": "Eb",
+          "value": "Eb4",
           "duration": 2
         }
       ],
@@ -381,6 +481,12 @@
         {
           "value": "D4",
           "duration": 2
+        }
+      ],
+      [
+        {
+          "value": "Bb4",
+          "duration": 9
         }
       ],
       [
@@ -399,6 +505,20 @@
         {
           "value": "D5",
           "duration": 2
+        }
+      ],
+      [
+        {
+          "value": "Eb4",
+          "duration": 1
+        },
+        {
+          "value": "F4",
+          "duration": 2
+        },
+        {
+          "value": "G4",
+          "duration": 1
         }
       ],
       [
@@ -481,12 +601,108 @@
       ],
       [
         {
-          "value": "Eb4",
-          "duration": 3
+          "value": "A4",
+          "duration": 1
         },
         {
-          "value": "Bb3",
+          "value": "F4",
           "duration": 1
+        },
+        {
+          "value": "Bb4",
+          "duration": 1
+        },
+        {
+          "value": "D5",
+          "duration": 1
+        },
+        {
+          "value": "Eb5",
+          "duration": 1
+        }
+      ],
+      [
+        {
+          "value": "D4",
+          "duration": 1
+        },
+        {
+          "value": "G4",
+          "duration": 1
+        },
+        {
+          "value": "Bb4",
+          "duration": 1
+        },
+        {
+          "value": "Eb5",
+          "duration": 1
+        }
+      ],
+      [
+        {
+          "value": "A4",
+          "duration": 1
+        },
+        {
+          "value": "F4",
+          "duration": 1
+        },
+        {
+          "value": "Bb4",
+          "duration": 1
+        }
+      ],
+      [
+        {
+          "value": "F4",
+          "duration": 1
+        },
+        {
+          "value": "Bb4",
+          "duration": 1
+        },
+        {
+          "value": "D5",
+          "duration": 1
+        },
+        {
+          "value": "Eb5",
+          "duration": 1
+        }
+      ],
+      [
+        {
+          "value": "D4",
+          "duration": 1
+        },
+        {
+          "value": "Bb4",
+          "duration": 2
+        },
+        {
+          "value": "Eb5",
+          "duration": 2
+        }
+      ],
+      [
+        {
+          "value": "D4",
+          "duration": 1
+        },
+        {
+          "value": "Bb4",
+          "duration": 2
+        }
+      ],
+      [
+        {
+          "value": "D4",
+          "duration": 1
+        },
+        {
+          "value": "",
+          "duration": 4
         }
       ]
     ]
@@ -494,13 +710,45 @@
   "title": "loopy",
   "tracks": [
     {
-      "name": "track1",
+      "name": "Moog One",
       "loop": true,
       "rate": 1,
       "patterns": [
         [
           {
             "value": "D4",
+            "duration": 1
+          },
+          {
+            "value": "F4",
+            "duration": 1
+          },
+          {
+            "value": "",
+            "duration": 3
+          }
+        ],
+        [
+          {
+            "value": "D4",
+            "duration": 1
+          },
+          {
+            "value": "G4",
+            "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 1
+          },
+          {
+            "value": "",
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": "D4",
             "duration": 3
           },
           {
@@ -557,7 +805,7 @@
         [
           {
             "value": "E4",
-            "duration": 2
+            "duration": 1
           },
           {
             "value": "F4",
@@ -565,7 +813,7 @@
           },
           {
             "value": "G4",
-            "duration": 2
+            "duration": 1
           }
         ],
         [
@@ -636,12 +884,6 @@
           {
             "value": "D4",
             "duration": 8
-          }
-        ],
-        [
-          {
-            "value": "Bb4",
-            "duration": 9
           }
         ],
         [
@@ -660,6 +902,20 @@
         ],
         [
           {
+            "value": "G4",
+            "duration": 2
+          },
+          {
+            "value": "Bb4",
+            "duration": 1
+          },
+          {
+            "value": "C4",
+            "duration": 1
+          }
+        ],
+        [
+          {
             "value": "C5",
             "duration": 1
           },
@@ -670,6 +926,20 @@
           {
             "value": "",
             "duration": 8
+          }
+        ],
+        [
+          {
+            "value": "F4",
+            "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 1
+          },
+          {
+            "value": "C4",
+            "duration": 3
           }
         ],
         [
@@ -698,6 +968,12 @@
           {
             "value": "A4",
             "duration": 1
+          }
+        ],
+        [
+          {
+            "value": "Bb4",
+            "duration": 9
           }
         ],
         [
@@ -738,6 +1014,12 @@
         ],
         [
           {
+            "value": "D4",
+            "duration": 8
+          }
+        ],
+        [
+          {
             "value": "E5",
             "duration": 4
           },
@@ -752,6 +1034,20 @@
           {
             "value": "G4",
             "duration": 4
+          }
+        ],
+        [
+          {
+            "value": "G4",
+            "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 1
+          },
+          {
+            "value": "C4",
+            "duration": 1
           }
         ],
         [
@@ -800,6 +1096,20 @@
           {
             "value": "",
             "duration": 2
+          }
+        ],
+        [
+          {
+            "value": "D4",
+            "duration": 1
+          },
+          {
+            "value": "G4",
+            "duration": 1
+          },
+          {
+            "value": "A4",
+            "duration": 1
           }
         ],
         [
@@ -823,6 +1133,20 @@
         [
           {
             "value": "E4",
+            "duration": 1
+          },
+          {
+            "value": "F4",
+            "duration": 2
+          },
+          {
+            "value": "G4",
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": "E4",
             "duration": 2
           },
           {
@@ -844,19 +1168,11 @@
         ],
         [
           {
-            "value": "",
-            "duration": 1
-          },
-          {
-            "value": "Eb",
+            "value": "Eb4",
             "duration": 1
           },
           {
             "value": "G4",
-            "duration": 1
-          },
-          {
-            "value": "",
             "duration": 3
           }
         ],
@@ -866,7 +1182,7 @@
             "duration": 2
           },
           {
-            "value": "Eb",
+            "value": "Eb4",
             "duration": 2
           }
         ],
@@ -878,6 +1194,12 @@
           {
             "value": "D4",
             "duration": 2
+          }
+        ],
+        [
+          {
+            "value": "Bb4",
+            "duration": 9
           }
         ],
         [
@@ -896,6 +1218,20 @@
           {
             "value": "D5",
             "duration": 2
+          }
+        ],
+        [
+          {
+            "value": "Eb4",
+            "duration": 1
+          },
+          {
+            "value": "F4",
+            "duration": 2
+          },
+          {
+            "value": "G4",
+            "duration": 1
           }
         ],
         [
@@ -978,24 +1314,152 @@
         ],
         [
           {
-            "value": "Eb4",
-            "duration": 3
+            "value": "A4",
+            "duration": 1
           },
           {
-            "value": "Bb3",
+            "value": "F4",
             "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 1
+          },
+          {
+            "value": "D5",
+            "duration": 1
+          },
+          {
+            "value": "Eb5",
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": "D4",
+            "duration": 1
+          },
+          {
+            "value": "G4",
+            "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 1
+          },
+          {
+            "value": "Eb5",
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": "A4",
+            "duration": 1
+          },
+          {
+            "value": "F4",
+            "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": "F4",
+            "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 1
+          },
+          {
+            "value": "D5",
+            "duration": 1
+          },
+          {
+            "value": "Eb5",
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": "D4",
+            "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 2
+          },
+          {
+            "value": "Eb5",
+            "duration": 2
+          }
+        ],
+        [
+          {
+            "value": "D4",
+            "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 2
+          }
+        ],
+        [
+          {
+            "value": "D4",
+            "duration": 1
+          },
+          {
+            "value": "",
+            "duration": 4
           }
         ]
       ]
     },
     {
-      "name": "track1",
+      "name": "Moog Two",
       "loop": true,
       "rate": 1.01,
       "patterns": [
         [
           {
             "value": "D4",
+            "duration": 1
+          },
+          {
+            "value": "F4",
+            "duration": 1
+          },
+          {
+            "value": "",
+            "duration": 3
+          }
+        ],
+        [
+          {
+            "value": "D4",
+            "duration": 1
+          },
+          {
+            "value": "G4",
+            "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 1
+          },
+          {
+            "value": "",
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": "D4",
             "duration": 3
           },
           {
@@ -1052,7 +1516,7 @@
         [
           {
             "value": "E4",
-            "duration": 2
+            "duration": 1
           },
           {
             "value": "F4",
@@ -1060,7 +1524,7 @@
           },
           {
             "value": "G4",
-            "duration": 2
+            "duration": 1
           }
         ],
         [
@@ -1131,12 +1595,6 @@
           {
             "value": "D4",
             "duration": 8
-          }
-        ],
-        [
-          {
-            "value": "Bb4",
-            "duration": 9
           }
         ],
         [
@@ -1155,6 +1613,20 @@
         ],
         [
           {
+            "value": "G4",
+            "duration": 2
+          },
+          {
+            "value": "Bb4",
+            "duration": 1
+          },
+          {
+            "value": "C4",
+            "duration": 1
+          }
+        ],
+        [
+          {
             "value": "C5",
             "duration": 1
           },
@@ -1165,6 +1637,20 @@
           {
             "value": "",
             "duration": 8
+          }
+        ],
+        [
+          {
+            "value": "F4",
+            "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 1
+          },
+          {
+            "value": "C4",
+            "duration": 3
           }
         ],
         [
@@ -1193,6 +1679,12 @@
           {
             "value": "A4",
             "duration": 1
+          }
+        ],
+        [
+          {
+            "value": "Bb4",
+            "duration": 9
           }
         ],
         [
@@ -1233,6 +1725,12 @@
         ],
         [
           {
+            "value": "D4",
+            "duration": 8
+          }
+        ],
+        [
+          {
             "value": "E5",
             "duration": 4
           },
@@ -1247,6 +1745,20 @@
           {
             "value": "G4",
             "duration": 4
+          }
+        ],
+        [
+          {
+            "value": "G4",
+            "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 1
+          },
+          {
+            "value": "C4",
+            "duration": 1
           }
         ],
         [
@@ -1295,6 +1807,20 @@
           {
             "value": "",
             "duration": 2
+          }
+        ],
+        [
+          {
+            "value": "D4",
+            "duration": 1
+          },
+          {
+            "value": "G4",
+            "duration": 1
+          },
+          {
+            "value": "A4",
+            "duration": 1
           }
         ],
         [
@@ -1318,6 +1844,20 @@
         [
           {
             "value": "E4",
+            "duration": 1
+          },
+          {
+            "value": "F4",
+            "duration": 2
+          },
+          {
+            "value": "G4",
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": "E4",
             "duration": 2
           },
           {
@@ -1339,19 +1879,11 @@
         ],
         [
           {
-            "value": "",
-            "duration": 1
-          },
-          {
-            "value": "Eb",
+            "value": "Eb4",
             "duration": 1
           },
           {
             "value": "G4",
-            "duration": 1
-          },
-          {
-            "value": "",
             "duration": 3
           }
         ],
@@ -1361,7 +1893,7 @@
             "duration": 2
           },
           {
-            "value": "Eb",
+            "value": "Eb4",
             "duration": 2
           }
         ],
@@ -1373,6 +1905,12 @@
           {
             "value": "D4",
             "duration": 2
+          }
+        ],
+        [
+          {
+            "value": "Bb4",
+            "duration": 9
           }
         ],
         [
@@ -1391,6 +1929,20 @@
           {
             "value": "D5",
             "duration": 2
+          }
+        ],
+        [
+          {
+            "value": "Eb4",
+            "duration": 1
+          },
+          {
+            "value": "F4",
+            "duration": 2
+          },
+          {
+            "value": "G4",
+            "duration": 1
           }
         ],
         [
@@ -1473,24 +2025,152 @@
         ],
         [
           {
-            "value": "Eb4",
-            "duration": 3
+            "value": "A4",
+            "duration": 1
           },
           {
-            "value": "Bb3",
+            "value": "F4",
             "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 1
+          },
+          {
+            "value": "D5",
+            "duration": 1
+          },
+          {
+            "value": "Eb5",
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": "D4",
+            "duration": 1
+          },
+          {
+            "value": "G4",
+            "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 1
+          },
+          {
+            "value": "Eb5",
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": "A4",
+            "duration": 1
+          },
+          {
+            "value": "F4",
+            "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": "F4",
+            "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 1
+          },
+          {
+            "value": "D5",
+            "duration": 1
+          },
+          {
+            "value": "Eb5",
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": "D4",
+            "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 2
+          },
+          {
+            "value": "Eb5",
+            "duration": 2
+          }
+        ],
+        [
+          {
+            "value": "D4",
+            "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 2
+          }
+        ],
+        [
+          {
+            "value": "D4",
+            "duration": 1
+          },
+          {
+            "value": "",
+            "duration": 4
           }
         ]
       ]
     },
     {
-      "name": "track1",
+      "name": "Moog Three",
       "loop": true,
       "rate": 1.02,
       "patterns": [
         [
           {
             "value": "D4",
+            "duration": 1
+          },
+          {
+            "value": "F4",
+            "duration": 1
+          },
+          {
+            "value": "",
+            "duration": 3
+          }
+        ],
+        [
+          {
+            "value": "D4",
+            "duration": 1
+          },
+          {
+            "value": "G4",
+            "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 1
+          },
+          {
+            "value": "",
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": "D4",
             "duration": 3
           },
           {
@@ -1547,7 +2227,7 @@
         [
           {
             "value": "E4",
-            "duration": 2
+            "duration": 1
           },
           {
             "value": "F4",
@@ -1555,7 +2235,7 @@
           },
           {
             "value": "G4",
-            "duration": 2
+            "duration": 1
           }
         ],
         [
@@ -1626,12 +2306,6 @@
           {
             "value": "D4",
             "duration": 8
-          }
-        ],
-        [
-          {
-            "value": "Bb4",
-            "duration": 9
           }
         ],
         [
@@ -1650,6 +2324,20 @@
         ],
         [
           {
+            "value": "G4",
+            "duration": 2
+          },
+          {
+            "value": "Bb4",
+            "duration": 1
+          },
+          {
+            "value": "C4",
+            "duration": 1
+          }
+        ],
+        [
+          {
             "value": "C5",
             "duration": 1
           },
@@ -1660,6 +2348,20 @@
           {
             "value": "",
             "duration": 8
+          }
+        ],
+        [
+          {
+            "value": "F4",
+            "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 1
+          },
+          {
+            "value": "C4",
+            "duration": 3
           }
         ],
         [
@@ -1688,6 +2390,12 @@
           {
             "value": "A4",
             "duration": 1
+          }
+        ],
+        [
+          {
+            "value": "Bb4",
+            "duration": 9
           }
         ],
         [
@@ -1728,6 +2436,12 @@
         ],
         [
           {
+            "value": "D4",
+            "duration": 8
+          }
+        ],
+        [
+          {
             "value": "E5",
             "duration": 4
           },
@@ -1742,6 +2456,20 @@
           {
             "value": "G4",
             "duration": 4
+          }
+        ],
+        [
+          {
+            "value": "G4",
+            "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 1
+          },
+          {
+            "value": "C4",
+            "duration": 1
           }
         ],
         [
@@ -1790,6 +2518,20 @@
           {
             "value": "",
             "duration": 2
+          }
+        ],
+        [
+          {
+            "value": "D4",
+            "duration": 1
+          },
+          {
+            "value": "G4",
+            "duration": 1
+          },
+          {
+            "value": "A4",
+            "duration": 1
           }
         ],
         [
@@ -1813,6 +2555,20 @@
         [
           {
             "value": "E4",
+            "duration": 1
+          },
+          {
+            "value": "F4",
+            "duration": 2
+          },
+          {
+            "value": "G4",
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": "E4",
             "duration": 2
           },
           {
@@ -1834,19 +2590,11 @@
         ],
         [
           {
-            "value": "",
-            "duration": 1
-          },
-          {
-            "value": "Eb",
+            "value": "Eb4",
             "duration": 1
           },
           {
             "value": "G4",
-            "duration": 1
-          },
-          {
-            "value": "",
             "duration": 3
           }
         ],
@@ -1856,7 +2604,7 @@
             "duration": 2
           },
           {
-            "value": "Eb",
+            "value": "Eb4",
             "duration": 2
           }
         ],
@@ -1868,6 +2616,12 @@
           {
             "value": "D4",
             "duration": 2
+          }
+        ],
+        [
+          {
+            "value": "Bb4",
+            "duration": 9
           }
         ],
         [
@@ -1886,6 +2640,20 @@
           {
             "value": "D5",
             "duration": 2
+          }
+        ],
+        [
+          {
+            "value": "Eb4",
+            "duration": 1
+          },
+          {
+            "value": "F4",
+            "duration": 2
+          },
+          {
+            "value": "G4",
+            "duration": 1
           }
         ],
         [
@@ -1968,12 +2736,819 @@
         ],
         [
           {
-            "value": "Eb4",
+            "value": "A4",
+            "duration": 1
+          },
+          {
+            "value": "F4",
+            "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 1
+          },
+          {
+            "value": "D5",
+            "duration": 1
+          },
+          {
+            "value": "Eb5",
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": "D4",
+            "duration": 1
+          },
+          {
+            "value": "G4",
+            "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 1
+          },
+          {
+            "value": "Eb5",
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": "A4",
+            "duration": 1
+          },
+          {
+            "value": "F4",
+            "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": "F4",
+            "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 1
+          },
+          {
+            "value": "D5",
+            "duration": 1
+          },
+          {
+            "value": "Eb5",
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": "D4",
+            "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 2
+          },
+          {
+            "value": "Eb5",
+            "duration": 2
+          }
+        ],
+        [
+          {
+            "value": "D4",
+            "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 2
+          }
+        ],
+        [
+          {
+            "value": "D4",
+            "duration": 1
+          },
+          {
+            "value": "",
+            "duration": 4
+          }
+        ]
+      ]
+    },
+    {
+      "name": "0-Coast",
+      "loop": true,
+      "rate": 1.03,
+      "patterns": [
+        [
+          {
+            "value": "D4",
+            "duration": 1
+          },
+          {
+            "value": "F4",
+            "duration": 1
+          },
+          {
+            "value": "",
+            "duration": 3
+          }
+        ],
+        [
+          {
+            "value": "D4",
+            "duration": 1
+          },
+          {
+            "value": "G4",
+            "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 1
+          },
+          {
+            "value": "",
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": "D4",
             "duration": 3
           },
           {
-            "value": "Bb3",
+            "value": "G4",
             "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": "E4",
+            "duration": 1
+          },
+          {
+            "value": "F4",
+            "duration": 1
+          },
+          {
+            "value": "G4",
+            "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": "E4",
+            "duration": 3
+          },
+          {
+            "value": "G4",
+            "duration": 5
+          }
+        ],
+        [
+          {
+            "value": "G4",
+            "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 1
+          },
+          {
+            "value": "C4",
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": "E4",
+            "duration": 1
+          },
+          {
+            "value": "F4",
+            "duration": 2
+          },
+          {
+            "value": "G4",
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": "D4",
+            "duration": 1
+          },
+          {
+            "value": "F4",
+            "duration": 1
+          },
+          {
+            "value": "G4",
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": "C5",
+            "duration": 3
+          },
+          {
+            "value": "Bb4",
+            "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": "D5",
+            "duration": 3
+          },
+          {
+            "value": "Bb4",
+            "duration": 3
+          },
+          {
+            "value": "C4",
+            "duration": 3
+          },
+          {
+            "value": "G4",
+            "duration": 3
+          }
+        ],
+        [
+          {
+            "value": "F4",
+            "duration": 1
+          },
+          {
+            "value": "G4",
+            "duration": 2
+          },
+          {
+            "value": "F4",
+            "duration": 1
+          },
+          {
+            "value": "G4",
+            "duration": 5
+          }
+        ],
+        [
+          {
+            "value": "D4",
+            "duration": 8
+          }
+        ],
+        [
+          {
+            "value": "Bb4",
+            "duration": 1
+          },
+          {
+            "value": "D5",
+            "duration": 1
+          },
+          {
+            "value": "",
+            "duration": 6
+          }
+        ],
+        [
+          {
+            "value": "G4",
+            "duration": 2
+          },
+          {
+            "value": "Bb4",
+            "duration": 1
+          },
+          {
+            "value": "C4",
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": "C5",
+            "duration": 1
+          },
+          {
+            "value": "E5",
+            "duration": 1
+          },
+          {
+            "value": "",
+            "duration": 8
+          }
+        ],
+        [
+          {
+            "value": "F4",
+            "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 1
+          },
+          {
+            "value": "C4",
+            "duration": 3
+          }
+        ],
+        [
+          {
+            "value": "Bb4",
+            "duration": 2
+          },
+          {
+            "value": "G4",
+            "duration": 2
+          },
+          {
+            "value": "F4",
+            "duration": 2
+          }
+        ],
+        [
+          {
+            "value": "D4",
+            "duration": 1
+          },
+          {
+            "value": "G4",
+            "duration": 1
+          },
+          {
+            "value": "A4",
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": "Bb4",
+            "duration": 9
+          }
+        ],
+        [
+          {
+            "value": "",
+            "duration": 1
+          },
+          {
+            "value": "D5",
+            "duration": 1
+          },
+          {
+            "value": "D5",
+            "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 1
+          },
+          {
+            "value": "",
+            "duration": 2
+          }
+        ],
+        [
+          {
+            "value": "G4",
+            "duration": 2
+          },
+          {
+            "value": "D4",
+            "duration": 2
+          },
+          {
+            "value": "E4",
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": "D4",
+            "duration": 8
+          }
+        ],
+        [
+          {
+            "value": "E5",
+            "duration": 4
+          },
+          {
+            "value": "Bb4",
+            "duration": 4
+          },
+          {
+            "value": "C5",
+            "duration": 4
+          },
+          {
+            "value": "G4",
+            "duration": 4
+          }
+        ],
+        [
+          {
+            "value": "G4",
+            "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 1
+          },
+          {
+            "value": "C4",
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": "",
+            "duration": 1
+          },
+          {
+            "value": "G4",
+            "duration": 1
+          },
+          {
+            "value": "G4",
+            "duration": 1
+          },
+          {
+            "value": "F4",
+            "duration": 5
+          },
+          {
+            "value": "",
+            "duration": 2
+          },
+          {
+            "value": "D4",
+            "duration": 4
+          },
+          {
+            "value": "",
+            "duration": 2
+          }
+        ],
+        [
+          {
+            "value": "",
+            "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 1
+          },
+          {
+            "value": "A4",
+            "duration": 2
+          },
+          {
+            "value": "",
+            "duration": 2
+          }
+        ],
+        [
+          {
+            "value": "D4",
+            "duration": 1
+          },
+          {
+            "value": "G4",
+            "duration": 1
+          },
+          {
+            "value": "A4",
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": "D4",
+            "duration": 2
+          },
+          {
+            "value": "Bb3",
+            "duration": 2
+          },
+          {
+            "value": "C4",
+            "duration": 2
+          },
+          {
+            "value": "G3",
+            "duration": 2
+          }
+        ],
+        [
+          {
+            "value": "E4",
+            "duration": 1
+          },
+          {
+            "value": "F4",
+            "duration": 2
+          },
+          {
+            "value": "G4",
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": "E4",
+            "duration": 2
+          },
+          {
+            "value": "E4",
+            "duration": 2
+          },
+          {
+            "value": "E4",
+            "duration": 2
+          },
+          {
+            "value": "F4",
+            "duration": 2
+          },
+          {
+            "value": "D4",
+            "duration": 2
+          }
+        ],
+        [
+          {
+            "value": "Eb4",
+            "duration": 1
+          },
+          {
+            "value": "G4",
+            "duration": 3
+          }
+        ],
+        [
+          {
+            "value": "C4",
+            "duration": 2
+          },
+          {
+            "value": "Eb4",
+            "duration": 2
+          }
+        ],
+        [
+          {
+            "value": "A3",
+            "duration": 2
+          },
+          {
+            "value": "D4",
+            "duration": 2
+          }
+        ],
+        [
+          {
+            "value": "Bb4",
+            "duration": 9
+          }
+        ],
+        [
+          {
+            "value": "",
+            "duration": 1
+          },
+          {
+            "value": "G4",
+            "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 1
+          },
+          {
+            "value": "D5",
+            "duration": 2
+          }
+        ],
+        [
+          {
+            "value": "Eb4",
+            "duration": 1
+          },
+          {
+            "value": "F4",
+            "duration": 2
+          },
+          {
+            "value": "G4",
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": "",
+            "duration": 1
+          },
+          {
+            "value": "G4",
+            "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 1
+          },
+          {
+            "value": "D5",
+            "duration": 2
+          }
+        ],
+        [
+          {
+            "value": "G4",
+            "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 1
+          },
+          {
+            "value": "Eb5",
+            "duration": 2
+          }
+        ],
+        [
+          {
+            "value": "Eb4",
+            "duration": 2
+          },
+          {
+            "value": "D4",
+            "duration": 2
+          },
+          {
+            "value": "Bb3",
+            "duration": 2
+          },
+          {
+            "value": "G3",
+            "duration": 2
+          }
+        ],
+        [
+          {
+            "value": "F4",
+            "duration": 1
+          },
+          {
+            "value": "Eb4",
+            "duration": 2
+          },
+          {
+            "value": "",
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": "A4",
+            "duration": 1
+          },
+          {
+            "value": "F4",
+            "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 3
+          }
+        ],
+        [
+          {
+            "value": "A4",
+            "duration": 1
+          },
+          {
+            "value": "F4",
+            "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 1
+          },
+          {
+            "value": "D5",
+            "duration": 1
+          },
+          {
+            "value": "Eb5",
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": "D4",
+            "duration": 1
+          },
+          {
+            "value": "G4",
+            "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 1
+          },
+          {
+            "value": "Eb5",
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": "A4",
+            "duration": 1
+          },
+          {
+            "value": "F4",
+            "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": "F4",
+            "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 1
+          },
+          {
+            "value": "D5",
+            "duration": 1
+          },
+          {
+            "value": "Eb5",
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": "D4",
+            "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 2
+          },
+          {
+            "value": "Eb5",
+            "duration": 2
+          }
+        ],
+        [
+          {
+            "value": "D4",
+            "duration": 1
+          },
+          {
+            "value": "Bb4",
+            "duration": 2
+          }
+        ],
+        [
+          {
+            "value": "D4",
+            "duration": 1
+          },
+          {
+            "value": "",
+            "duration": 4
           }
         ]
       ]

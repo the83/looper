@@ -1,4 +1,4 @@
-import { keys, pick } from 'lodash';
+import { keys } from 'lodash';
 
 function bpmToDuration(bpm) {
   const quarterNote = 60000 / bpm;
@@ -18,6 +18,7 @@ export interface ITrackConfig {
   patterns: INote[][];
   rate?: number;
   loop?: boolean;
+  octaveOffset?: number;
 }
 
 export default class Clock {
@@ -76,10 +77,6 @@ export default class Clock {
   }
 
   setNextPattern(row, offset) {
-    // row will be 0-7. Need to add an offset to account for where
-    // we are currently in the list of patterns
-
-    const { pattern } = this;
     const nextPattern = row + offset
     const patternCount = this.config.patterns.length;
     if (nextPattern + 1 > patternCount) return;
@@ -175,7 +172,7 @@ export default class Clock {
     } = this;
 
     if (config.patterns[pattern].length > 1) return false;
-    return this.getNextTicksElapsed() == 0;
+    return this.getNextTicksElapsed() === 0;
   }
 
   private shouldUpdatePattern() {
@@ -191,7 +188,6 @@ export default class Clock {
   private step() {
     const {
       position,
-      ticksElapsed,
       bpm,
       rate,
       config,

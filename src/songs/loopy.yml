@@ -2,6 +2,22 @@ defaults: &defaults
   patterns:
     -
       - value: D4
+        duration: 1
+      - value: F4
+        duration: 1
+      - value: ''
+        duration: 3
+    -
+      - value: D4
+        duration: 1
+      - value: G4
+        duration: 1
+      - value: Bb4
+        duration: 1
+      - value: ''
+        duration: 1
+    -
+      - value: D4
         duration: 3
       - value: G4
         duration: 1
@@ -70,9 +86,6 @@ defaults: &defaults
     -
       - value: D4
         duration: 8
-    -
-      - value: Bb4
-        duration: 9
     -
       - value: Bb4
         duration: 1
@@ -81,12 +94,26 @@ defaults: &defaults
       - value: ''
         duration: 6
     -
+      - value: G4
+        duration: 2
+      - value: Bb4
+        duration: 1
+      - value: C4
+        duration: 1
+    -
       - value: C5
         duration: 1
       - value: E5
         duration: 1
       - value: ''
         duration: 8
+    -
+      - value: F4
+        duration: 1
+      - value: Bb4
+        duration: 1
+      - value: C4
+        duration: 3
     -
       - value: Bb4
         duration: 2
@@ -101,6 +128,9 @@ defaults: &defaults
         duration: 1
       - value: A4
         duration: 1
+    -
+      - value: Bb4
+        duration: 9
     -
       - value: ''
         duration: 1
@@ -132,6 +162,13 @@ defaults: &defaults
       - value: G4
         duration: 4
     -
+      - value: G4
+        duration: 1
+      - value: Bb4
+        duration: 1
+      - value: C4
+        duration: 1
+    -
       - value: ''
         duration: 1
       - value: G4
@@ -155,6 +192,13 @@ defaults: &defaults
         duration: 2
       - value: ''
         duration: 2
+    -
+      - value: D4
+        duration: 1
+      - value: G4
+        duration: 1
+      - value: A4
+        duration: 1
     -
       - value: D4
         duration: 2
@@ -166,6 +210,13 @@ defaults: &defaults
         duration: 2
     -
       - value: E4
+        duration: 1
+      - value: F4
+        duration: 2
+      - value: G4
+        duration: 1
+    -
+      - value: E4
         duration: 2
       - value: E4
         duration: 2
@@ -176,14 +227,14 @@ defaults: &defaults
       - value: D4
         duration: 2
     -
-      - value: Eb
+      - value: Eb4
         duration: 1
       - value: G4
         duration: 3
     -
       - value: C4
         duration: 2
-      - value: Eb
+      - value: Eb4
         duration: 2
     -
       - value: A3
@@ -202,6 +253,13 @@ defaults: &defaults
         duration: 1
       - value: D5
         duration: 2
+    -
+      - value: Eb4
+        duration: 1
+      - value: F4
+        duration: 2
+      - value: G4
+        duration: 1
     -
       - value: ''
         duration: 1
@@ -242,10 +300,58 @@ defaults: &defaults
       - value: Bb4
         duration: 3
     -
-      - value: Eb4
-        duration: 3
-      - value: Bb3
+      - value: A4
         duration: 1
+      - value: F4
+        duration: 1
+      - value: Bb4
+        duration: 1
+      - value: D5
+        duration: 1
+      - value: Eb5
+        duration: 1
+    -
+      - value: D4
+        duration: 1
+      - value: G4
+        duration: 1
+      - value: Bb4
+        duration: 1
+      - value: Eb5
+        duration: 1
+    -
+      - value: A4
+        duration: 1
+      - value: F4
+        duration: 1
+      - value: Bb4
+        duration: 1
+    -
+      - value: F4
+        duration: 1
+      - value: Bb4
+        duration: 1
+      - value: D5
+        duration: 1
+      - value: Eb5
+        duration: 1
+    -
+      - value: D4
+        duration: 1
+      - value: Bb4
+        duration: 2
+      - value: Eb5
+        duration: 2
+    -
+      - value: D4
+        duration: 1
+      - value: Bb4
+        duration: 2
+    -
+      - value: D4
+        duration: 1
+      - value: ''
+        duration: 4
 title: loopy
 tracks:
   - name: Moog One
@@ -259,4 +365,8 @@ tracks:
   - name: Moog Three
     loop: true
     rate: 1.02
+    << : *defaults
+  - name: 0-Coast
+    loop: true
+    rate: 1.03
     << : *defaults

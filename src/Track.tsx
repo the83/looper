@@ -134,18 +134,6 @@ class Track extends React.Component<IProps, {}> {
         <div>
           <h1>{this.currentNote}</h1>
         </div>
-        <div>
-          <button
-            className="track-button"
-          >
-            previous
-          </button>
-          <button
-            className="track-button"
-          >
-            next
-          </button>
-        </div>
       </div>
     );
   }
