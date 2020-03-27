@@ -358,15 +358,15 @@ tracks:
     loop: true
     rate: 1
     << : *defaults
-  - name: Moog Two
-    loop: true
-    rate: 1.01
-    << : *defaults
-  - name: Moog Three
-    loop: true
-    rate: 1.02
-    << : *defaults
-  - name: 0-Coast
-    loop: true
-    rate: 1.03
-    << : *defaults
+  # - name: Moog Two
+    # loop: true
+    # rate: 1.01
+    # << : *defaults
+  # - name: Moog Three
+    # loop: true
+    # rate: 1.02
+    # << : *defaults
+  # - name: 0-Coast
+    # loop: true
+    # rate: 1.03
+    # << : *defaults

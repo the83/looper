@@ -1,4 +1,8 @@
-import { keys } from 'lodash';
+import {
+  keys,
+  sumBy,
+  dropRight,
+} from 'lodash';
 
 function bpmToDuration(bpm) {
   const quarterNote = 60000 / bpm;
@@ -32,7 +36,6 @@ export default class Clock {
   position: number = 0;
   ticksElapsed: number = 0;
   nextPattern: number = 0;
-  lastPattern: number = 0;
   config: ITrackConfig;
   isPlaying: boolean = false;
   onNoteChange: Function;
@@ -50,7 +53,7 @@ export default class Clock {
     this.config = config;
     this.index = index;
     this.onNoteChange = onNoteChange;
-    this.step = this.step.bind(this);
+    this.tick = this.tick.bind(this);
   }
 
   reset() {
@@ -72,11 +75,12 @@ export default class Clock {
     this.bpm = bpm;
 
     if (this.isPlaying) {
-      this.intervalId = window.setInterval(this.step, duration);
+      this.intervalId = window.setInterval(this.tick, duration);
     }
   }
 
   setNextPattern(row, offset) {
+    // TODO: hoist offset logic up into component
     const nextPattern = row + offset
     const patternCount = this.config.patterns.length;
     if (nextPattern + 1 > patternCount) return;
@@ -89,64 +93,39 @@ export default class Clock {
       intervalId,
       bpm,
       rate,
-      step,
-      pattern,
-      position,
+      tick,
     } = this;
 
     clearInterval(intervalId);
     const tickDuration = bpmToDuration(bpm * rate);
-    this.intervalId = window.setInterval(step, tickDuration);
-
+    this.intervalId = window.setInterval(tick, tickDuration);
     this.setState({ isPlaying: true });
-
-    // play first note if on first note but previously stopped
-    if (position === 0) {
-      const note = this.config.patterns[pattern][position];
-
-      this.onNoteChange(
-        this.index,
-        note.value,
-        note.duration * tickDuration,
-      );
-    }
   }
 
-  get previousAvailablePattern() {
-    const { pattern } = this;
-    const { patterns } = this.config;
-    return pattern - 1 < 0 ? patterns.length - 1 : pattern - 1;
-  }
-
-  get nextAvailablePattern() {
+  private get nextAvailablePattern() {
     const { pattern } = this;
     const { patterns } = this.config;
     return pattern + 1 > patterns.length - 1 ? 0 : pattern + 1;
   }
 
   private setState(state) {
+    console.log(state);
+
     keys(state).forEach((key) => {
       this[key] = state[key];
     });
 
-    this.onTick(this);
+    this.onTick(this.index);
   }
 
   private getNextStep() {
     const {
-      pattern,
       position,
       ticksElapsed,
     } = this;
 
-    const note = this.config.patterns[pattern][position];
-    const ticksRemaining = note.duration - ticksElapsed;
-
-    if (ticksRemaining > 0) {
-        return position;
-    }
-
-    const next = (position + 1) >= this.config.patterns[pattern].length ? 0 : position + 1;
+    const nextNoteIndex = this.noteChangeIndexes().indexOf(ticksElapsed);
+    const next = nextNoteIndex >= 0 ? nextNoteIndex : position;
 
     return next;
   }
@@ -154,25 +133,14 @@ export default class Clock {
   private getNextTicksElapsed() {
     const {
       pattern,
-      position,
       ticksElapsed,
       config,
     } = this;
 
-    const ticksInPattern = config.patterns[pattern][position].duration;
+    const ticksInPattern = sumBy(config.patterns[pattern], 'duration');
     const next = ticksElapsed + 1;
-    if (next > ticksInPattern) return 0;
+    if (next >= ticksInPattern) return 0;
     return next;
-  }
-
-  private endOfSingleNotePattern() {
-    const {
-      config,
-      pattern,
-    } = this;
-
-    if (config.patterns[pattern].length > 1) return false;
-    return this.getNextTicksElapsed() === 0;
   }
 
   private shouldUpdatePattern() {
@@ -185,21 +153,36 @@ export default class Clock {
     return next === 0 && pattern !== nextPattern;
   }
 
-  private step() {
+  private noteChangeIndexes() {
     const {
-      position,
+      config,
+      pattern,
+    } = this;
+
+    const durations = dropRight(config.patterns[pattern]).map(p => p.duration);
+    const indexes = [0];
+
+    durations.forEach((d, idx) => {
+      indexes.push(d + indexes[idx]);
+    });
+
+    return indexes;
+  }
+
+  private tick() {
+    const {
       bpm,
       rate,
       config,
+      ticksElapsed,
     } = this;
 
     const next = this.getNextStep();
-    const nextTicksElapsed = this.getNextTicksElapsed();
+    const nextTicksElapsed = this.shouldUpdatePattern() ? 0 : this.getNextTicksElapsed();
     const pattern = this.shouldUpdatePattern() ? this.nextPattern : this.pattern;
-    const lastPattern = position;
     const nextPattern = this.config.loop ? this.nextPattern : this.nextAvailablePattern;
 
-    if (position !== next || this.endOfSingleNotePattern()) {
+    if (this.noteChangeIndexes().indexOf(ticksElapsed) >= 0) {
       const note = config.patterns[pattern][next];
       const tickDuration = bpmToDuration(bpm * rate);
 
@@ -213,12 +196,16 @@ export default class Clock {
     const state = {
       pattern,
       nextPattern,
-      lastPattern,
       position: next,
       ticksElapsed: nextTicksElapsed,
       isPlaying: this.isPlaying,
     };
 
     this.setState(state);
+  }
+
+  // only use this for tests
+  public testTick() {
+    this.tick();
   }
 }

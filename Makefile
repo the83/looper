@@ -14,3 +14,6 @@ build:
 compile-songs:
 	yaml2json src/songs --pretty --save --recursive
 
+.PHONY: test
+test:
+	yarn test

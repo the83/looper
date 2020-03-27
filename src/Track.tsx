@@ -8,7 +8,6 @@ interface IProps {
   config: ITrackConfig;
   index: number;
   isPlaying: boolean;
-  lastPattern?: number;
   nextPattern: number;
   pattern: number;
   position: number;

@@ -167,13 +167,14 @@ class App extends React.Component<IProps, IState> {
     }, () => this.state.clocks.forEach(clock => this.updateLaunchpad(clock)))
   }
 
-  updateLaunchpad = (clock) => {
+  updateLaunchpad = (index) => {
     if (!this.state.launchpad) return;
 
     const { page } = this.state;
+    const clock = this.state.clocks[index];
+    if (!clock) return;
 
     const {
-      index,
       pattern,
       nextPattern,
       config,
@@ -192,13 +193,14 @@ class App extends React.Component<IProps, IState> {
     );
   }
 
-  onClockTick = (clock) => {
-    this.updateLaunchpad(clock);
+  onClockTick = (index) => {
+    this.updateLaunchpad(index);
     this.setState(this.state); // force re-render
   }
 
   onNoteChange = (index, note, duration) => {
     const instrument = this.state.instruments[index];
+    if (!instrument) return;
     instrument.playNote(note, duration, 1);
   }
 
@@ -208,7 +210,6 @@ class App extends React.Component<IProps, IState> {
         config={clock.config}
         index={idx}
         isPlaying={clock.isPlaying}
-        lastPattern={clock.lastPattern}
         nextPattern={clock.nextPattern}
         pattern={clock.pattern}
         position={clock.position}
