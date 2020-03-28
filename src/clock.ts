@@ -25,6 +25,13 @@ export interface ITrackConfig {
   octaveOffset?: number;
 }
 
+interface IStateOverride {
+  position?: number;
+  pattern?: number;
+  ticksElapsed?: number;
+  nextPattern?: number;
+}
+
 export default class Clock {
   onTick: Function;
   bpm: number;
@@ -56,8 +63,20 @@ export default class Clock {
     this.tick = this.tick.bind(this);
   }
 
-  reset() {
-    this.start();
+  reset(pattern) {
+    this.tick({
+      position: 0,
+      ticksElapsed: 1,
+    });
+  }
+
+  resetAll() {
+    this.tick({
+      position: 0,
+      ticksElapsed: 1,
+      pattern: 0,
+      nextPattern: 0,
+    });
   }
 
   stop() {
@@ -167,33 +186,30 @@ export default class Clock {
     return indexes;
   }
 
-  private tick() {
-    const {
-      bpm,
-      rate,
-      config,
-      ticksElapsed,
-      isPlaying
-    } = this;
-
+  private getNextState() {
     const shouldUpdatePattern = this.shouldUpdatePattern();
-
     const position = this.getNextStep();
     const pattern = shouldUpdatePattern ? this.nextPattern : this.pattern;
     const nextTicksElapsed = this.getNextTicksElapsed(pattern);
     const nextPattern = this.config.loop ? this.nextPattern : this.nextAvailablePattern(pattern);
 
-    const state = {
+    return {
       pattern,
       nextPattern,
       position,
-      isPlaying,
       ticksElapsed: nextTicksElapsed,
     };
+  }
 
-    if (this.noteChangeIndexes().indexOf(ticksElapsed) >= 0) {
-      const note = config.patterns[pattern][position];
-      const tickDuration = bpmToDuration(bpm * rate);
+  private tick(stateOverride: IStateOverride = {}) {
+    const state = {
+      ...this.getNextState(),
+      ...stateOverride,
+    };
+
+    if (this.noteChangeIndexes().indexOf(this.ticksElapsed) >= 0) {
+      const note = this.config.patterns[state.pattern][state.position];
+      const tickDuration = bpmToDuration(this.bpm * this.rate);
 
       this.onNoteChange(
         this.index,

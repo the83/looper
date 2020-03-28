@@ -103,13 +103,96 @@ describe('Clock', () => {
     });
   });
 
-  describe('start', () => {
+  describe('start/stop', () => {
     it('toggles isPlaying to true and sets a new intervalId', () => {
       const clock = buildClock(defaultPatterns);
       expect(clock.intervalId).toEqual(0);
+
       clock.start();
       expect(clock.isPlaying).toEqual(true);
       expect(clock.intervalId).not.toEqual(0);
+
+      clock.stop();
+      expect(clock.isPlaying).toEqual(false);
+    });
+  });
+
+  describe('reset', () => {
+    it('sets the position to 0 within the current pattern', () => {
+      const patterns = [
+        [
+          { value: 'C1', duration: 1 },
+          { value: 'D1', duration: 1 },
+          { value: 'E1', duration: 1 },
+        ],
+        [
+          { value: 'F4', duration: 1 },
+          { value: 'G4', duration: 1 },
+          { value: 'A5', duration: 1 },
+          { value: 'B5', duration: 1 },
+        ],
+      ];
+
+      const clock = buildClock(patterns);
+      clock.setNextPattern(1, 0);
+
+      times(2, () => clock.testTick());
+      clock.reset();
+      times(2, () => clock.testTick());
+      expect(clock.onNoteChange.mock.calls).toEqual([
+        [4, 'F4', 125],
+        [4, 'G4', 125],
+        [4, 'F4', 125],
+        [4, 'G4', 125],
+        [4, 'A5', 125],
+      ]);
+    });
+  });
+
+  describe('resetAll', () => {
+    it('sets the pattern and position to 0', () => {
+      const patterns = [
+        [
+          { value: 'C1', duration: 1 },
+          { value: 'D1', duration: 1 },
+          { value: 'E1', duration: 1 },
+        ],
+        [
+          { value: 'F4', duration: 1 },
+          { value: 'G4', duration: 1 },
+          { value: 'A5', duration: 1 },
+          { value: 'B5', duration: 1 },
+        ],
+      ];
+
+      const clock = buildClock(patterns);
+      clock.setNextPattern(1, 0);
+
+      times(2, () => clock.testTick());
+      clock.resetAll();
+      times(3, () => clock.testTick());
+
+      expect(clock.onNoteChange.mock.calls).toEqual([
+        [4, 'F4', 125],
+        [4, 'G4', 125],
+        [4, 'C1', 125],
+        [4, 'D1', 125],
+        [4, 'E1', 125],
+        [4, 'C1', 125],
+      ]);
+    });
+  });
+
+  describe('setBpm', () => {
+    it('sets the BPM and resets the timer', () => {
+      const clock = buildClock(defaultPatterns);
+      clock.start();
+      const previousInterval = clock.intervalId.toString();
+      clock.setBpm(999);
+      const newInterval = clock.intervalId.toString();
+
+      expect(clock.bpm).toEqual(999);
+      expect(previousInterval).not.toEqual(newInterval)
     });
   });
 });
