@@ -6,8 +6,8 @@ import Instrument from './instrument';
 import LaunchpadManager from './launchpad_manager';
 import Track from './Track';
 import WebMidi, { Output } from 'webmidi';
-import autoDetectLaunchpad, { Launchpad } from './launchpad';
 import { compact, omit } from 'lodash';
+import { detectLaunchpad } from './launchpad_manager';
 
 // TODO: song management
 import loopy from './songs/loopy.json';
@@ -27,12 +27,6 @@ interface IState {
 const MAX_BPM = 300;
 const DEFAULT_BPM = 120;
 
-const PLAY_BUTTON_PAD_NUMBER = 19;
-const PAGE_UP_PAD_NUMBER = 91;
-const PAGE_DOWN_PAD_NUMBER = 92;
-const LAUNCHPAD_RED = 5;
-const LAUNCHPAD_GREEN = 15;
-const LAUNCHPAD_GREY = 1;
 const MIDI_OUTPUT_MANUFACTURER = 'MOTU';
 
 const song = omit(loopy, ['defaults']);
@@ -63,35 +57,31 @@ class App extends React.Component<IProps, IState> {
   }
 
   onMidiSuccess = (access) => {
-    const launchpad = autoDetectLaunchpad(access) as Launchpad;
-
-    if (launchpad) {
-      const manager = new LaunchpadManager(
-        launchpad,
-        this.onPadPress,
-        this.onControlPadPress,
-      );
-
-      this.setState({
-        launchpad: manager,
-      }, this.initializeLaunchpad);
-    }
+    detectLaunchpad({
+      togglePlay: this.togglePlay,
+      updatePage: this.updatePage,
+      onPadPress: this.onPadPress,
+    }, (launchpad) => {
+      this.setState({ launchpad }, () => {
+        this.initializeLaunchpad();
+      })
+    });
 
     WebMidi.enable((_err) => {
-      const midiOutputs = WebMidi.outputs.filter((output: Output) => {
+      const midiOutputs = compact(WebMidi.outputs.filter((output: Output) => {
         return output.manufacturer === MIDI_OUTPUT_MANUFACTURER;
-      });
+      }));
 
-      const instruments = compact(midiOutputs.map((output, idx) => {
+      const instruments = midiOutputs.map((output, idx) => {
         const clock = this.state.clocks[idx];
         if (!clock) return null;
 
         const octaveOffset = clock.config.octaveOffset;
         return new Instrument(output, octaveOffset);
-      }));
+      }) as Instrument[];
 
       this.setState({ instruments });
-    });
+    }, true);
   }
 
   onMidiFailure(msg) {
@@ -104,26 +94,6 @@ class App extends React.Component<IProps, IState> {
 
     const offset = 8 * this.state.page;
     clock.setNextPattern(row, offset);
-  }
-
-  onControlPadPress = (value) => {
-    if (!this.state.launchpad) return;
-
-    console.log({ value });
-
-    if (value === PLAY_BUTTON_PAD_NUMBER) {
-      const isPlaying = this.togglePlay();
-      const color = isPlaying ? LAUNCHPAD_RED : LAUNCHPAD_GREEN;
-      this.state.launchpad.ctrlLedOn(value, color, true);
-    }
-
-    if (value === PAGE_UP_PAD_NUMBER) {
-      this.updatePage(-1);
-    }
-
-    if (value === PAGE_DOWN_PAD_NUMBER) {
-      this.updatePage(1);
-    }
   }
 
   setBpm = (evt) => {
@@ -150,21 +120,20 @@ class App extends React.Component<IProps, IState> {
 
   initializeLaunchpad() {
     if (!this.state.launchpad) return;
-
-    this.state.launchpad.clear();
-    this.state.launchpad.ctrlLedOn(PLAY_BUTTON_PAD_NUMBER, LAUNCHPAD_GREEN, true);
-    this.state.launchpad.ctrlLedOn(PAGE_UP_PAD_NUMBER, LAUNCHPAD_GREY);
-    this.state.launchpad.ctrlLedOn(PAGE_DOWN_PAD_NUMBER, LAUNCHPAD_GREY);
-    this.state.clocks.forEach(this.updateLaunchpad);
+    this.state.clocks.forEach((_clock, idx) => {
+      this.updateLaunchpad(idx);
+    });
   }
 
-  updatePage(number) {
+  updatePage = (number) => {
     const page = this.state.page + number;
     if (page < 0) return;
 
     this.setState({
       page,
-    }, () => this.state.clocks.forEach(clock => this.updateLaunchpad(clock)))
+    }, () => this.state.clocks.forEach((_clock, idx) => {
+      this.updateLaunchpad(idx)
+    }))
   }
 
   updateLaunchpad = (index) => {

@@ -1,17 +1,34 @@
-import { Launchpad } from 'web-midi-launchpad/src/launchpad.js';
+import WebMidi, { Input, Output } from 'webmidi';
+import LaunchpadMini, { COLORS } from './launchpad_mini';
 import { times } from 'lodash';
 
-export default class LaunchpadManager {
-  launchpad: Launchpad
-  onPadPress: Function
-  onControlPadPress: Function
+const PLAY_BUTTON_PAD_NUMBER = 19;
+const PAGE_UP_PAD_NUMBER = 91;
+const PAGE_DOWN_PAD_NUMBER = 92;
 
-  constructor(launchpad, onPadPress, onControlPadPress) {
-    this.launchpad = launchpad;
-    this.onPadPress = onPadPress;
-    this.onControlPadPress = onControlPadPress;
-    this.launchpad.onPadPress(this.handlePadPress.bind(this));
-    this.launchpad.onControlPadPress(this.handleControlPadPress.bind(this));
+interface ILaunchpadManagerConfig {
+  input: Input;
+  output: Output;
+  togglePlay: Function;
+  updatePage: Function;
+  onPadPress: Function;
+}
+
+export default class LaunchpadManager {
+  launchpad
+  config: ILaunchpadManagerConfig
+
+  constructor(config: ILaunchpadManagerConfig) {
+    this.config = config;
+
+    this.launchpad = new LaunchpadMini({
+      input: config.input,
+      output: config.output,
+      onPadPress: this.onPadPress.bind(this),
+      onCtrlPadPress: this.onCtrlPadPress.bind(this),
+    });
+
+    this.initializeLeds();
   }
 
   private getPad(pattern, index) {
@@ -28,26 +45,34 @@ export default class LaunchpadManager {
     return { column, row };
   }
 
-  handlePadPress(padNumber) {
-    const parsed = this.parsePadNumber(padNumber);
-    this.onPadPress(parsed);
+  initializeLeds() {
+    this.launchpad.ledPulse(PLAY_BUTTON_PAD_NUMBER, COLORS.GREEN);
+    this.launchpad.ledOn(PAGE_UP_PAD_NUMBER, COLORS.GREY);
+    this.launchpad.ledOn(PAGE_DOWN_PAD_NUMBER, COLORS.GREY);
   }
 
-  handleControlPadPress(padNumber) {
-    this.onControlPadPress(padNumber);
+  onCtrlPadPress(e) {
+    const pad = e[1];
+
+    if (pad === PLAY_BUTTON_PAD_NUMBER) {
+      const isPlaying = this.config.togglePlay();
+      const color = isPlaying ? COLORS.RED : COLORS.GREEN;
+      this.launchpad.ledPulse(pad, color);
+    }
+
+    if (pad === PAGE_UP_PAD_NUMBER) {
+      this.config.updatePage(-1);
+    }
+
+    if (pad === PAGE_DOWN_PAD_NUMBER) {
+      this.config.updatePage(1);
+    }
   }
 
-  clear() {
-    this.launchpad.clear();
+  onPadPress(e) {
+    const parsed = this.parsePadNumber(e[1]);
+    return this.config.onPadPress(parsed);
   }
-
-  ctrlLedOn(note, color, pulse = false) {
-    this.launchpad.ctrlLedOn(note, color, pulse);
-	}
-
-	ctrlLedOff(note) {
-    this.launchpad.ctrlLedOff(note);
-	}
 
   drawColumn(
     patternsAvailable,
@@ -65,19 +90,40 @@ export default class LaunchpadManager {
         this.launchpad.ledOff(pad);
       } else {
         if (pad !== currentPad) {
-          const flash = (pad === nextPad) && (nextPad !== currentPad);
-          this.launchpad.ledOn(pad, 51, flash);
+          if (pad === nextPad && nextPad !== currentPad) {
+            this.launchpad.ledPulse(pad, COLORS.PURPLE);
+          } else {
+            this.launchpad.ledOn(pad, COLORS.PURPLE);
+          }
         }
 
         else if (pad === currentPad) {
           if (pattern >= offset && pattern < offset + 8) {
-            this.launchpad.ledOn(nextPad, 6, true);
+            this.launchpad.ledPulse(nextPad, COLORS.RED);
           } else {
             // current step isn't on current page
-            this.launchpad.ledOn(pad, 51);
+            this.launchpad.ledOn(pad, COLORS.PURPLE);
           }
         }
       }
     });
   }
+}
+
+export function detectLaunchpad(config, callback) {
+  WebMidi.enable((_err) => {
+    const input = WebMidi.getInputByName('Launchpad Mini MK3 LPMiniMK3 MIDI Out');
+    const output = WebMidi.getOutputByName('Launchpad Mini MK3 LPMiniMK3 MIDI In');
+    if (input && output) {
+      callback(
+        new LaunchpadManager({
+          input,
+          output,
+          ...config,
+        })
+      );
+    } else {
+      console.log('Could not detect Launchpad!');
+    }
+  }, true);
 }
