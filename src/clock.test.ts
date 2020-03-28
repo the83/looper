@@ -36,13 +36,14 @@ describe('Clock', () => {
     describe('when loop is true', () => {
       it('loops through the current pattern', () => {
         const clock = buildClock(defaultPatterns);
-        times(5, () => clock.testTick());
-        expect(clock.onTick).toHaveBeenCalledTimes(5);
+        times(8, () => clock.testTick());
         expect(clock.onNoteChange.mock.calls).toEqual([
           [4, 'C4', 125],
           [4, 'D4', 250],
           [4, 'E4', 125],
           [4, 'C4', 125],
+          [4, 'D4', 250],
+          [4, 'E4', 125],
         ]);
       });
 
@@ -80,14 +81,22 @@ describe('Clock', () => {
     describe('when loop is false', () => {
       // TODO: fix me
       it('moves to the next pattern automatically', () => {
-        const clock = buildClock(defaultPatterns, false);
+         const patterns = [
+          [
+            { value: 'C4', duration: 1 },
+            { value: 'D4', duration: 2 },
+          ],
+          [{ value: 'F4', duration: 1 }],
+          [{ value: 'G4', duration: 2 }],
+        ];
+
+        const clock = buildClock(patterns, false);
         times(7, () => clock.testTick());
-        console.log(clock.onNoteChange.mock.calls);
         expect(clock.onNoteChange.mock.calls).toEqual([
           [4, 'C4', 125],
           [4, 'D4', 250],
-          [4, 'E4', 125],
-          [4, 'F4', 375],
+          [4, 'F4', 125],
+          [4, 'G4', 250],
           [4, 'C4', 125],
         ]);
       });

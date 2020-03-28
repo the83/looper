@@ -102,15 +102,13 @@ export default class Clock {
     this.setState({ isPlaying: true });
   }
 
-  private get nextAvailablePattern() {
-    const { pattern } = this;
-    const { patterns } = this.config;
-    return pattern + 1 > patterns.length - 1 ? 0 : pattern + 1;
+  private nextAvailablePattern(pattern) {
+    const next = pattern + 1;
+    const nextAvailable = next > this.config.patterns.length - 1 ? 0 : next;
+    return nextAvailable;
   }
 
   private setState(state) {
-    console.log(state);
-
     keys(state).forEach((key) => {
       this[key] = state[key];
     });
@@ -130,16 +128,15 @@ export default class Clock {
     return next;
   }
 
-  private getNextTicksElapsed() {
+  private getNextTicksElapsed(pattern) {
     const {
-      pattern,
       ticksElapsed,
       config,
     } = this;
 
-    const ticksInPattern = sumBy(config.patterns[pattern], 'duration');
+    const ticksInPattern = sumBy(config.patterns[pattern], 'duration') - 1;
     const next = ticksElapsed + 1;
-    if (next >= ticksInPattern) return 0;
+    if (next > ticksInPattern) return 0;
     return next;
   }
 
@@ -147,10 +144,11 @@ export default class Clock {
     const {
       pattern,
       nextPattern,
+      ticksElapsed,
     } = this;
 
     const next = this.getNextStep();
-    return next === 0 && pattern !== nextPattern;
+    return next === 0 && ticksElapsed === 0 && pattern !== nextPattern;
   }
 
   private noteChangeIndexes() {
@@ -175,15 +173,26 @@ export default class Clock {
       rate,
       config,
       ticksElapsed,
+      isPlaying
     } = this;
 
-    const next = this.getNextStep();
-    const nextTicksElapsed = this.shouldUpdatePattern() ? 0 : this.getNextTicksElapsed();
-    const pattern = this.shouldUpdatePattern() ? this.nextPattern : this.pattern;
-    const nextPattern = this.config.loop ? this.nextPattern : this.nextAvailablePattern;
+    const shouldUpdatePattern = this.shouldUpdatePattern();
+
+    const position = this.getNextStep();
+    const pattern = shouldUpdatePattern ? this.nextPattern : this.pattern;
+    const nextTicksElapsed = this.getNextTicksElapsed(pattern);
+    const nextPattern = this.config.loop ? this.nextPattern : this.nextAvailablePattern(pattern);
+
+    const state = {
+      pattern,
+      nextPattern,
+      position,
+      isPlaying,
+      ticksElapsed: nextTicksElapsed,
+    };
 
     if (this.noteChangeIndexes().indexOf(ticksElapsed) >= 0) {
-      const note = config.patterns[pattern][next];
+      const note = config.patterns[pattern][position];
       const tickDuration = bpmToDuration(bpm * rate);
 
       this.onNoteChange(
@@ -192,14 +201,6 @@ export default class Clock {
         note.duration * tickDuration,
       );
     }
-
-    const state = {
-      pattern,
-      nextPattern,
-      position: next,
-      ticksElapsed: nextTicksElapsed,
-      isPlaying: this.isPlaying,
-    };
 
     this.setState(state);
   }

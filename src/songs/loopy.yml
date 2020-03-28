@@ -354,10 +354,29 @@ defaults: &defaults
         duration: 4
 title: loopy
 tracks:
-  - name: Moog One
-    loop: true
+  # - name: Moog One
+    # loop: true
+    # rate: 1
+    # << : *defaults
+  - name: Non-looping Example
+    loop: false
     rate: 1
-    << : *defaults
+    patterns:
+      -
+        - value: D4
+          duration: 10
+        - value: Bb4
+          duration: 10
+        - value: D4
+          duration: 10
+      -
+        - value: D4
+          duration: 10
+        - value: D4
+          duration: 10
+      -
+        - value: D4
+          duration: 10
   # - name: Moog Two
     # loop: true
     # rate: 1.01
