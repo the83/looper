@@ -353,6 +353,7 @@ defaults: &defaults
       - value: ''
         duration: 4
 title: loopy
+bpm: 130
 tracks:
   - name: Moog One
     loop: true

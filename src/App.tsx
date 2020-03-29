@@ -34,7 +34,7 @@ class App extends React.Component<IProps, IState> {
     super(props);
 
     this.state = {
-      bpm: DEFAULT_BPM,
+      bpm: song.bpm || DEFAULT_BPM,
       isPlaying: false,
       page: 0,
       instruments: [],
