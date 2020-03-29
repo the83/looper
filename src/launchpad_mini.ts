@@ -7,7 +7,9 @@ export const COLORS = Object.freeze({
   YELLOW: 0x0D,
   BLUE: 0x4F,
   GREEN: 0x15,
+  TEAL: 0x4D,
   PURPLE: 0x33,
+  PINK: 0x34,
 });
 
 const SYSEX_BASE_MESSAGE = Object.freeze([

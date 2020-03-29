@@ -13,7 +13,7 @@ function bpmToDuration(bpm) {
 const DEFAULT_RATE = 1;
 
 export interface ISong {
-  title: string;
+  title?: string;
   bpm?: number;
   tracks: ITrackConfig[];
 }

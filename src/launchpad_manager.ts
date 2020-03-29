@@ -1,6 +1,7 @@
 import WebMidi, { Input, Output } from 'webmidi';
 import LaunchpadMini, { COLORS } from './launchpad_mini';
 import { times } from 'lodash';
+import { ISong } from './clock';
 
 const CONTROLS = {
   PLAY: 19,
@@ -8,6 +9,8 @@ const CONTROLS = {
   PAGE_DOWN: 92,
   RESET_PATTERN: 89,
   RESET_ALL: 49,
+  SESSION_MODE: 95,
+  SONG_SELECT_MODE: 97,
 };
 
 interface ILaunchpadManagerConfig {
@@ -18,7 +21,12 @@ interface ILaunchpadManagerConfig {
   onPadPress: Function;
   resetPattern: Function;
   resetAll: Function;
+  setSongSelectMode: Function;
+  setSessionMode: Function;
 }
+
+const ACTIVE_MODE = COLORS.TEAL;
+const INACTIVE_MODE = COLORS.GREY;
 
 export default class LaunchpadManager {
   launchpad
@@ -51,12 +59,25 @@ export default class LaunchpadManager {
     return { column, row };
   }
 
-  initializeLeds() {
+  private initializeLeds() {
     this.launchpad.ledPulse(CONTROLS.PLAY, COLORS.GREEN);
-    this.launchpad.ledOn(CONTROLS.PAGE_UP, COLORS.GREY);
-    this.launchpad.ledOn(CONTROLS.PAGE_DOWN, COLORS.GREY);
+    this.launchpad.ledOn(CONTROLS.PAGE_UP, INACTIVE_MODE);
+    this.launchpad.ledOn(CONTROLS.PAGE_DOWN, INACTIVE_MODE);
     this.launchpad.ledOn(CONTROLS.RESET_PATTERN, COLORS.YELLOW);
     this.launchpad.ledOn(CONTROLS.RESET_ALL, COLORS.ORANGE);
+    this.launchpad.ledOn(CONTROLS.SESSION_MODE, ACTIVE_MODE);
+    this.launchpad.ledOn(CONTROLS.SONG_SELECT_MODE, INACTIVE_MODE);
+  }
+
+  clearMainGrid() {
+    times(8, (i) => {
+      const row = i + 1;
+      times(8, (x) => {
+        const col = x + 1;
+        const pad = parseInt(row.toString() + col.toString());
+        this.launchpad.ledOff(pad);
+      });
+    });
   }
 
   onCtrlPadPress(e) {
@@ -82,6 +103,18 @@ export default class LaunchpadManager {
 
     if (pad === CONTROLS.RESET_ALL) {
       this.config.resetAll();
+    }
+
+    if (pad === CONTROLS.SESSION_MODE) {
+      this.launchpad.ledOn(CONTROLS.SESSION_MODE, ACTIVE_MODE);
+      this.launchpad.ledOn(CONTROLS.SONG_SELECT_MODE, INACTIVE_MODE);
+      this.config.setSessionMode();
+    }
+
+    if (pad === CONTROLS.SONG_SELECT_MODE) {
+      this.launchpad.ledOn(CONTROLS.SESSION_MODE, INACTIVE_MODE);
+      this.launchpad.ledOn(CONTROLS.SONG_SELECT_MODE, ACTIVE_MODE);
+      this.config.setSongSelectMode();
     }
   }
 
@@ -123,6 +156,16 @@ export default class LaunchpadManager {
           }
         }
       }
+    });
+  }
+
+  drawCollection(collection: any[], selected: any) {
+    collection.forEach((item, idx) => {
+      const column = idx % 8 + 1;
+      const row = 8 - Math.floor(idx / 8);
+      const pad = parseInt(row.toString() + column.toString());
+      const color = item === selected ? COLORS.RED : COLORS.PINK;
+      this.launchpad.ledOn(pad, color);
     });
   }
 }

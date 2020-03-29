@@ -11,6 +11,14 @@ import { detectLaunchpad } from './launchpad_manager';
 
 // TODO: song management
 import loopy from './songs/loopy.json';
+import nickel_slots from './songs/nickel_slots.json';
+import test1 from './songs/test1.json';
+import test2 from './songs/test2.json';
+import test3 from './songs/test3.json';
+import test4 from './songs/test4.json';
+import test5 from './songs/test5.json';
+import test6 from './songs/test6.json';
+import test7 from './songs/test7.json';
 
 interface IProps {
 }
@@ -22,7 +30,8 @@ interface IState {
   launchpad?: LaunchpadManager;
   clocks: Clock[];
   instruments: Instrument[];
-  song: ISong;
+  song: any; // TODO: figure out why TS is complaining about typing
+  mode: string;
 }
 
 const MAX_BPM = 300;
@@ -30,19 +39,35 @@ const DEFAULT_BPM = 120;
 
 const SONGS = [
   omit(loopy, ['defaults']),
+  omit(nickel_slots, ['defaults']),
+  omit(test1, ['defaults']),
+  omit(test2, ['defaults']),
+  omit(test3, ['defaults']),
+  omit(test4, ['defaults']),
+  omit(test5, ['defaults']),
+  omit(test6, ['defaults']),
+  omit(test7, ['defaults']),
 ]
+
+const MODES = {
+  SESSION: 'session',
+  SONG_SELECT: 'song_select',
+};
 
 class App extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
-    const song = SONGS[0];
+    const song = SONGS[0] as ISong;
+
+    if (!song) return;
 
     this.state = {
-      song: song,
+      song,
       bpm: song.bpm || DEFAULT_BPM,
       isPlaying: false,
       page: 0,
       instruments: [],
+      mode: MODES.SESSION,
       clocks: song.tracks.map((trackConfig, idx) => {
         return new Clock(
           this.onClockTick,
@@ -66,6 +91,8 @@ class App extends React.Component<IProps, IState> {
       resetAll: this.resetAll,
       incrementPage: this.incrementPage,
       onPadPress: this.onPadPress,
+      setSessionMode: this.setSessionMode,
+      setSongSelectMode: this.setSongSelectMode,
     }, (launchpad) => {
       this.setState({ launchpad }, () => {
         this.initializeLaunchpad();
@@ -79,6 +106,28 @@ class App extends React.Component<IProps, IState> {
 
   onMidiFailure(msg) {
     console.log('Failed to get MIDI access - ' + msg);
+  }
+
+  updateSong = (index) => {
+    const song = SONGS[index] as any;
+    if (!song) return;
+
+    this.setState({
+      song,
+      bpm: song.bpm || DEFAULT_BPM,
+      isPlaying: false,
+      page: 0,
+      instruments: [],
+      clocks: song.tracks.map((trackConfig, idx) => {
+        return new Clock(
+          this.onClockTick,
+          this.onNoteChange,
+          trackConfig,
+          DEFAULT_BPM,
+          idx,
+        );
+      }),
+    });
   }
 
   onPadPress = ({ column, row }) => {
@@ -95,6 +144,18 @@ class App extends React.Component<IProps, IState> {
       { bpm },
       () => this.state.clocks.forEach(clock => clock.setBpm(bpm)),
     );
+  }
+
+  setSongSelectMode = () => {
+    this.setState({
+      mode: MODES.SONG_SELECT,
+    }, this.updateSongSelectMode);
+  }
+
+  setSessionMode = () => {
+    this.setState({
+      mode: MODES.SESSION,
+    }, this.updateSessionMode);
   }
 
   togglePlay = () => {
@@ -146,8 +207,25 @@ class App extends React.Component<IProps, IState> {
     }))
   };
 
+  updateSongSelectMode = () => {
+    if (!this.state.launchpad) return;
+
+    this.state.launchpad.clearMainGrid();
+    this.state.launchpad.drawCollection(SONGS, this.state.song);
+  }
+
+  updateSessionMode = () => {
+    if (!this.state.launchpad) return;
+
+    this.state.launchpad.clearMainGrid();
+    this.state.clocks.forEach((_clock, idx) => {
+      this.updateLaunchpad(idx);
+    });
+  }
+
   updateLaunchpad = (index) => {
     if (!this.state.launchpad) return;
+    if (this.state.mode !== MODES.SESSION) return;
 
     const { page } = this.state;
     const clock = this.state.clocks[index];
