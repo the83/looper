@@ -58,10 +58,10 @@ export default class CurrentSequences extends React.Component<IProps, {}> {
       <div className="sequence" key={`sequence-${index}`} >
         <div className="track-header">
           <div>
-            <h1>{config.name} ({bpm} bpm)</h1>
+            <h3>{config.name} ({bpm} bpm)</h3>
           </div>
           <div>
-            <h1>{config.patterns[pattern][position].value}</h1>
+            <h3>{config.patterns[pattern][position].value}</h3>
           </div>
         </div>
         <HorizontalBarChart data={currentSequenceData} maxTicks={this.maxSequenceLength()} />
