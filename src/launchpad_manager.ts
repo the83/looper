@@ -2,9 +2,13 @@ import WebMidi, { Input, Output } from 'webmidi';
 import LaunchpadMini, { COLORS } from './launchpad_mini';
 import { times } from 'lodash';
 
-const PLAY_BUTTON_PAD_NUMBER = 19;
-const PAGE_UP_PAD_NUMBER = 91;
-const PAGE_DOWN_PAD_NUMBER = 92;
+const CONTROLS = {
+  PLAY: 19,
+  PAGE_UP: 91,
+  PAGE_DOWN: 92,
+  RESET_PATTERN: 89,
+  RESET_ALL: 49,
+};
 
 interface ILaunchpadManagerConfig {
   input: Input;
@@ -12,6 +16,8 @@ interface ILaunchpadManagerConfig {
   togglePlay: Function;
   updatePage: Function;
   onPadPress: Function;
+  resetPattern: Function;
+  resetAll: Function;
 }
 
 export default class LaunchpadManager {
@@ -46,26 +52,36 @@ export default class LaunchpadManager {
   }
 
   initializeLeds() {
-    this.launchpad.ledPulse(PLAY_BUTTON_PAD_NUMBER, COLORS.GREEN);
-    this.launchpad.ledOn(PAGE_UP_PAD_NUMBER, COLORS.GREY);
-    this.launchpad.ledOn(PAGE_DOWN_PAD_NUMBER, COLORS.GREY);
+    this.launchpad.ledPulse(CONTROLS.PLAY, COLORS.GREEN);
+    this.launchpad.ledOn(CONTROLS.PAGE_UP, COLORS.GREY);
+    this.launchpad.ledOn(CONTROLS.PAGE_DOWN, COLORS.GREY);
+    this.launchpad.ledOn(CONTROLS.RESET_PATTERN, COLORS.YELLOW);
+    this.launchpad.ledOn(CONTROLS.RESET_ALL, COLORS.ORANGE);
   }
 
   onCtrlPadPress(e) {
     const pad = e[1];
 
-    if (pad === PLAY_BUTTON_PAD_NUMBER) {
+    if (pad === CONTROLS.PLAY) {
       const isPlaying = this.config.togglePlay();
       const color = isPlaying ? COLORS.RED : COLORS.GREEN;
       this.launchpad.ledPulse(pad, color);
     }
 
-    if (pad === PAGE_UP_PAD_NUMBER) {
+    if (pad === CONTROLS.PAGE_UP) {
       this.config.updatePage(-1);
     }
 
-    if (pad === PAGE_DOWN_PAD_NUMBER) {
+    if (pad === CONTROLS.PAGE_DOWN) {
       this.config.updatePage(1);
+    }
+
+    if (pad === CONTROLS.RESET_PATTERN) {
+      this.config.resetPattern();
+    }
+
+    if (pad === CONTROLS.RESET_ALL) {
+      this.config.resetAll();
     }
   }
 

@@ -59,6 +59,8 @@ class App extends React.Component<IProps, IState> {
   onMidiSuccess = (access) => {
     detectLaunchpad({
       togglePlay: this.togglePlay,
+      resetPattern: this.resetPattern,
+      resetAll: this.resetAll,
       updatePage: this.updatePage,
       onPadPress: this.onPadPress,
     }, (launchpad) => {
@@ -116,6 +118,18 @@ class App extends React.Component<IProps, IState> {
     const isPlaying = !this.state.isPlaying
     this.setState({ isPlaying });
     return isPlaying;
+  }
+
+  resetPattern = () => {
+    this.state.clocks.forEach((clock) => {
+      clock.reset();
+    });
+  }
+
+  resetAll = () => {
+    this.state.clocks.forEach((clock) => {
+      clock.resetAll();
+    });
   }
 
   initializeLaunchpad() {

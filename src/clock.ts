@@ -63,7 +63,7 @@ export default class Clock {
     this.tick = this.tick.bind(this);
   }
 
-  reset(pattern) {
+  reset() {
     this.tick({
       position: 0,
       ticksElapsed: 1,

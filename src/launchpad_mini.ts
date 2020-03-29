@@ -3,6 +3,9 @@ export const COLORS = Object.freeze({
   BLANK: 0x00,
   GREY: 0x47,
   RED: 0x05,
+  ORANGE: 0x54,
+  YELLOW: 0x0D,
+  BLUE: 0x4F,
   GREEN: 0x15,
   PURPLE: 0x33,
 });
@@ -94,7 +97,6 @@ export default class LaunchpadMini {
 
     input.on('controlchange', 'all', (e) => {
       if (e.data[2] === 127) {
-        console.log(e);
         if (onCtrlPadPress) onCtrlPadPress(e.data);
       }
 
