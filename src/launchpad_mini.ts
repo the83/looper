@@ -88,7 +88,6 @@ export default class LaunchpadMini {
   private addListeners() {
     const {
       input,
-      output,
       onPadPress,
       onPadRelease,
       onCtrlPadPress,

@@ -102,7 +102,8 @@ export default class LaunchpadManager {
 
     times(8, (row) => {
       const pad = this.getPad(row, index);
-      if (row + 1 > patternsAvailable) {
+
+      if (row > patternsAvailable - 1) {
         this.launchpad.ledOff(pad);
       } else {
         if (pad !== currentPad) {
@@ -115,7 +116,7 @@ export default class LaunchpadManager {
 
         else if (pad === currentPad) {
           if (pattern >= offset && pattern < offset + 8) {
-            this.launchpad.ledPulse(nextPad, COLORS.RED);
+            this.launchpad.ledPulse(pad, COLORS.GREEN);
           } else {
             // current step isn't on current page
             this.launchpad.ledOn(pad, COLORS.PURPLE);
