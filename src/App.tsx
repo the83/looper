@@ -5,8 +5,8 @@ import Clock from './clock';
 import Instrument from './instrument';
 import LaunchpadManager from './launchpad_manager';
 import Track from './Track';
-import WebMidi, { Output } from 'webmidi';
-import { compact, omit } from 'lodash';
+import { omit } from 'lodash';
+import { detectInstruments } from './instrument_manager';
 import { detectLaunchpad } from './launchpad_manager';
 
 // TODO: song management
@@ -26,8 +26,6 @@ interface IState {
 
 const MAX_BPM = 300;
 const DEFAULT_BPM = 120;
-
-const MIDI_OUTPUT_MANUFACTURER = 'MOTU';
 
 const song = omit(loopy, ['defaults']);
 
@@ -69,21 +67,9 @@ class App extends React.Component<IProps, IState> {
       })
     });
 
-    WebMidi.enable((_err) => {
-      const midiOutputs = compact(WebMidi.outputs.filter((output: Output) => {
-        return output.manufacturer === MIDI_OUTPUT_MANUFACTURER;
-      }));
-
-      const instruments = midiOutputs.map((output, idx) => {
-        const clock = this.state.clocks[idx];
-        if (!clock) return null;
-
-        const octaveOffset = clock.config.octaveOffset;
-        return new Instrument(output, octaveOffset);
-      }) as Instrument[];
-
+    detectInstruments(this.state.clocks, (instruments) => {
       this.setState({ instruments });
-    }, true);
+    });
   }
 
   onMidiFailure(msg) {
