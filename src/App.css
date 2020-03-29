@@ -53,6 +53,7 @@ body {
 
 h1 {
   color: #d54e53;
+  margin: 0;
 }
 
 h3 {
@@ -114,8 +115,8 @@ h3 {
 }
 
 .bpm {
-  margin: 0em 1em;
+  margin: 0em 0.2em;
   font-size: 2em;
   font-weight: bold;
-  color: #eaeaea;
+  color: #70c0b1;
 }

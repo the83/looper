@@ -1,7 +1,7 @@
 import './App.css';
 import * as React from 'react';
 import * as classNames from 'classnames';
-import Clock from './clock';
+import Clock, { ISong } from './clock';
 import Instrument from './instrument';
 import LaunchpadManager from './launchpad_manager';
 import CurrentSequences from './current_sequences';
@@ -22,18 +22,23 @@ interface IState {
   launchpad?: LaunchpadManager;
   clocks: Clock[];
   instruments: Instrument[];
+  song: ISong;
 }
 
 const MAX_BPM = 300;
 const DEFAULT_BPM = 120;
 
-const song = omit(loopy, ['defaults']);
+const SONGS = [
+  omit(loopy, ['defaults']),
+]
 
 class App extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
+    const song = SONGS[0];
 
     this.state = {
+      song: song,
       bpm: song.bpm || DEFAULT_BPM,
       isPlaying: false,
       page: 0,
@@ -187,7 +192,14 @@ class App extends React.Component<IProps, IState> {
     return (
       <div>
         <div className="menu">
+          <h1>
+            "{this.state.song.title}"
+          </h1>
+
           <div>
+            <label className="bpm">
+              BPM
+            </label>
             <input
               type="range"
               min="0"
@@ -199,7 +211,7 @@ class App extends React.Component<IProps, IState> {
               name="tempo"
             />
             <label className="bpm">
-              {this.state.bpm} MASTER BPM
+              {this.state.bpm}
             </label>
           </div>
 

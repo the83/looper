@@ -12,6 +12,12 @@ function bpmToDuration(bpm) {
 
 const DEFAULT_RATE = 1;
 
+export interface ISong {
+  title: string;
+  bpm?: number;
+  tracks: ITrackConfig[];
+}
+
 export interface INote {
   value: string;
   duration: number; // in sixteenths
