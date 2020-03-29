@@ -79,7 +79,7 @@ class App extends React.Component<IProps, IState> {
       })
     });
 
-    detectInstruments(this.state.clocks, (instruments) => {
+    detectInstruments((instruments) => {
       this.setState({ instruments });
     });
   }
@@ -92,12 +92,16 @@ class App extends React.Component<IProps, IState> {
     const song = songs[index];
     if (!song) return;
 
+    // previous clocks need to be cleared, otherwise they will
+    // continue to trigger notes
+    this.state.clocks.forEach(clock => clock.clear());
+
     this.setState({
       song,
       bpm: song.bpm || DEFAULT_BPM,
       // isPlaying: false,
       page: 0,
-      instruments: [],
+      instruments: this.state.instruments,
       clocks: song.tracks.map((trackConfig, idx) => {
         return new Clock(
           this.onClockTick,
@@ -246,6 +250,7 @@ class App extends React.Component<IProps, IState> {
 
   onNoteChange = (index, note, duration) => {
     const instrument = this.state.instruments[index];
+    console.log({ instrument, index, note, duration });
     if (!instrument) return;
     instrument.playNote(note, duration, 1);
   }

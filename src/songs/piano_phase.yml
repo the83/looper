@@ -26,7 +26,7 @@ defaults: &defaults
       - value: C#5
         duration: 1
 title: Piano Phase (Steve Reich)
-bpm: 144
+bpm: 72
 tracks:
   - name: Piano 1
     rate: 1

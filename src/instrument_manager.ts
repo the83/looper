@@ -1,21 +1,21 @@
-import WebMidi, { Output } from 'webmidi';
+import WebMidi from 'webmidi';
 import Instrument from './instrument';
-import { compact } from 'lodash';
+import { filter, sortBy, uniqBy } from 'lodash';
 
 const MIDI_OUTPUT_MANUFACTURER = 'MOTU';
 
-export function detectInstruments(clocks, callback) {
+export function detectInstruments(callback) {
   WebMidi.enable((_err) => {
-    const midiOutputs = compact(WebMidi.outputs.filter((output: Output) => {
-      return output.manufacturer === MIDI_OUTPUT_MANUFACTURER;
-    }));
+    const filtered = uniqBy(filter(WebMidi.outputs, (output) => (
+      output.manufacturer === MIDI_OUTPUT_MANUFACTURER
+    )), 'name');
 
-    const instruments = midiOutputs.map((output, idx) => {
-      const clock = clocks[idx];
-      if (!clock) return null;
+    const sorted = sortBy(filtered, 'name');
 
-      const octaveOffset = clock.config.octaveOffset;
-      return new Instrument(output, octaveOffset);
+    const instruments = sorted.map((output) => {
+      // octave offset has been removed for now because it
+      // was causing problems when new clocks are created
+      return new Instrument(output, null);
     }) as Instrument[];
 
     callback(instruments);

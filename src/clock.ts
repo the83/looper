@@ -73,6 +73,10 @@ export default class Clock {
     });
   }
 
+  clear() {
+    clearInterval(this.intervalId);
+  }
+
   stop() {
     clearInterval(this.intervalId);
     this.setState({ isPlaying: false });
