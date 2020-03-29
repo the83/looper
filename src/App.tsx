@@ -4,7 +4,7 @@ import * as classNames from 'classnames';
 import Clock from './clock';
 import Instrument from './instrument';
 import LaunchpadManager from './launchpad_manager';
-import Track from './Track';
+import CurrentSequences from './current_sequences';
 import { omit } from 'lodash';
 import { detectInstruments } from './instrument_manager';
 import { detectLaunchpad } from './launchpad_manager';
@@ -59,7 +59,7 @@ class App extends React.Component<IProps, IState> {
       togglePlay: this.togglePlay,
       resetPattern: this.resetPattern,
       resetAll: this.resetAll,
-      updatePage: this.updatePage,
+      incrementPage: this.incrementPage,
       onPadPress: this.onPadPress,
     }, (launchpad) => {
       this.setState({ launchpad }, () => {
@@ -116,6 +116,8 @@ class App extends React.Component<IProps, IState> {
     this.state.clocks.forEach((clock) => {
       clock.resetAll();
     });
+
+    this.updatePage(0);
   }
 
   initializeLaunchpad() {
@@ -125,16 +127,19 @@ class App extends React.Component<IProps, IState> {
     });
   }
 
-  updatePage = (number) => {
+  incrementPage = (number) => {
     const page = this.state.page + number;
     if (page < 0) return;
+    this.updatePage(page);
+  }
 
+  updatePage = (page) => {
     this.setState({
       page,
     }, () => this.state.clocks.forEach((_clock, idx) => {
       this.updateLaunchpad(idx)
     }))
-  }
+  };
 
   updateLaunchpad = (index) => {
     if (!this.state.launchpad) return;
@@ -164,28 +169,13 @@ class App extends React.Component<IProps, IState> {
 
   onClockTick = (index) => {
     this.updateLaunchpad(index);
-    this.setState(this.state); // force re-render
+    this.forceUpdate(); // force re-render
   }
 
   onNoteChange = (index, note, duration) => {
     const instrument = this.state.instruments[index];
     if (!instrument) return;
     instrument.playNote(note, duration, 1);
-  }
-
-  renderInstruments() {
-    return this.state.clocks.map((clock, idx) => (
-      <Track
-        config={clock.config}
-        index={idx}
-        isPlaying={clock.isPlaying}
-        nextPattern={clock.nextPattern}
-        pattern={clock.pattern}
-        position={clock.position}
-        ticksElapsed={clock.ticksElapsed}
-        key={`track-${idx}`}
-      />
-    ));
   }
 
   render() {
@@ -209,7 +199,7 @@ class App extends React.Component<IProps, IState> {
               name="tempo"
             />
             <label className="bpm">
-              {this.state.bpm} BPM
+              {this.state.bpm} MASTER BPM
             </label>
           </div>
 
@@ -223,8 +213,11 @@ class App extends React.Component<IProps, IState> {
           </div>
         </div>
 
-        <div className="instruments">
-          {this.renderInstruments()}
+        <div className="sequences">
+          <CurrentSequences
+            globalBpm={this.state.bpm}
+            clocks={this.state.clocks}
+          />
         </div>
       </div>
     );

@@ -14,7 +14,7 @@ interface ILaunchpadManagerConfig {
   input: Input;
   output: Output;
   togglePlay: Function;
-  updatePage: Function;
+  incrementPage: Function;
   onPadPress: Function;
   resetPattern: Function;
   resetAll: Function;
@@ -69,11 +69,11 @@ export default class LaunchpadManager {
     }
 
     if (pad === CONTROLS.PAGE_UP) {
-      this.config.updatePage(-1);
+      this.config.incrementPage(-1);
     }
 
     if (pad === CONTROLS.PAGE_DOWN) {
-      this.config.updatePage(1);
+      this.config.incrementPage(1);
     }
 
     if (pad === CONTROLS.RESET_PATTERN) {

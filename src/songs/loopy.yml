@@ -359,34 +359,34 @@ tracks:
     loop: true
     rate: 1
     << : *defaults
-  - name: Non-looping Example
-    loop: false
-    rate: 1
-    patterns:
-      -
-        - value: D4
-          duration: 10
-        - value: Bb4
-          duration: 10
-        - value: D4
-          duration: 10
-      -
-        - value: D4
-          duration: 10
-        - value: D4
-          duration: 10
-      -
-        - value: D4
-          duration: 10
-  # - name: Moog Two
-    # loop: true
-    # rate: 1.01
-    # << : *defaults
-  # - name: Moog Three
-    # loop: true
-    # rate: 1.02
-    # << : *defaults
-  # - name: 0-Coast
-    # loop: true
-    # rate: 1.03
-    # << : *defaults
+  # - name: Non-looping Example
+    # loop: false
+    # rate: 1
+    # patterns:
+      # -
+        # - value: D4
+          # duration: 10
+        # - value: Bb4
+          # duration: 10
+        # - value: D4
+          # duration: 10
+      # -
+        # - value: D4
+          # duration: 10
+        # - value: D4
+          # duration: 10
+      # -
+        # - value: D4
+          # duration: 10
+  - name: Moog Two
+    loop: true
+    rate: 1.01
+    << : *defaults
+  - name: Moog Three
+    loop: true
+    rate: 1.02
+    << : *defaults
+  - name: 0-Coast
+    loop: true
+    rate: 1.03
+    << : *defaults

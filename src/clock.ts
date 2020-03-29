@@ -12,7 +12,7 @@ function bpmToDuration(bpm) {
 
 const DEFAULT_RATE = 1;
 
-interface INote {
+export interface INote {
   value: string;
   duration: number; // in sixteenths
 }
