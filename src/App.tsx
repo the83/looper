@@ -1,24 +1,15 @@
 import './App.css';
 import * as React from 'react';
 import * as classNames from 'classnames';
-import Clock, { ISong } from './clock';
+import Clock from './clock';
 import Instrument from './instrument';
 import LaunchpadManager from './launchpad_manager';
 import CurrentSequences from './current_sequences';
-import { omit } from 'lodash';
 import { detectInstruments } from './instrument_manager';
 import { detectLaunchpad } from './launchpad_manager';
+import songs from './songs';
 
 // TODO: song management
-import loopy from './songs/loopy.json';
-import nickel_slots from './songs/nickel_slots.json';
-import test1 from './songs/test1.json';
-import test2 from './songs/test2.json';
-import test3 from './songs/test3.json';
-import test4 from './songs/test4.json';
-import test5 from './songs/test5.json';
-import test6 from './songs/test6.json';
-import test7 from './songs/test7.json';
 
 interface IProps {
 }
@@ -37,18 +28,6 @@ interface IState {
 const MAX_BPM = 300;
 const DEFAULT_BPM = 120;
 
-const SONGS = [
-  omit(loopy, ['defaults']),
-  omit(nickel_slots, ['defaults']),
-  omit(test1, ['defaults']),
-  omit(test2, ['defaults']),
-  omit(test3, ['defaults']),
-  omit(test4, ['defaults']),
-  omit(test5, ['defaults']),
-  omit(test6, ['defaults']),
-  omit(test7, ['defaults']),
-]
-
 const MODES = {
   SESSION: 'session',
   SONG_SELECT: 'song_select',
@@ -57,7 +36,7 @@ const MODES = {
 class App extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
-    const song = SONGS[0] as ISong;
+    const song = songs[0];
 
     if (!song) return;
 
@@ -75,6 +54,7 @@ class App extends React.Component<IProps, IState> {
           trackConfig,
           DEFAULT_BPM,
           idx,
+          false,
         );
       }),
     };
@@ -108,14 +88,14 @@ class App extends React.Component<IProps, IState> {
     console.log('Failed to get MIDI access - ' + msg);
   }
 
-  updateSong = (index) => {
-    const song = SONGS[index] as any;
+  setSong = (index) => {
+    const song = songs[index];
     if (!song) return;
 
     this.setState({
       song,
       bpm: song.bpm || DEFAULT_BPM,
-      isPlaying: false,
+      // isPlaying: false,
       page: 0,
       instruments: [],
       clocks: song.tracks.map((trackConfig, idx) => {
@@ -125,12 +105,21 @@ class App extends React.Component<IProps, IState> {
           trackConfig,
           DEFAULT_BPM,
           idx,
+          this.state.isPlaying,
         );
       }),
+    }, () => {
+      // redraw song selection grid on launchpad
+      this.setSongSelectMode();
     });
   }
 
   onPadPress = ({ column, row }) => {
+    if (this.state.mode === MODES.SONG_SELECT) {
+      const index = row * 8 + column;
+      this.setSong(index);
+    }
+
     const clock = this.state.clocks[column];
     if (!clock) return;
 
@@ -211,7 +200,7 @@ class App extends React.Component<IProps, IState> {
     if (!this.state.launchpad) return;
 
     this.state.launchpad.clearMainGrid();
-    this.state.launchpad.drawCollection(SONGS, this.state.song);
+    this.state.launchpad.drawCollection(songs, this.state.song);
   }
 
   updateSessionMode = () => {

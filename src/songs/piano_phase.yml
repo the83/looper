@@ -1,0 +1,38 @@
+defaults: &defaults
+  patterns:
+    -
+      - value: E4
+        duration: 1
+      - value: F#4
+        duration: 1
+      - value: B4
+        duration: 1
+      - value: C#5
+        duration: 1
+      - value: D5
+        duration: 1
+      - value: F#4
+        duration: 1
+      - value: E4
+        duration: 1
+      - value: C#5
+        duration: 1
+      - value: B4
+        duration: 1
+      - value: F#4
+        duration: 1
+      - value: D5
+        duration: 1
+      - value: C#5
+        duration: 1
+title: Piano Phase (Steve Reich)
+bpm: 144
+tracks:
+  - name: Piano 1
+    rate: 1
+    loop: true
+    << : *defaults
+  - name: Piano 2
+    rate: 1.01
+    loop: true
+    << : *defaults

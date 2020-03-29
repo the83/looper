@@ -4,6 +4,8 @@ import {
   dropRight,
 } from 'lodash';
 
+import { ITrackConfig } from './songs';
+
 function bpmToDuration(bpm) {
   const quarterNote = 60000 / bpm;
   const sixteenthNote = quarterNote / 4;
@@ -11,25 +13,6 @@ function bpmToDuration(bpm) {
 }
 
 const DEFAULT_RATE = 1;
-
-export interface ISong {
-  title?: string;
-  bpm?: number;
-  tracks: ITrackConfig[];
-}
-
-export interface INote {
-  value: string;
-  duration: number; // in sixteenths
-}
-
-export interface ITrackConfig {
-  name: string;
-  patterns: INote[][];
-  rate?: number;
-  loop?: boolean;
-  octaveOffset?: number;
-}
 
 interface IStateOverride {
   position?: number;
@@ -59,6 +42,7 @@ export default class Clock {
     config: ITrackConfig,
     bpm: number,
     index: number,
+    isPlaying: boolean,
   ) {
     this.onTick = onTick;
     this.bpm = bpm;
@@ -66,7 +50,11 @@ export default class Clock {
     this.config = config;
     this.index = index;
     this.onNoteChange = onNoteChange;
-    this.tick = this.tick.bind(this);
+    this.isPlaying = isPlaying;
+
+    if (this.isPlaying) {
+      this.start();
+    }
   }
 
   reset() {
@@ -207,7 +195,7 @@ export default class Clock {
     };
   }
 
-  private tick(stateOverride: IStateOverride = {}) {
+  private tick = (stateOverride: IStateOverride = {}) => {
     const state = {
       ...this.getNextState(),
       ...stateOverride,

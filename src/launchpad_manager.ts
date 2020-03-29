@@ -1,7 +1,6 @@
 import WebMidi, { Input, Output } from 'webmidi';
 import LaunchpadMini, { COLORS } from './launchpad_mini';
 import { times } from 'lodash';
-import { ISong } from './clock';
 
 const CONTROLS = {
   PLAY: 19,

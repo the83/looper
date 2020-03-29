@@ -1,7 +1,8 @@
 import * as React from 'react';
-import Clock, { INote } from './clock';
+import Clock from './clock';
 import HorizontalBarChart from './horizontal_bar_chart';
 import { sumBy, max, flatten } from 'lodash';
+import { INote } from './songs';
 
 interface IProps {
   clocks: Clock[];
