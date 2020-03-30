@@ -335,7 +335,7 @@ class App extends React.Component<IProps, IState> {
 
   onClockTick = (index) => {
     this.updateLaunchpad(index);
-    this.forceUpdate(); // force re-render
+    // this.forceUpdate(); // force re-render
   }
 
   onNoteChange = (clockIndex, midiOutput, value, duration) => {
