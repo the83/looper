@@ -31,8 +31,10 @@ tracks:
   - name: Piano 1
     rate: 1
     loop: true
+    midiOutput: 2
     << : *defaults
   - name: Piano 2
     rate: 1.01
     loop: true
+    midiOutput: 4
     << : *defaults

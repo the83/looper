@@ -4,6 +4,7 @@ import { times } from 'lodash';
 describe('Clock', () => {
   const bpm = 120;
   const index = 4;
+  const midiOutput = 6;
   const defaultPatterns = Object.freeze([
     [
       { value: 'C4', duration: 1 },
@@ -18,6 +19,7 @@ describe('Clock', () => {
       loop,
       patterns,
       name: 'test',
+      midiOutput,
     };
 
     const onTick = jest.fn();
@@ -38,12 +40,12 @@ describe('Clock', () => {
         const clock = buildClock(defaultPatterns);
         times(8, () => clock.testTick());
         expect(clock.onNoteChange.mock.calls).toEqual([
-          [4, 'C4', 125],
-          [4, 'D4', 250],
-          [4, 'E4', 125],
-          [4, 'C4', 125],
-          [4, 'D4', 250],
-          [4, 'E4', 125],
+          [5, 'C4', 125],
+          [5, 'D4', 250],
+          [5, 'E4', 125],
+          [5, 'C4', 125],
+          [5, 'D4', 250],
+          [5, 'E4', 125],
         ]);
       });
 
@@ -55,11 +57,11 @@ describe('Clock', () => {
         times(5, () => clock.testTick());
         expect(clock.onTick).toHaveBeenCalledTimes(5);
         expect(clock.onNoteChange.mock.calls).toEqual([
-          [4, 'C4', 125],
-          [4, 'C4', 125],
-          [4, 'C4', 125],
-          [4, 'C4', 125],
-          [4, 'C4', 125],
+          [5, 'C4', 125],
+          [5, 'C4', 125],
+          [5, 'C4', 125],
+          [5, 'C4', 125],
+          [5, 'C4', 125],
         ]);
       });
 
@@ -70,10 +72,10 @@ describe('Clock', () => {
         times(4, () => clock.testTick());
 
         expect(clock.onNoteChange.mock.calls).toEqual([
-          [4, 'C4', 125],
-          [4, 'D4', 250],
-          [4, 'E4', 125],
-          [4, 'F4', 375],
+          [5, 'C4', 125],
+          [5, 'D4', 250],
+          [5, 'E4', 125],
+          [5, 'F4', 375],
         ]);
       });
     });
@@ -93,11 +95,11 @@ describe('Clock', () => {
         const clock = buildClock(patterns, false);
         times(7, () => clock.testTick());
         expect(clock.onNoteChange.mock.calls).toEqual([
-          [4, 'C4', 125],
-          [4, 'D4', 250],
-          [4, 'F4', 125],
-          [4, 'G4', 250],
-          [4, 'C4', 125],
+          [5, 'C4', 125],
+          [5, 'D4', 250],
+          [5, 'F4', 125],
+          [5, 'G4', 250],
+          [5, 'C4', 125],
         ]);
       });
     });
@@ -140,11 +142,11 @@ describe('Clock', () => {
       clock.reset();
       times(2, () => clock.testTick());
       expect(clock.onNoteChange.mock.calls).toEqual([
-        [4, 'F4', 125],
-        [4, 'G4', 125],
-        [4, 'F4', 125],
-        [4, 'G4', 125],
-        [4, 'A5', 125],
+        [5, 'F4', 125],
+        [5, 'G4', 125],
+        [5, 'F4', 125],
+        [5, 'G4', 125],
+        [5, 'A5', 125],
       ]);
     });
   });
@@ -173,12 +175,12 @@ describe('Clock', () => {
       times(3, () => clock.testTick());
 
       expect(clock.onNoteChange.mock.calls).toEqual([
-        [4, 'F4', 125],
-        [4, 'G4', 125],
-        [4, 'C1', 125],
-        [4, 'D1', 125],
-        [4, 'E1', 125],
-        [4, 'C1', 125],
+        [5, 'F4', 125],
+        [5, 'G4', 125],
+        [5, 'C1', 125],
+        [5, 'D1', 125],
+        [5, 'E1', 125],
+        [5, 'C1', 125],
       ]);
     });
   });

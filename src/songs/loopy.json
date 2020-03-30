@@ -714,6 +714,7 @@
       "name": "Moog One",
       "loop": true,
       "rate": 1,
+      "midiOutput": 1,
       "patterns": [
         [
           {
@@ -1425,6 +1426,7 @@
       "name": "Moog Two",
       "loop": true,
       "rate": 1.01,
+      "midiOutput": 2,
       "patterns": [
         [
           {
@@ -2136,6 +2138,7 @@
       "name": "Moog Three",
       "loop": true,
       "rate": 1.02,
+      "midiOutput": 3,
       "patterns": [
         [
           {
@@ -2847,6 +2850,7 @@
       "name": "0-Coast",
       "loop": true,
       "rate": 1.03,
+      "midiOutput": 4,
       "patterns": [
         [
           {

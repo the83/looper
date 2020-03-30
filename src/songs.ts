@@ -1,6 +1,5 @@
 import { pick } from 'lodash';
 import loopy from './songs/loopy.json';
-import nickel_slots from './songs/nickel_slots.json';
 import piano_phase from './songs/piano_phase.json';
 
 export interface ISong {
@@ -17,6 +16,7 @@ export interface INote {
 export interface ITrackConfig {
   name: string;
   patterns: INote[][];
+  midiOutput: number;
   rate?: number;
   loop?: boolean;
   octaveOffset?: number;
@@ -24,7 +24,6 @@ export interface ITrackConfig {
 
 const SONGS = Object.freeze([
   loopy,
-  nickel_slots,
   piano_phase,
 ]);
 

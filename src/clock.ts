@@ -206,11 +206,13 @@ export default class Clock {
     };
 
     if (this.noteChangeIndexes().indexOf(this.ticksElapsed) >= 0) {
-      const note = this.config.patterns[state.pattern][state.position];
+      const { midiOutput, patterns } = this.config;
+      const note = patterns[state.pattern][state.position];
       const tickDuration = bpmToDuration(this.bpm * this.rate);
 
       this.onNoteChange(
-        this.index,
+        // config is 1-indexed but instruments are 0-indexed
+        midiOutput - 1,
         note.value,
         note.duration * tickDuration,
       );

@@ -358,16 +358,20 @@ tracks:
   - name: Moog One
     loop: true
     rate: 1
+    midiOutput: 1
     << : *defaults
   - name: Moog Two
     loop: true
     rate: 1.01
+    midiOutput: 2
     << : *defaults
   - name: Moog Three
     loop: true
     rate: 1.02
+    midiOutput: 3
     << : *defaults
   - name: 0-Coast
     loop: true
     rate: 1.03
+    midiOutput: 4
     << : *defaults

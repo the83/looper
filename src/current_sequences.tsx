@@ -59,7 +59,7 @@ export default class CurrentSequences extends React.Component<IProps, {}> {
       <div className="sequence" key={`sequence-${index}`} >
         <div className="track-header">
           <div>
-            <h3>{config.name} ({bpm} bpm)</h3>
+            <h3>{config.name} (midi output {config.midiOutput} - {bpm} bpm)</h3>
           </div>
           <div>
             <h3>{config.patterns[pattern][position].value}</h3>
