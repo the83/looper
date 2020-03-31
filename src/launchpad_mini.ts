@@ -1,4 +1,6 @@
 // launchpad mini mk3 docs: https://fael-downloads-prod.focusrite.com/customer/prod/s3fs-public/downloads/Launchpad%20Mini%20-%20Programmers%20Reference%20Manual.pdf
+import textToHexArray from './text_to_hex_array';
+
 export const COLORS = Object.freeze({
   BLANK: 0x00,
   GREY: 0x47,
@@ -24,6 +26,13 @@ const NOVATION_MANUFACTURER_ID = Object.freeze([
 ]);
 
 const LED_ON_MESSAGE = 0x03;
+
+const TEXT_SCROLL_MESSAGE = Object.freeze([
+  0x07, // text scroll
+  0x00, // looping off
+  0x18, // speed
+  0x00, // color in palette mode
+]);
 
 const COLOR_MODES = {
   STATIC: 0x00,
@@ -52,6 +61,7 @@ export default class LaunchpadMini {
     this.setToProgrammerMode();
     this.addListeners();
     this.clear();
+    this.scrollText('looper', COLORS.TEAL);
   }
 
   clear() {
@@ -70,6 +80,11 @@ export default class LaunchpadMini {
 
   ledOff(pad) {
     this.applyColor([COLOR_MODES.STATIC, pad, COLORS.BLANK]);
+  }
+
+  scrollText(text, color) {
+    const hexFromText = textToHexArray(text);
+    this.sendSysex([...TEXT_SCROLL_MESSAGE, color, ...hexFromText]);
   }
 
   private applyColor(message) {

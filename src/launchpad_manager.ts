@@ -117,6 +117,10 @@ export default class LaunchpadManager {
     }
   }
 
+  scrollText(text, color = COLORS.TEAL) {
+    this.launchpad.scrollText(text, color);
+  }
+
   onPadPress(e) {
     const parsed = this.parsePadNumber(e[1]);
     return this.config.onPadPress(parsed);

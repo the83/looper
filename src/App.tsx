@@ -114,6 +114,7 @@ class App extends React.Component<IProps, IState> {
       }),
     }, () => {
       // redraw song selection grid on launchpad
+      this.state.launchpad && this.state.launchpad.scrollText(song.title);
       this.setSongSelectMode();
     });
   }
@@ -250,7 +251,6 @@ class App extends React.Component<IProps, IState> {
 
   onNoteChange = (index, note, duration) => {
     const instrument = this.state.instruments[index];
-    console.log({ instrument, index, note, duration });
     if (!instrument) return;
     instrument.playNote(note, duration, 1);
   }
