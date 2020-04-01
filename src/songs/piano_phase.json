@@ -60,7 +60,7 @@
       "name": "Piano 1",
       "rate": 1,
       "loop": true,
-      "midiOutput": 2,
+      "midiOutput": 1,
       "patterns": [
         [
           {
@@ -118,7 +118,7 @@
       "name": "Piano 2",
       "rate": 1.01,
       "loop": true,
-      "midiOutput": 4,
+      "midiOutput": 5,
       "patterns": [
         [
           {
