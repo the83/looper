@@ -96,12 +96,7 @@ export default class Clock {
     }
   }
 
-  setNextPattern(row, offset) {
-    // TODO: hoist offset logic up into component
-    const nextPattern = row + offset
-    const patternCount = this.config.patterns.length;
-    if (nextPattern + 1 > patternCount) return;
-
+  setNextPattern(nextPattern) {
     this.setState({ nextPattern });
   }
 
@@ -117,6 +112,10 @@ export default class Clock {
     const tickDuration = bpmToDuration(bpm * rate);
     this.intervalId = window.setInterval(tick, tickDuration);
     this.setState({ isPlaying: true });
+  }
+
+  public get patternCount() {
+    return this.config.patterns.length;
   }
 
   private nextAvailablePattern(pattern) {

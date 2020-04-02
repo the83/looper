@@ -123,13 +123,26 @@ class App extends React.Component<IProps, IState> {
     if (this.state.mode === MODES.SONG_SELECT) {
       const index = row * 8 + column;
       this.setSong(index);
+      return;
     }
 
     const clock = this.state.clocks[column];
     if (!clock) return;
 
     const offset = 8 * this.state.page;
-    clock.setNextPattern(row, offset);
+    const nextPattern = row + offset;
+    if (nextPattern > clock.patternCount + 1) return;
+
+    // if this pattern is already playing, display the pattern
+    // number, so performer has a way of checking how far along
+    // they are in the composition
+    if (clock.pattern === nextPattern) {
+      this.state.launchpad && this.state.launchpad.scrollText(
+        (nextPattern + 1).toString(),
+      );
+    }
+
+    clock.setNextPattern(nextPattern);
   }
 
   setBpm = (evt) => {
