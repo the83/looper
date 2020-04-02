@@ -27,18 +27,6 @@ body {
   background-color: red;
 }
 
-.track-header {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-}
-
-.track-footer {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-}
-
 @keyframes shadow-pulse
 {
   0% {
@@ -72,7 +60,7 @@ h3 {
 }
 
 .play-button {
-  background-color: #b9ca4a;
+  background-color: #99cc99;
   border: none;
   padding: 1em;
   text-align: center;
@@ -89,7 +77,7 @@ h3 {
   width: 20em;
   -webkit-appearance: none;
   height: 2em;
-  background: #eaeaea;
+  background: #d54e53;
   outline: none;
   padding: 0.5em;
 }
@@ -103,14 +91,14 @@ h3 {
   appearance: none;
   width: 2em;
   height: 2em;
-  background: #70c0b1;
+  background: #ffcc66;
   cursor: pointer;
 }
 
 .slider::-moz-range-thumb {
   width: 2em;
   height: 2em;
-  background: #70c0b1;
+  background: #ffcc66;
   cursor: pointer;
 }
 
@@ -118,5 +106,13 @@ h3 {
   margin: 0em 0.2em;
   font-size: 2em;
   font-weight: bold;
-  color: #70c0b1;
+  color: #ffcc66;
+}
+
+.abcjs-l0 {
+  fill: #cc99cc;
+}
+
+.active-note {
+  fill: white;
 }

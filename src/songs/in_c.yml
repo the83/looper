@@ -692,19 +692,6 @@ defaults: &defaults
 title: In C
 bpm: 80
 tracks:
-  - name: Piano
-    rate: 1
-    loop: true
-    midiOutput: 5
-    patterns:
-      -
-        - value: C5
-          duration: 2
-  - name: Peak
-    rate: 1
-    loop: true
-    midiOutput: 1
-    << : *defaults
   - name: Moog 1
     rate: 1
     loop: true
@@ -720,8 +707,21 @@ tracks:
     loop: true
     midiOutput: 4
     << : *defaults
+  - name: Peak
+    rate: 1
+    loop: true
+    midiOutput: 1
+    << : *defaults
   - name: 0-Coast
     rate: 1
     loop: true
     midiOutput: 6
     << : *defaults
+  - name: Piano
+    rate: 1
+    loop: true
+    midiOutput: 5
+    patterns:
+      -
+        - value: C5
+          duration: 2
