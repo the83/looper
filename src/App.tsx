@@ -9,8 +9,6 @@ import { detectInstruments } from './instrument_manager';
 import { detectLaunchpad } from './launchpad_manager';
 import songs from './songs';
 
-// TODO: song management
-
 interface IProps {
 }
 
