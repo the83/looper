@@ -24,9 +24,9 @@ export interface ITrackConfig {
 }
 
 const SONGS = Object.freeze([
+  in_c,
   loopy,
   piano_phase,
-  in_c,
 ]);
 
 const WHITELISTED_ATTRIBUTES = Object.freeze([
