@@ -1,7 +1,1 @@
-import $ from 'jquery';
-
-declare global {
-    interface Window { $: any; }
-}
-
-window.$ = $;
+// import * as $ from 'jquery/dist/jquery';

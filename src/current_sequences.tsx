@@ -1,11 +1,10 @@
 import * as React from 'react';
 import Clock from './clock';
+import HorizontalBarChart from './horizontal_bar_chart';
 import { sumBy, max, flatten } from 'lodash';
 import { INote } from './songs';
 import Abcjs from 'react-abcjs';
 import $ from 'jquery';
-
-window.$ = $;
 
 interface IProps {
   clocks: Clock[];
@@ -14,8 +13,9 @@ interface IProps {
 
 export default class CurrentSequences extends React.Component<IProps, {}> {
   componentDidUpdate() {
+    console.log('coming here!');
     this.props.clocks.forEach((clock, idx) => {
-      const currentNote = $('.notation').eq(idx).find(`.abcjs-n${clock.position}`);
+      const currentNote = $(`.abcjs-n${clock.position}`).eq(idx);
       currentNote.addClass('active-note');
     });
   }
@@ -49,8 +49,7 @@ export default class CurrentSequences extends React.Component<IProps, {}> {
     return result;
   }
 
-  renderSequence = (clock, index) => {
-    const { config, pattern } = clock;
+  renderSequence = (clock, index) => { const { position, config, pattern } = clock;
     const bpm = this.props.globalBpm * config.rate;
     const notes = config.patterns[pattern];
 
@@ -70,6 +69,7 @@ export default class CurrentSequences extends React.Component<IProps, {}> {
               add_classes: true,
             }}
             engraverParams={{
+              scale: 1.2,
             }}
             renderParams={{
             }}
