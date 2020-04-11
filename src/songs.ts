@@ -21,6 +21,7 @@ export interface ITrackConfig {
   rate?: number;
   loop?: boolean;
   octaveOffset?: number;
+  midiChannel: number;
 }
 
 const SONGS = Object.freeze([

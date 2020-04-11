@@ -292,10 +292,16 @@ class App extends React.Component<IProps, IState> {
     this.forceUpdate(); // force re-render
   }
 
-  onNoteChange = (index, note, duration) => {
+  onNoteChange = (index, value, duration) => {
     const instrument = this.state.instruments[index];
+    const channel = this.state.song.tracks[index].midiChannel;
     if (!instrument) return;
-    instrument.playNote(note, duration, 1);
+
+    instrument.playNote({
+      value,
+      duration,
+      channel,
+    });
   }
 
   render() {
