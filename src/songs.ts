@@ -1,6 +1,7 @@
 import { pick } from 'lodash';
 import loopy from './songs/loopy.json';
 import piano_phase from './songs/piano_phase.json';
+import drum_phase from './songs/drum_phase.json';
 import in_c from './songs/in_c.json';
 
 export interface ISong {
@@ -24,9 +25,10 @@ export interface ITrackConfig {
 }
 
 const SONGS = Object.freeze([
-  loopy,
-  piano_phase,
   in_c,
+  piano_phase,
+  drum_phase,
+  loopy,
 ]);
 
 const WHITELISTED_ATTRIBUTES = Object.freeze([
