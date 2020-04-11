@@ -96,7 +96,7 @@ defaults: &defaults
         duration: 16
     # 9
     -
-      - value: B4
+      - value: B5
         duration: 1
       - value: G4
         duration: 1
@@ -110,7 +110,7 @@ defaults: &defaults
         duration: 4
     # 10
     -
-      - value: B4
+      - value: B5
         duration: 1
       - value: G4
         duration: 1
@@ -120,11 +120,11 @@ defaults: &defaults
         duration: 1
       - value: G4
         duration: 1
-      - value: B4
+      - value: B5
         duration: 1
       - value: G4
         duration: 1
-      - value: B4
+      - value: B5
         duration: 1
       - value: G4
         duration: 1
@@ -134,13 +134,13 @@ defaults: &defaults
         duration: 2
       - value: G4
         duration: 2
-      - value: B4
+      - value: B5
         duration: 16
       - value: C5
         duration: 4
     # 13 !
     -
-      - value: B4
+      - value: B5
         duration: 1
       - value: G4
         duration: 3
@@ -158,7 +158,7 @@ defaults: &defaults
     -
       - value: C5
         duration: 16
-      - value: B4
+      - value: B5
         duration: 16
       - value: G4
         duration: 16
@@ -180,23 +180,23 @@ defaults: &defaults
     -
       - value: G4
         duration: 1
-      - value: B4
+      - value: B5
         duration: 1
       - value: C5
         duration: 1
-      - value: B4
+      - value: B5
         duration: 1
     # 17
     -
-      - value: B4
+      - value: B5
         duration: 1
       - value: C5
         duration: 1
-      - value: B4
+      - value: B5
         duration: 1
       - value: C5
         duration: 1
-      - value: B4
+      - value: B5
         duration: 1
       - value: ''
         duration: 1
@@ -262,9 +262,9 @@ defaults: &defaults
         duration: 6
       - value: G4
         duration: 6
-      - value: A4
+      - value: A5
         duration: 6
-      - value: B4
+      - value: B5
         duration: 2
     # 23
     -
@@ -282,9 +282,9 @@ defaults: &defaults
         duration: 6
       - value: G4
         duration: 6
-      - value: A4
+      - value: A5
         duration: 6
-      - value: B4
+      - value: B5
         duration: 4
     # 24
     -
@@ -302,9 +302,9 @@ defaults: &defaults
         duration: 6
       - value: G4
         duration: 6
-      - value: A4
+      - value: A5
         duration: 6
-      - value: B4
+      - value: B5
         duration: 2
     # 25
     -
@@ -314,17 +314,17 @@ defaults: &defaults
         duration: 2
       - value: G4
         duration: 2
-      - value: A4
+      - value: A5
         duration: 6
-      - value: A4
+      - value: A5
         duration: 6
-      - value: A4
+      - value: A5
         duration: 6
-      - value: A4
+      - value: A5
         duration: 6
-      - value: A4
+      - value: A5
         duration: 6
-      - value: B4
+      - value: B5
         duration: 6
     # 26
     -
@@ -334,17 +334,17 @@ defaults: &defaults
         duration: 2
       - value: G4
         duration: 2
-      - value: A4
+      - value: A5
         duration: 2
-      - value: B4
+      - value: B5
         duration: 6
-      - value: B4
+      - value: B5
         duration: 6
-      - value: B4
+      - value: B5
         duration: 6
-      - value: B4
+      - value: B5
         duration: 6
-      - value: B4
+      - value: B5
         duration: 6
     # 27
     -
@@ -404,11 +404,11 @@ defaults: &defaults
         duration: 1
       - value: G4
         duration: 1
-      - value: B4
+      - value: B5
         duration: 1
       - value: G4
         duration: 1
-      - value: B4
+      - value: B5
         duration: 1
     # 32
     -
@@ -420,7 +420,7 @@ defaults: &defaults
         duration: 1
       - value: G4
         duration: 1
-      - value: B4
+      - value: B5
         duration: 1
       - value: F4
         duration: 16
@@ -446,19 +446,19 @@ defaults: &defaults
         duration: 1
       - value: G4
         duration: 1
-      - value: B4
+      - value: B5
         duration: 1
       - value: G4
         duration: 1
-      - value: B4
+      - value: B5
         duration: 1
       - value: G4
         duration: 1
-      - value: B4
+      - value: B5
         duration: 1
       - value: G4
         duration: 1
-      - value: B4
+      - value: B5
         duration: 1
       - value: G4
         duration: 1
@@ -470,17 +470,17 @@ defaults: &defaults
         duration: 4
       - value: ''
         duration: 4
-      - value: Bb4
+      - value: Bb5
         duration: 4
       - value: G5
         duration: 12
-      - value: A5
+      - value: A6
         duration: 2
       - value: G5
         duration: 4
-      - value: B5
+      - value: B6
         duration: 4
-      - value: A5
+      - value: A6
         duration: 6
       - value: G5
         duration: 2
@@ -506,11 +506,11 @@ defaults: &defaults
         duration: 1
       - value: G4
         duration: 1
-      - value: B4
+      - value: B5
         duration: 1
       - value: G4
         duration: 1
-      - value: B4
+      - value: B5
         duration: 1
       - value: G4
         duration: 1
@@ -526,11 +526,11 @@ defaults: &defaults
         duration: 1
       - value: G4
         duration: 1
-      - value: B4
+      - value: B5
         duration: 1
     # 39
     -
-      - value: B4
+      - value: B5
         duration: 1
       - value: G4
         duration: 1
@@ -538,19 +538,19 @@ defaults: &defaults
         duration: 1
       - value: G4
         duration: 1
-      - value: B4
+      - value: B5
         duration: 1
       - value: C5
         duration: 1
     # 40
     -
-      - value: B4
+      - value: B5
         duration: 1
       - value: F4
         duration: 1
     # 41
     -
-      - value: B4
+      - value: B5
         duration: 1
       - value: G4
         duration: 1
@@ -558,9 +558,9 @@ defaults: &defaults
     -
       - value: C5
         duration: 16
-      - value: B4
+      - value: B5
         duration: 16
-      - value: A4
+      - value: A5
         duration: 16
       - value: C5
         duration: 16
@@ -654,11 +654,11 @@ defaults: &defaults
         duration: 1
       - value: G4
         duration: 1
-      - value: Bb4
+      - value: Bb5
         duration: 1
       - value: G4
         duration: 1
-      - value: Bb4
+      - value: Bb5
         duration: 1
       - value: G4
         duration: 1
@@ -674,17 +674,17 @@ defaults: &defaults
         duration: 1
       - value: G4
         duration: 1
-      - value: Bb4
+      - value: Bb5
         duration: 1
     # 52
     -
       - value: G4
         duration: 1
-      - value: Bb4
+      - value: Bb5
         duration: 1
     # 53
     -
-      - value: Bb4
+      - value: Bb5
         duration: 1
       - value: G4
         duration: 1

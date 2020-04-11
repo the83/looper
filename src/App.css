@@ -1,7 +1,8 @@
 /* https://github.com/chriskempson/tomorrow-theme */
 
 body {
-  background-color: #efefef;
+  background-color: #2a2a2a;
+  color: #eaeaea;
   font-family: Helvetica;
 }
 
@@ -39,13 +40,12 @@ body {
 }
 
 h1 {
-  color: #6699cc;
-  margin: 0 0 1.2em 0;
+  color: #d54e53;
+  margin: 0;
 }
 
 h3 {
-  color: #393939;
-  margin: 0.2em;
+  color: #d54e53;
 }
 
 .track-button {
@@ -77,7 +77,7 @@ h3 {
   width: 20em;
   -webkit-appearance: none;
   height: 2em;
-  background: #99cc99;
+  background: #d54e53;
   outline: none;
   padding: 0.5em;
 }
@@ -91,14 +91,14 @@ h3 {
   appearance: none;
   width: 2em;
   height: 2em;
-  background: #6699cc;
+  background: #ffcc66;
   cursor: pointer;
 }
 
 .slider::-moz-range-thumb {
   width: 2em;
   height: 2em;
-  color: #6699cc;
+  background: #ffcc66;
   cursor: pointer;
 }
 
@@ -106,36 +106,13 @@ h3 {
   margin: 0em 0.2em;
   font-size: 2em;
   font-weight: bold;
-  color: #6699cc;
+  color: #ffcc66;
 }
 
 .abcjs-l0 {
-  fill: #2a2a2a;
+  fill: #cc99cc;
 }
 
 .active-note {
-  fill: #d54e53;
-  stroke: #d54e53;
-}
-
-.mark {
-  fill: #d54e53;
-  stroke: #d54e53;
-}
-
-.sequence {
-  /* text-align: center; */
-}
-
-.abcjs-meta-bottom {
-  font-family: Helvetica;
-  font-size: 0.8em;
-  margin: 0;
-}
-
-.abcjs-meta-top {
-  text-align: center;
-  font-family: Helvetica;
-  font-size: 0.8em;
-  margin: 0;
+  fill: white;
 }
