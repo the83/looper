@@ -6,7 +6,7 @@ import Instrument from './instrument';
 import LaunchpadManager from './launchpad_manager';
 import CurrentSequences from './current_sequences';
 import { detectInstruments } from './instrument_manager';
-import { detectLaunchpad } from './launchpad_manager';
+import { detectLaunchpad, OFFSET_AXES } from './launchpad_manager';
 import songs from './songs';
 
 // TODO: song management
@@ -17,7 +17,8 @@ interface IProps {
 interface IState {
   bpm: number;
   isPlaying: boolean;
-  page: number,
+  yOffset: number,
+  xOffset: number,
   launchpad?: LaunchpadManager;
   clocks: Clock[];
   instruments: Instrument[];
@@ -39,12 +40,14 @@ class App extends React.Component<IProps, IState> {
     const song = songs[0];
 
     if (!song) return;
+    const bpm = song.bpm || DEFAULT_BPM;
 
     this.state = {
       song,
-      bpm: song.bpm || DEFAULT_BPM,
+      bpm,
       isPlaying: false,
-      page: 0,
+      yOffset: 0,
+      xOffset: 0,
       instruments: [],
       mode: MODES.SESSION,
       clocks: song.tracks.map((trackConfig, idx) => {
@@ -52,7 +55,7 @@ class App extends React.Component<IProps, IState> {
           this.onClockTick,
           this.onNoteChange,
           trackConfig,
-          DEFAULT_BPM,
+          bpm,
           idx,
           false,
         );
@@ -95,19 +98,20 @@ class App extends React.Component<IProps, IState> {
     // previous clocks need to be cleared, otherwise they will
     // continue to trigger notes
     this.state.clocks.forEach(clock => clock.clear());
+    const bpm = song.bpm || DEFAULT_BPM;
 
     this.setState({
       song,
-      bpm: song.bpm || DEFAULT_BPM,
-      // isPlaying: false,
-      page: 0,
+      bpm,
+      yOffset: 0,
+      xOffset: 0,
       instruments: this.state.instruments,
       clocks: song.tracks.map((trackConfig, idx) => {
         return new Clock(
           this.onClockTick,
           this.onNoteChange,
           trackConfig,
-          DEFAULT_BPM,
+          bpm,
           idx,
           this.state.isPlaying,
         );
@@ -120,16 +124,24 @@ class App extends React.Component<IProps, IState> {
   }
 
   onPadPress = ({ column, row }) => {
-    if (this.state.mode === MODES.SONG_SELECT) {
+    const {
+      mode,
+      clocks,
+      yOffset,
+      xOffset,
+      launchpad,
+    } = this.state;
+
+    if (mode === MODES.SONG_SELECT) {
       const index = row * 8 + column;
       this.setSong(index);
       return;
     }
 
-    const clock = this.state.clocks[column];
+    const clock = clocks[column + (8 * xOffset)];
     if (!clock) return;
 
-    const offset = 8 * this.state.page;
+    const offset = 8 * yOffset;
     const nextPattern = row + offset;
     if (nextPattern > clock.patternCount + 1) return;
 
@@ -137,7 +149,7 @@ class App extends React.Component<IProps, IState> {
     // number, so performer has a way of checking how far along
     // they are in the composition
     if (clock.pattern === nextPattern) {
-      this.state.launchpad && this.state.launchpad.scrollText(
+      launchpad && launchpad.scrollText(
         (nextPattern + 1).toString(),
       );
     }
@@ -190,7 +202,8 @@ class App extends React.Component<IProps, IState> {
       clock.resetAll();
     });
 
-    this.updatePage(0);
+    this.updatePage(OFFSET_AXES.Y, 0);
+    this.updatePage(OFFSET_AXES.X, 0);
   }
 
   initializeLaunchpad() {
@@ -200,18 +213,30 @@ class App extends React.Component<IProps, IState> {
     });
   }
 
-  incrementPage = (number) => {
-    const page = this.state.page + number;
+  incrementPage = (axis: string, amount: number) => {
+    const { yOffset, xOffset } = this.state;
+
+    const selectedOffset = axis === OFFSET_AXES.Y ? yOffset : xOffset;
+    const page = selectedOffset + amount;
     if (page < 0) return;
-    this.updatePage(page);
+    this.updatePage(axis, page);
   }
 
-  updatePage = (page) => {
-    this.setState({
-      page,
-    }, () => this.state.clocks.forEach((_clock, idx) => {
-      this.updateLaunchpad(idx)
-    }))
+  updatePage = (axis, page: number) => {
+    const state = axis === OFFSET_AXES.Y ? { yOffset: page } as IState : { xOffset: page } as IState;
+
+    this.setState(
+      state,
+      () => {
+        if (this.state.launchpad) {
+          this.state.launchpad.clearMainGrid();
+        }
+
+        this.state.clocks.forEach((_clock, idx) => {
+          this.updateLaunchpad(idx)
+        });
+      },
+    )
   };
 
   updateSongSelectMode = () => {
@@ -234,7 +259,11 @@ class App extends React.Component<IProps, IState> {
     if (!this.state.launchpad) return;
     if (this.state.mode !== MODES.SESSION) return;
 
-    const { page } = this.state;
+    const { yOffset, xOffset } = this.state;
+    const xBounds = [xOffset * 8, (xOffset + 1) * 8];
+
+    if (index < xBounds[0] || index >= xBounds[1]) return;
+
     const clock = this.state.clocks[index];
     if (!clock) return;
 
@@ -244,15 +273,16 @@ class App extends React.Component<IProps, IState> {
       config,
     } = clock;
 
-    const offset = page * 8;
+    const offset = yOffset * 8;
     const remaining = config.patterns.length - offset;
     const patternsAvailable = remaining > 8 ? 8 : remaining;
+    const column = index % 8;
 
     this.state.launchpad.drawColumn(
       patternsAvailable,
       pattern,
       nextPattern,
-      index,
+      column,
       offset,
     );
   }

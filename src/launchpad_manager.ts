@@ -6,11 +6,18 @@ const CONTROLS = {
   PLAY: 19,
   PAGE_UP: 91,
   PAGE_DOWN: 92,
+  PAGE_LEFT: 93,
+  PAGE_RIGHT: 94,
   RESET_PATTERN: 89,
   RESET_ALL: 49,
   SESSION_MODE: 95,
   SONG_SELECT_MODE: 97,
 };
+
+export const OFFSET_AXES = Object.freeze({
+  Y: 'Y',
+  X: 'X',
+});
 
 interface ILaunchpadManagerConfig {
   input: Input;
@@ -62,6 +69,8 @@ export default class LaunchpadManager {
     this.launchpad.ledPulse(CONTROLS.PLAY, COLORS.GREEN);
     this.launchpad.ledOn(CONTROLS.PAGE_UP, INACTIVE_MODE);
     this.launchpad.ledOn(CONTROLS.PAGE_DOWN, INACTIVE_MODE);
+    this.launchpad.ledOn(CONTROLS.PAGE_LEFT, INACTIVE_MODE);
+    this.launchpad.ledOn(CONTROLS.PAGE_RIGHT, INACTIVE_MODE);
     this.launchpad.ledOn(CONTROLS.RESET_PATTERN, COLORS.YELLOW);
     this.launchpad.ledOn(CONTROLS.RESET_ALL, COLORS.ORANGE);
     this.launchpad.ledOn(CONTROLS.SESSION_MODE, ACTIVE_MODE);
@@ -89,11 +98,19 @@ export default class LaunchpadManager {
     }
 
     if (pad === CONTROLS.PAGE_UP) {
-      this.config.incrementPage(-1);
+      this.config.incrementPage(OFFSET_AXES.Y, -1);
     }
 
     if (pad === CONTROLS.PAGE_DOWN) {
-      this.config.incrementPage(1);
+      this.config.incrementPage(OFFSET_AXES.Y, 1);
+    }
+
+    if (pad === CONTROLS.PAGE_LEFT) {
+      this.config.incrementPage(OFFSET_AXES.X, -1);
+    }
+
+    if (pad === CONTROLS.PAGE_RIGHT) {
+      this.config.incrementPage(OFFSET_AXES.X, 1);
     }
 
     if (pad === CONTROLS.RESET_PATTERN) {
