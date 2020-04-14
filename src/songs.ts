@@ -1,5 +1,6 @@
 import { pick } from 'lodash';
 import loopy from './songs/loopy.json';
+import loopy2 from './songs/loopy2.json';
 import piano_phase from './songs/piano_phase.json';
 import in_c from './songs/in_c.json';
 
@@ -25,6 +26,7 @@ export interface ITrackConfig {
 }
 
 const SONGS = Object.freeze([
+  loopy2,
   in_c,
   piano_phase,
   loopy,
