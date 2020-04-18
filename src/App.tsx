@@ -294,13 +294,12 @@ class App extends React.Component<IProps, IState> {
 
   onNoteChange = (index, value, duration) => {
     const instrument = this.state.instruments[index];
-    const channel = this.state.song.tracks[index].midiChannel;
     if (!instrument) return;
 
     instrument.playNote({
       value,
       duration,
-      channel,
+      channel: 1,
     });
   }
 

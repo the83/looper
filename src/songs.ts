@@ -3,6 +3,7 @@ import loopy from './songs/loopy.json';
 import loopy2 from './songs/loopy2.json';
 import piano_phase from './songs/piano_phase.json';
 import in_c from './songs/in_c.json';
+import dadgad from './songs/dadgad.json';
 
 export interface ISong {
   title?: string;
@@ -15,6 +16,8 @@ export interface INote {
   duration: number; // in sixteenths
 }
 
+export const MPC_INSTRUMENT_TYPE = 'MPC';
+
 export interface ITrackConfig {
   name: string;
   patterns: INote[][];
@@ -23,9 +26,12 @@ export interface ITrackConfig {
   loop?: boolean;
   octaveOffset?: number;
   midiChannel: number;
+  instrumentType?: string;
+  pad?: string;
 }
 
 const SONGS = Object.freeze([
+  dadgad,
   loopy2,
   in_c,
   piano_phase,

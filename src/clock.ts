@@ -4,12 +4,19 @@ import {
   dropRight,
 } from 'lodash';
 
-import { ITrackConfig } from './songs';
+import { ITrackConfig, MPC_INSTRUMENT_TYPE } from './songs';
+
+import mpc_mapping from './mpc_mapping.json';
 
 function bpmToDuration(bpm) {
   const quarterNote = 60000 / bpm;
   const sixteenthNote = quarterNote / 4;
   return sixteenthNote;
+}
+
+function getMpcNote(pad, value) {
+  const programPad = `${pad}${value}`;
+  return mpc_mapping[programPad];
 }
 
 const DEFAULT_RATE = 1;
@@ -44,6 +51,7 @@ export default class Clock {
     index: number,
     isPlaying: boolean,
   ) {
+    debugger;
     this.onTick = onTick;
     this.bpm = bpm;
     this.rate = config.rate || DEFAULT_RATE;
@@ -205,14 +213,26 @@ export default class Clock {
     };
 
     if (this.noteChangeIndexes().indexOf(this.ticksElapsed) >= 0) {
-      const { midiOutput, patterns } = this.config;
+      const {
+        midiOutput,
+        patterns,
+        instrumentType,
+        pad,
+      } = this.config;
+
       const note = patterns[state.pattern][state.position];
       const tickDuration = bpmToDuration(this.bpm * this.rate);
+
+      let noteValue = note.value;
+
+      if (instrumentType === MPC_INSTRUMENT_TYPE) {
+        noteValue = getMpcNote(pad, note.value);
+      }
 
       this.onNoteChange(
         // config is 1-indexed but instruments are 0-indexed
         midiOutput - 1,
-        note.value,
+        noteValue,
         note.duration * tickDuration,
       );
     }
