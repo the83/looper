@@ -24,6 +24,7 @@ interface IState {
   instruments: Instrument[];
   song: any; // TODO: figure out why TS is complaining about typing
   mode: string;
+  trackStatuses: boolean[];
 }
 
 const MAX_BPM = 300;
@@ -32,6 +33,7 @@ const DEFAULT_BPM = 120;
 const MODES = {
   SESSION: 'session',
   SONG_SELECT: 'song_select',
+  MUTE: 'mute',
 };
 
 // random velocity between 0.85 and 1
@@ -65,6 +67,7 @@ class App extends React.Component<IProps, IState> {
           false,
         );
       }),
+      trackStatuses: song.tracks.map(() => true),
     };
   }
 
@@ -81,6 +84,7 @@ class App extends React.Component<IProps, IState> {
       onPadPress: this.onPadPress,
       setSessionMode: this.setSessionMode,
       setSongSelectMode: this.setSongSelectMode,
+      setMuteMode: this.setMuteMode,
     }, (launchpad) => {
       this.setState({ launchpad }, () => {
         this.initializeLaunchpad();
@@ -111,6 +115,7 @@ class App extends React.Component<IProps, IState> {
       yOffset: 0,
       xOffset: 0,
       instruments: this.state.instruments,
+      trackStatuses: song.tracks.map(() => true),
       clocks: song.tracks.map((trackConfig, idx) => {
         return new Clock(
           this.onClockTick,
@@ -128,6 +133,23 @@ class App extends React.Component<IProps, IState> {
     });
   }
 
+  toggleMute = (index) => {
+    const { trackStatuses } = this.state;
+
+    if (typeof(trackStatuses[index]) === 'undefined') {
+      return;
+    }
+
+    trackStatuses[index] = !trackStatuses[index];
+
+    this.setState({
+      trackStatuses,
+    }, () => {
+      // redraw track statuses on launchpad
+      this.updateMuteMode();
+    });
+  }
+
   onPadPress = ({ column, row }) => {
     const {
       mode,
@@ -140,6 +162,12 @@ class App extends React.Component<IProps, IState> {
     if (mode === MODES.SONG_SELECT) {
       const index = row * 8 + column;
       this.setSong(index);
+      return;
+    }
+
+    if (mode === MODES.MUTE) {
+      const index = row * 8 + column;
+      this.toggleMute(index);
       return;
     }
 
@@ -180,6 +208,12 @@ class App extends React.Component<IProps, IState> {
     this.setState({
       mode: MODES.SESSION,
     }, this.updateSessionMode);
+  }
+
+  setMuteMode = () => {
+    this.setState({
+      mode: MODES.MUTE,
+    }, this.updateMuteMode);
   }
 
   togglePlay = () => {
@@ -251,6 +285,13 @@ class App extends React.Component<IProps, IState> {
     this.state.launchpad.drawCollection(songs, this.state.song);
   }
 
+  updateMuteMode = () => {
+    if (!this.state.launchpad) return;
+
+    this.state.launchpad.clearMainGrid();
+    this.state.launchpad.drawTrackStatuses(this.state.trackStatuses);
+  }
+
   updateSessionMode = () => {
     if (!this.state.launchpad) return;
 
@@ -297,9 +338,12 @@ class App extends React.Component<IProps, IState> {
     this.forceUpdate(); // force re-render
   }
 
-  onNoteChange = (index, value, duration) => {
-    const instrument = this.state.instruments[index];
+  onNoteChange = (clockIndex, midiOutput, value, duration) => {
+    const instrument = this.state.instruments[midiOutput];
     if (!instrument) return;
+
+    // check if track is muted
+    if (!this.state.trackStatuses[clockIndex]) return;
 
     const velocity = this.state.song.randomizeVelocity ? randomVelocity() : 1;
 

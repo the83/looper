@@ -231,6 +231,7 @@ export default class Clock {
 
       this.onNoteChange(
         // config is 1-indexed but instruments are 0-indexed
+        this.index,
         midiOutput - 1,
         noteValue,
         note.duration * tickDuration,

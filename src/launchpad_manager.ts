@@ -12,6 +12,7 @@ const CONTROLS = {
   RESET_ALL: 49,
   SESSION_MODE: 95,
   SONG_SELECT_MODE: 97,
+  MUTE_MODE: 98,
 };
 
 export const OFFSET_AXES = Object.freeze({
@@ -29,6 +30,7 @@ interface ILaunchpadManagerConfig {
   resetAll: Function;
   setSongSelectMode: Function;
   setSessionMode: Function;
+  setMuteMode: Function;
 }
 
 const ACTIVE_MODE = COLORS.TEAL;
@@ -75,6 +77,7 @@ export default class LaunchpadManager {
     this.launchpad.ledOn(CONTROLS.RESET_ALL, COLORS.ORANGE);
     this.launchpad.ledOn(CONTROLS.SESSION_MODE, ACTIVE_MODE);
     this.launchpad.ledOn(CONTROLS.SONG_SELECT_MODE, INACTIVE_MODE);
+    this.launchpad.ledOn(CONTROLS.MUTE_MODE, INACTIVE_MODE);
   }
 
   clearMainGrid() {
@@ -124,13 +127,22 @@ export default class LaunchpadManager {
     if (pad === CONTROLS.SESSION_MODE) {
       this.launchpad.ledOn(CONTROLS.SESSION_MODE, ACTIVE_MODE);
       this.launchpad.ledOn(CONTROLS.SONG_SELECT_MODE, INACTIVE_MODE);
+      this.launchpad.ledOn(CONTROLS.MUTE_MODE, INACTIVE_MODE);
       this.config.setSessionMode();
     }
 
     if (pad === CONTROLS.SONG_SELECT_MODE) {
       this.launchpad.ledOn(CONTROLS.SESSION_MODE, INACTIVE_MODE);
       this.launchpad.ledOn(CONTROLS.SONG_SELECT_MODE, ACTIVE_MODE);
+      this.launchpad.ledOn(CONTROLS.MUTE_MODE, INACTIVE_MODE);
       this.config.setSongSelectMode();
+    }
+
+    if (pad === CONTROLS.MUTE_MODE) {
+      this.launchpad.ledOn(CONTROLS.SESSION_MODE, INACTIVE_MODE);
+      this.launchpad.ledOn(CONTROLS.SONG_SELECT_MODE, INACTIVE_MODE);
+      this.launchpad.ledOn(CONTROLS.MUTE_MODE, ACTIVE_MODE);
+      this.config.setMuteMode();
     }
   }
 
@@ -185,6 +197,16 @@ export default class LaunchpadManager {
       const row = 8 - Math.floor(idx / 8);
       const pad = parseInt(row.toString() + column.toString());
       const color = item === selected ? COLORS.RED : COLORS.PINK;
+      this.launchpad.ledOn(pad, color);
+    });
+  }
+
+  drawTrackStatuses(statuses: boolean[]) {
+    statuses.forEach((status, idx) => {
+      const column = idx % 8 + 1;
+      const row = 8 - Math.floor(idx / 8);
+      const pad = parseInt(row.toString() + column.toString());
+      const color = status ? COLORS.GREEN : COLORS.RED;
       this.launchpad.ledOn(pad, color);
     });
   }
