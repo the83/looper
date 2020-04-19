@@ -339,11 +339,11 @@ class App extends React.Component<IProps, IState> {
   }
 
   onNoteChange = (clockIndex, midiOutput, value, duration) => {
-    const instrument = this.state.instruments[midiOutput];
-    if (!instrument) return;
-
     // check if track is muted
     if (!this.state.trackStatuses[clockIndex]) return;
+
+    const instrument = this.state.instruments[midiOutput];
+    if (!instrument) return;
 
     const velocity = this.state.song.randomizeVelocity ? randomVelocity() : 1;
 

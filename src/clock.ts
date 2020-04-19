@@ -51,7 +51,6 @@ export default class Clock {
     index: number,
     isPlaying: boolean,
   ) {
-    debugger;
     this.onTick = onTick;
     this.bpm = bpm;
     this.rate = config.rate || DEFAULT_RATE;
