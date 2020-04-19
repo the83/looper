@@ -1,161 +1,6 @@
 defaults: &defaults
   patterns:
-    -
-      - value: 1
-        duration: 1
-      - value: 2
-        duration: 1
-      - value: 3
-        duration: 1
-      - value: 4
-        duration: 1
-      - value: 5
-        duration: 1
-      - value: 6
-        duration: 1
-    -
-      - value: 2
-        duration: 1
-      - value: 3
-        duration: 1
-      - value: 4
-        duration: 1
-      - value: 5
-        duration: 1
-      - value: 6
-        duration: 1
-      - value: 1
-        duration: 1
-    -
-      - value: 3
-        duration: 1
-      - value: 4
-        duration: 1
-      - value: 5
-        duration: 1
-      - value: 6
-        duration: 1
-      - value: 1
-        duration: 1
-      - value: 2
-        duration: 1
-    -
-      - value: 4
-        duration: 1
-      - value: 5
-        duration: 1
-      - value: 6
-        duration: 1
-      - value: 1
-        duration: 1
-      - value: 2
-        duration: 1
-      - value: 3
-        duration: 1
-    -
-      - value: 5
-        duration: 1
-      - value: 6
-        duration: 1
-      - value: 1
-        duration: 1
-      - value: 2
-        duration: 1
-      - value: 3
-        duration: 1
-      - value: 4
-        duration: 1
-    -
-      - value: 6
-        duration: 1
-      - value: 1
-        duration: 1
-      - value: 2
-        duration: 1
-      - value: 3
-        duration: 1
-      - value: 4
-        duration: 1
-      - value: 5
-        duration: 1
-    -
-      - value: 1
-        duration: 1
-      - value: 7
-        duration: 1
-      - value: 3
-        duration: 1
-      - value: 4
-        duration: 1
-      - value: 5
-        duration: 1
-      - value: 6
-        duration: 1
-    -
-      - value: 7
-        duration: 1
-      - value: 3
-        duration: 1
-      - value: 4
-        duration: 1
-      - value: 5
-        duration: 1
-      - value: 6
-        duration: 1
-      - value: 1
-        duration: 1
-    -
-      - value: 3
-        duration: 1
-      - value: 4
-        duration: 1
-      - value: 5
-        duration: 1
-      - value: 6
-        duration: 1
-      - value: 1
-        duration: 1
-      - value: 7
-        duration: 1
-    -
-      - value: 4
-        duration: 1
-      - value: 5
-        duration: 1
-      - value: 6
-        duration: 1
-      - value: 1
-        duration: 1
-      - value: 7
-        duration: 1
-      - value: 3
-        duration: 1
-    -
-      - value: 5
-        duration: 1
-      - value: 6
-        duration: 1
-      - value: 1
-        duration: 1
-      - value: 7
-        duration: 1
-      - value: 3
-        duration: 1
-      - value: 4
-        duration: 1
-    -
-      - value: 6
-        duration: 1
-      - value: 1
-        duration: 1
-      - value: 7
-        duration: 1
-      - value: 3
-        duration: 1
-      - value: 4
-        duration: 1
-      - value: 5
-        duration: 1
+    # 13
     -
       - value: 1
         duration: 1
@@ -169,6 +14,7 @@ defaults: &defaults
         duration: 1
       - value: 6
         duration: 1
+    # 14
     -
       - value: 7
         duration: 1
@@ -182,6 +28,7 @@ defaults: &defaults
         duration: 1
       - value: 1
         duration: 1
+    # 15
     -
       - value: 3
         duration: 1
@@ -195,6 +42,7 @@ defaults: &defaults
         duration: 1
       - value: 7
         duration: 1
+    # 16
     -
       - value: 4
         duration: 1
@@ -208,6 +56,7 @@ defaults: &defaults
         duration: 1
       - value: 3
         duration: 1
+    # 17
     -
       - value: 8
         duration: 1
@@ -221,6 +70,7 @@ defaults: &defaults
         duration: 1
       - value: 4
         duration: 1
+    # 18
     -
       - value: 6
         duration: 1
@@ -234,6 +84,7 @@ defaults: &defaults
         duration: 1
       - value: 8
         duration: 1
+    # 19
     -
       - value: 1
         duration: 1
@@ -247,6 +98,7 @@ defaults: &defaults
         duration: 1
       - value: 6
         duration: 1
+    # 20
     -
       - value: 7
         duration: 1
@@ -260,6 +112,7 @@ defaults: &defaults
         duration: 1
       - value: 1
         duration: 1
+    # 21
     -
       - value: 9
         duration: 1
@@ -273,6 +126,7 @@ defaults: &defaults
         duration: 1
       - value: 7
         duration: 1
+    # 22
     -
       - value: 4
         duration: 1
@@ -286,6 +140,7 @@ defaults: &defaults
         duration: 1
       - value: 9
         duration: 1
+    # 23
     -
       - value: 8
         duration: 1
@@ -299,6 +154,7 @@ defaults: &defaults
         duration: 1
       - value: 4
         duration: 1
+    # 24
     -
       - value: 6
         duration: 1
@@ -312,6 +168,7 @@ defaults: &defaults
         duration: 1
       - value: 8
         duration: 1
+    # 25
     -
       - value: 1
         duration: 1
@@ -325,6 +182,7 @@ defaults: &defaults
         duration: 1
       - value: 6
         duration: 1
+    # 26
     -
       - value: 1
         duration: 1
@@ -348,7 +206,45 @@ tracks:
     rate: 1
     loop: true
     midiOutput: 8
-    << : *defaults
+    patterns:
+      -
+        - value: 1
+          duration: 1
+        - value: 2
+          duration: 1
+        - value: 3
+          duration: 1
+        - value: 4
+          duration: 1
+        - value: 5
+          duration: 1
+        - value: 6
+          duration: 1
+  - name: Mid Conga
+    rate: 1
+    loop: true
+    midiOutput: 7
+    patterns:
+      -
+        - value: ''
+          duration: 3
+        - value: D#4
+          duration: 1
+        - value: ''
+          duration: 2
+  - name: Maracas
+    rate: 1
+    loop: true
+    midiOutput: 7
+    patterns:
+      -
+        - value: ''
+          duration: 4
+        - value: A#4
+          duration: 1
+        - value: A#4
+          duration: 1
+
   - name: Telecaster
     instrumentType: MPC
     pad: B
@@ -363,3 +259,95 @@ tracks:
     loop: true
     midiOutput: 8
     << : *defaults
+  - name: Telecaster 2
+    instrumentType: MPC
+    pad: B
+    rate: 0.99
+    loop: false
+    midiOutput: 8
+    patterns:
+      -
+        - value: 1
+          duration: 3
+        - value: 2
+          duration: 3
+        - value: 3
+          duration: 3
+        - value: 4
+          duration: 3
+        - value: 5
+          duration: 3
+        - value: 6
+          duration: 3
+      -
+        - value: 1
+          duration: 3
+        - value: 7
+          duration: 3
+        - value: 3
+          duration: 3
+        - value: 4
+          duration: 3
+        - value: 8
+          duration: 3
+        - value: 6
+          duration: 3
+      -
+        - value: 1
+          duration: 3
+        - value: 7
+          duration: 3
+        - value: 9
+          duration: 3
+        - value: 4
+          duration: 3
+        - value: 8
+          duration: 3
+        - value: 6
+          duration: 3
+  - name: Seagull Merlin 2
+    instrumentType: MPC
+    pad: B
+    rate: 0.98
+    loop: false
+    midiOutput: 8
+    patterns:
+      -
+        - value: 1
+          duration: 3
+        - value: 2
+          duration: 3
+        - value: 3
+          duration: 3
+        - value: 4
+          duration: 3
+        - value: 5
+          duration: 3
+        - value: 6
+          duration: 3
+      -
+        - value: 1
+          duration: 3
+        - value: 7
+          duration: 3
+        - value: 3
+          duration: 3
+        - value: 4
+          duration: 3
+        - value: 8
+          duration: 3
+        - value: 6
+          duration: 3
+      -
+        - value: 1
+          duration: 3
+        - value: 7
+          duration: 3
+        - value: 9
+          duration: 3
+        - value: 4
+          duration: 3
+        - value: 8
+          duration: 3
+        - value: 6
+          duration: 3
