@@ -34,6 +34,11 @@ const MODES = {
   SONG_SELECT: 'song_select',
 };
 
+// random velocity between 0.85 and 1
+function randomVelocity() {
+  return (Math.floor(Math.random() * 15) + 85) * 0.01;
+}
+
 class App extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
@@ -296,9 +301,12 @@ class App extends React.Component<IProps, IState> {
     const instrument = this.state.instruments[index];
     if (!instrument) return;
 
+    const velocity = this.state.song.randomizeVelocity ? randomVelocity() : 1;
+
     instrument.playNote({
       value,
       duration,
+      velocity,
       channel: 1,
     });
   }

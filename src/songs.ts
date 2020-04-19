@@ -9,6 +9,7 @@ export interface ISong {
   title?: string;
   bpm?: number;
   tracks: ITrackConfig[];
+  randomizeVelocity?: boolean;
 }
 
 export interface INote {

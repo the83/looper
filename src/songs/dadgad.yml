@@ -199,6 +199,7 @@ defaults: &defaults
 
 title: DADGAD
 bpm: 72
+randomizeVelocity: true
 tracks:
   - name: Acoustic Guitar
     instrumentType: MPC
