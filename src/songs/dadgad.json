@@ -1,0 +1,1445 @@
+{
+  "defaults": {
+    "patterns": [
+      [
+        {
+          "value": 1,
+          "duration": 1
+        },
+        {
+          "value": 7,
+          "duration": 1
+        },
+        {
+          "value": 3,
+          "duration": 1
+        },
+        {
+          "value": 4,
+          "duration": 1
+        },
+        {
+          "value": 8,
+          "duration": 1
+        },
+        {
+          "value": 6,
+          "duration": 1
+        }
+      ],
+      [
+        {
+          "value": 7,
+          "duration": 1
+        },
+        {
+          "value": 3,
+          "duration": 1
+        },
+        {
+          "value": 4,
+          "duration": 1
+        },
+        {
+          "value": 8,
+          "duration": 1
+        },
+        {
+          "value": 6,
+          "duration": 1
+        },
+        {
+          "value": 1,
+          "duration": 1
+        }
+      ],
+      [
+        {
+          "value": 3,
+          "duration": 1
+        },
+        {
+          "value": 4,
+          "duration": 1
+        },
+        {
+          "value": 8,
+          "duration": 1
+        },
+        {
+          "value": 6,
+          "duration": 1
+        },
+        {
+          "value": 1,
+          "duration": 1
+        },
+        {
+          "value": 7,
+          "duration": 1
+        }
+      ],
+      [
+        {
+          "value": 4,
+          "duration": 1
+        },
+        {
+          "value": 8,
+          "duration": 1
+        },
+        {
+          "value": 6,
+          "duration": 1
+        },
+        {
+          "value": 1,
+          "duration": 1
+        },
+        {
+          "value": 7,
+          "duration": 1
+        },
+        {
+          "value": 3,
+          "duration": 1
+        }
+      ],
+      [
+        {
+          "value": 8,
+          "duration": 1
+        },
+        {
+          "value": 6,
+          "duration": 1
+        },
+        {
+          "value": 1,
+          "duration": 1
+        },
+        {
+          "value": 7,
+          "duration": 1
+        },
+        {
+          "value": 3,
+          "duration": 1
+        },
+        {
+          "value": 4,
+          "duration": 1
+        }
+      ],
+      [
+        {
+          "value": 6,
+          "duration": 1
+        },
+        {
+          "value": 1,
+          "duration": 1
+        },
+        {
+          "value": 7,
+          "duration": 1
+        },
+        {
+          "value": 3,
+          "duration": 1
+        },
+        {
+          "value": 4,
+          "duration": 1
+        },
+        {
+          "value": 8,
+          "duration": 1
+        }
+      ],
+      [
+        {
+          "value": 1,
+          "duration": 1
+        },
+        {
+          "value": 7,
+          "duration": 1
+        },
+        {
+          "value": 9,
+          "duration": 1
+        },
+        {
+          "value": 4,
+          "duration": 1
+        },
+        {
+          "value": 8,
+          "duration": 1
+        },
+        {
+          "value": 6,
+          "duration": 1
+        }
+      ],
+      [
+        {
+          "value": 7,
+          "duration": 1
+        },
+        {
+          "value": 9,
+          "duration": 1
+        },
+        {
+          "value": 4,
+          "duration": 1
+        },
+        {
+          "value": 8,
+          "duration": 1
+        },
+        {
+          "value": 6,
+          "duration": 1
+        },
+        {
+          "value": 1,
+          "duration": 1
+        }
+      ],
+      [
+        {
+          "value": 9,
+          "duration": 1
+        },
+        {
+          "value": 4,
+          "duration": 1
+        },
+        {
+          "value": 8,
+          "duration": 1
+        },
+        {
+          "value": 6,
+          "duration": 1
+        },
+        {
+          "value": 1,
+          "duration": 1
+        },
+        {
+          "value": 7,
+          "duration": 1
+        }
+      ],
+      [
+        {
+          "value": 4,
+          "duration": 1
+        },
+        {
+          "value": 8,
+          "duration": 1
+        },
+        {
+          "value": 6,
+          "duration": 1
+        },
+        {
+          "value": 1,
+          "duration": 1
+        },
+        {
+          "value": 7,
+          "duration": 1
+        },
+        {
+          "value": 9,
+          "duration": 1
+        }
+      ],
+      [
+        {
+          "value": 8,
+          "duration": 1
+        },
+        {
+          "value": 6,
+          "duration": 1
+        },
+        {
+          "value": 1,
+          "duration": 1
+        },
+        {
+          "value": 7,
+          "duration": 1
+        },
+        {
+          "value": 9,
+          "duration": 1
+        },
+        {
+          "value": 4,
+          "duration": 1
+        }
+      ],
+      [
+        {
+          "value": 6,
+          "duration": 1
+        },
+        {
+          "value": 1,
+          "duration": 1
+        },
+        {
+          "value": 7,
+          "duration": 1
+        },
+        {
+          "value": 9,
+          "duration": 1
+        },
+        {
+          "value": 4,
+          "duration": 1
+        },
+        {
+          "value": 8,
+          "duration": 1
+        }
+      ],
+      [
+        {
+          "value": 1,
+          "duration": 1
+        },
+        {
+          "value": 7,
+          "duration": 1
+        },
+        {
+          "value": 9,
+          "duration": 1
+        },
+        {
+          "value": 4,
+          "duration": 1
+        },
+        {
+          "value": 8,
+          "duration": 1
+        },
+        {
+          "value": 6,
+          "duration": 1
+        }
+      ],
+      [
+        {
+          "value": 1,
+          "duration": 1
+        },
+        {
+          "value": 2,
+          "duration": 1
+        },
+        {
+          "value": 3,
+          "duration": 1
+        },
+        {
+          "value": 4,
+          "duration": 1
+        },
+        {
+          "value": 5,
+          "duration": 1
+        },
+        {
+          "value": 6,
+          "duration": 1
+        }
+      ]
+    ]
+  },
+  "title": "DADGAD",
+  "bpm": 72,
+  "randomizeVelocity": true,
+  "tracks": [
+    {
+      "name": "Acoustic Guitar",
+      "instrumentType": "MPC",
+      "pad": "A",
+      "rate": 1,
+      "loop": true,
+      "midiOutput": 8,
+      "patterns": [
+        [
+          {
+            "value": 1,
+            "duration": 1
+          },
+          {
+            "value": 7,
+            "duration": 1
+          },
+          {
+            "value": 3,
+            "duration": 1
+          },
+          {
+            "value": 4,
+            "duration": 1
+          },
+          {
+            "value": 5,
+            "duration": 1
+          },
+          {
+            "value": 6,
+            "duration": 1
+          }
+        ]
+      ]
+    },
+    {
+      "name": "Mid Conga",
+      "rate": 1,
+      "loop": true,
+      "midiOutput": 7,
+      "patterns": [
+        [
+          {
+            "value": "",
+            "duration": 3
+          },
+          {
+            "value": "D#4",
+            "duration": 1
+          },
+          {
+            "value": "",
+            "duration": 2
+          }
+        ]
+      ]
+    },
+    {
+      "name": "Maracas",
+      "rate": 1,
+      "loop": true,
+      "midiOutput": 7,
+      "patterns": [
+        [
+          {
+            "value": "",
+            "duration": 4
+          },
+          {
+            "value": "A#4",
+            "duration": 1
+          },
+          {
+            "value": "A#4",
+            "duration": 1
+          }
+        ]
+      ]
+    },
+    {
+      "name": "Claves",
+      "rate": 0.99,
+      "loop": false,
+      "midiOutput": 7,
+      "patterns": [
+        [
+          {
+            "value": "",
+            "duration": 6
+          }
+        ],
+        [
+          {
+            "value": "",
+            "duration": 1
+          },
+          {
+            "value": "D#5",
+            "duration": 1
+          },
+          {
+            "value": "",
+            "duration": 4
+          }
+        ],
+        [
+          {
+            "value": "",
+            "duration": 2
+          },
+          {
+            "value": "D#5",
+            "duration": 1
+          }
+        ]
+      ]
+    },
+    {
+      "name": "Seagull 1",
+      "instrumentType": "MPC",
+      "pad": "C",
+      "rate": 1,
+      "loop": true,
+      "midiOutput": 8,
+      "patterns": [
+        [
+          {
+            "value": 1,
+            "duration": 1
+          },
+          {
+            "value": 7,
+            "duration": 1
+          },
+          {
+            "value": 3,
+            "duration": 1
+          },
+          {
+            "value": 4,
+            "duration": 1
+          },
+          {
+            "value": 8,
+            "duration": 1
+          },
+          {
+            "value": 6,
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": 7,
+            "duration": 1
+          },
+          {
+            "value": 3,
+            "duration": 1
+          },
+          {
+            "value": 4,
+            "duration": 1
+          },
+          {
+            "value": 8,
+            "duration": 1
+          },
+          {
+            "value": 6,
+            "duration": 1
+          },
+          {
+            "value": 1,
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": 3,
+            "duration": 1
+          },
+          {
+            "value": 4,
+            "duration": 1
+          },
+          {
+            "value": 8,
+            "duration": 1
+          },
+          {
+            "value": 6,
+            "duration": 1
+          },
+          {
+            "value": 1,
+            "duration": 1
+          },
+          {
+            "value": 7,
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": 4,
+            "duration": 1
+          },
+          {
+            "value": 8,
+            "duration": 1
+          },
+          {
+            "value": 6,
+            "duration": 1
+          },
+          {
+            "value": 1,
+            "duration": 1
+          },
+          {
+            "value": 7,
+            "duration": 1
+          },
+          {
+            "value": 3,
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": 8,
+            "duration": 1
+          },
+          {
+            "value": 6,
+            "duration": 1
+          },
+          {
+            "value": 1,
+            "duration": 1
+          },
+          {
+            "value": 7,
+            "duration": 1
+          },
+          {
+            "value": 3,
+            "duration": 1
+          },
+          {
+            "value": 4,
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": 6,
+            "duration": 1
+          },
+          {
+            "value": 1,
+            "duration": 1
+          },
+          {
+            "value": 7,
+            "duration": 1
+          },
+          {
+            "value": 3,
+            "duration": 1
+          },
+          {
+            "value": 4,
+            "duration": 1
+          },
+          {
+            "value": 8,
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": 1,
+            "duration": 1
+          },
+          {
+            "value": 7,
+            "duration": 1
+          },
+          {
+            "value": 9,
+            "duration": 1
+          },
+          {
+            "value": 4,
+            "duration": 1
+          },
+          {
+            "value": 8,
+            "duration": 1
+          },
+          {
+            "value": 6,
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": 7,
+            "duration": 1
+          },
+          {
+            "value": 9,
+            "duration": 1
+          },
+          {
+            "value": 4,
+            "duration": 1
+          },
+          {
+            "value": 8,
+            "duration": 1
+          },
+          {
+            "value": 6,
+            "duration": 1
+          },
+          {
+            "value": 1,
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": 9,
+            "duration": 1
+          },
+          {
+            "value": 4,
+            "duration": 1
+          },
+          {
+            "value": 8,
+            "duration": 1
+          },
+          {
+            "value": 6,
+            "duration": 1
+          },
+          {
+            "value": 1,
+            "duration": 1
+          },
+          {
+            "value": 7,
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": 4,
+            "duration": 1
+          },
+          {
+            "value": 8,
+            "duration": 1
+          },
+          {
+            "value": 6,
+            "duration": 1
+          },
+          {
+            "value": 1,
+            "duration": 1
+          },
+          {
+            "value": 7,
+            "duration": 1
+          },
+          {
+            "value": 9,
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": 8,
+            "duration": 1
+          },
+          {
+            "value": 6,
+            "duration": 1
+          },
+          {
+            "value": 1,
+            "duration": 1
+          },
+          {
+            "value": 7,
+            "duration": 1
+          },
+          {
+            "value": 9,
+            "duration": 1
+          },
+          {
+            "value": 4,
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": 6,
+            "duration": 1
+          },
+          {
+            "value": 1,
+            "duration": 1
+          },
+          {
+            "value": 7,
+            "duration": 1
+          },
+          {
+            "value": 9,
+            "duration": 1
+          },
+          {
+            "value": 4,
+            "duration": 1
+          },
+          {
+            "value": 8,
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": 1,
+            "duration": 1
+          },
+          {
+            "value": 7,
+            "duration": 1
+          },
+          {
+            "value": 9,
+            "duration": 1
+          },
+          {
+            "value": 4,
+            "duration": 1
+          },
+          {
+            "value": 8,
+            "duration": 1
+          },
+          {
+            "value": 6,
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": 1,
+            "duration": 1
+          },
+          {
+            "value": 2,
+            "duration": 1
+          },
+          {
+            "value": 3,
+            "duration": 1
+          },
+          {
+            "value": 4,
+            "duration": 1
+          },
+          {
+            "value": 5,
+            "duration": 1
+          },
+          {
+            "value": 6,
+            "duration": 1
+          }
+        ]
+      ]
+    },
+    {
+      "name": "Seagull 2",
+      "instrumentType": "MPC",
+      "pad": "C",
+      "rate": 1,
+      "loop": true,
+      "midiOutput": 8,
+      "patterns": [
+        [
+          {
+            "value": 1,
+            "duration": 1
+          },
+          {
+            "value": 7,
+            "duration": 1
+          },
+          {
+            "value": 3,
+            "duration": 1
+          },
+          {
+            "value": 4,
+            "duration": 1
+          },
+          {
+            "value": 8,
+            "duration": 1
+          },
+          {
+            "value": 6,
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": 7,
+            "duration": 1
+          },
+          {
+            "value": 3,
+            "duration": 1
+          },
+          {
+            "value": 4,
+            "duration": 1
+          },
+          {
+            "value": 8,
+            "duration": 1
+          },
+          {
+            "value": 6,
+            "duration": 1
+          },
+          {
+            "value": 1,
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": 3,
+            "duration": 1
+          },
+          {
+            "value": 4,
+            "duration": 1
+          },
+          {
+            "value": 8,
+            "duration": 1
+          },
+          {
+            "value": 6,
+            "duration": 1
+          },
+          {
+            "value": 1,
+            "duration": 1
+          },
+          {
+            "value": 7,
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": 4,
+            "duration": 1
+          },
+          {
+            "value": 8,
+            "duration": 1
+          },
+          {
+            "value": 6,
+            "duration": 1
+          },
+          {
+            "value": 1,
+            "duration": 1
+          },
+          {
+            "value": 7,
+            "duration": 1
+          },
+          {
+            "value": 3,
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": 8,
+            "duration": 1
+          },
+          {
+            "value": 6,
+            "duration": 1
+          },
+          {
+            "value": 1,
+            "duration": 1
+          },
+          {
+            "value": 7,
+            "duration": 1
+          },
+          {
+            "value": 3,
+            "duration": 1
+          },
+          {
+            "value": 4,
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": 6,
+            "duration": 1
+          },
+          {
+            "value": 1,
+            "duration": 1
+          },
+          {
+            "value": 7,
+            "duration": 1
+          },
+          {
+            "value": 3,
+            "duration": 1
+          },
+          {
+            "value": 4,
+            "duration": 1
+          },
+          {
+            "value": 8,
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": 1,
+            "duration": 1
+          },
+          {
+            "value": 7,
+            "duration": 1
+          },
+          {
+            "value": 9,
+            "duration": 1
+          },
+          {
+            "value": 4,
+            "duration": 1
+          },
+          {
+            "value": 8,
+            "duration": 1
+          },
+          {
+            "value": 6,
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": 7,
+            "duration": 1
+          },
+          {
+            "value": 9,
+            "duration": 1
+          },
+          {
+            "value": 4,
+            "duration": 1
+          },
+          {
+            "value": 8,
+            "duration": 1
+          },
+          {
+            "value": 6,
+            "duration": 1
+          },
+          {
+            "value": 1,
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": 9,
+            "duration": 1
+          },
+          {
+            "value": 4,
+            "duration": 1
+          },
+          {
+            "value": 8,
+            "duration": 1
+          },
+          {
+            "value": 6,
+            "duration": 1
+          },
+          {
+            "value": 1,
+            "duration": 1
+          },
+          {
+            "value": 7,
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": 4,
+            "duration": 1
+          },
+          {
+            "value": 8,
+            "duration": 1
+          },
+          {
+            "value": 6,
+            "duration": 1
+          },
+          {
+            "value": 1,
+            "duration": 1
+          },
+          {
+            "value": 7,
+            "duration": 1
+          },
+          {
+            "value": 9,
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": 8,
+            "duration": 1
+          },
+          {
+            "value": 6,
+            "duration": 1
+          },
+          {
+            "value": 1,
+            "duration": 1
+          },
+          {
+            "value": 7,
+            "duration": 1
+          },
+          {
+            "value": 9,
+            "duration": 1
+          },
+          {
+            "value": 4,
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": 6,
+            "duration": 1
+          },
+          {
+            "value": 1,
+            "duration": 1
+          },
+          {
+            "value": 7,
+            "duration": 1
+          },
+          {
+            "value": 9,
+            "duration": 1
+          },
+          {
+            "value": 4,
+            "duration": 1
+          },
+          {
+            "value": 8,
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": 1,
+            "duration": 1
+          },
+          {
+            "value": 7,
+            "duration": 1
+          },
+          {
+            "value": 9,
+            "duration": 1
+          },
+          {
+            "value": 4,
+            "duration": 1
+          },
+          {
+            "value": 8,
+            "duration": 1
+          },
+          {
+            "value": 6,
+            "duration": 1
+          }
+        ],
+        [
+          {
+            "value": 1,
+            "duration": 1
+          },
+          {
+            "value": 2,
+            "duration": 1
+          },
+          {
+            "value": 3,
+            "duration": 1
+          },
+          {
+            "value": 4,
+            "duration": 1
+          },
+          {
+            "value": 5,
+            "duration": 1
+          },
+          {
+            "value": 6,
+            "duration": 1
+          }
+        ]
+      ]
+    },
+    {
+      "name": "Seagull 3",
+      "instrumentType": "MPC",
+      "pad": "C",
+      "rate": 0.99,
+      "loop": false,
+      "midiOutput": 8,
+      "patterns": [
+        [
+          {
+            "value": 1,
+            "duration": 3
+          },
+          {
+            "value": 2,
+            "duration": 3
+          },
+          {
+            "value": 3,
+            "duration": 3
+          },
+          {
+            "value": 4,
+            "duration": 3
+          },
+          {
+            "value": 5,
+            "duration": 3
+          },
+          {
+            "value": 6,
+            "duration": 3
+          }
+        ],
+        [
+          {
+            "value": 1,
+            "duration": 3
+          },
+          {
+            "value": 7,
+            "duration": 3
+          },
+          {
+            "value": 3,
+            "duration": 3
+          },
+          {
+            "value": 4,
+            "duration": 3
+          },
+          {
+            "value": 8,
+            "duration": 3
+          },
+          {
+            "value": 6,
+            "duration": 3
+          }
+        ],
+        [
+          {
+            "value": 1,
+            "duration": 3
+          },
+          {
+            "value": 7,
+            "duration": 3
+          },
+          {
+            "value": 9,
+            "duration": 3
+          },
+          {
+            "value": 4,
+            "duration": 3
+          },
+          {
+            "value": 8,
+            "duration": 3
+          },
+          {
+            "value": 6,
+            "duration": 3
+          }
+        ],
+        [
+          {
+            "value": 1,
+            "duration": 4
+          },
+          {
+            "value": 8,
+            "duration": 4
+          },
+          {
+            "value": 7,
+            "duration": 4
+          }
+        ]
+      ]
+    },
+    {
+      "name": "Telecaster",
+      "instrumentType": "MPC",
+      "pad": "C",
+      "rate": 0.98,
+      "loop": false,
+      "midiOutput": 8,
+      "patterns": [
+        [
+          {
+            "value": 1,
+            "duration": 3
+          },
+          {
+            "value": 2,
+            "duration": 3
+          },
+          {
+            "value": 3,
+            "duration": 3
+          },
+          {
+            "value": 4,
+            "duration": 3
+          },
+          {
+            "value": 5,
+            "duration": 3
+          },
+          {
+            "value": 6,
+            "duration": 3
+          }
+        ],
+        [
+          {
+            "value": 1,
+            "duration": 3
+          },
+          {
+            "value": 7,
+            "duration": 3
+          },
+          {
+            "value": 3,
+            "duration": 3
+          },
+          {
+            "value": 4,
+            "duration": 3
+          },
+          {
+            "value": 8,
+            "duration": 3
+          },
+          {
+            "value": 6,
+            "duration": 3
+          }
+        ],
+        [
+          {
+            "value": 1,
+            "duration": 3
+          },
+          {
+            "value": 7,
+            "duration": 3
+          },
+          {
+            "value": 9,
+            "duration": 3
+          },
+          {
+            "value": 4,
+            "duration": 3
+          },
+          {
+            "value": 8,
+            "duration": 3
+          },
+          {
+            "value": 6,
+            "duration": 3
+          }
+        ],
+        [
+          {
+            "value": 1,
+            "duration": 4
+          },
+          {
+            "value": 9,
+            "duration": 4
+          },
+          {
+            "value": 8,
+            "duration": 4
+          }
+        ]
+      ]
+    }
+  ]
+}
