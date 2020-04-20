@@ -4,6 +4,7 @@ import loopy2 from './songs/loopy2.json';
 import piano_phase from './songs/piano_phase.json';
 import in_c from './songs/in_c.json';
 import dadgad from './songs/dadgad.json';
+import tongue_drum from './songs/tongue_drum.json';
 
 export interface ISong {
   title?: string;
@@ -32,6 +33,7 @@ export interface ITrackConfig {
 }
 
 const SONGS = Object.freeze([
+  tongue_drum,
   dadgad,
   loopy2,
   in_c,
