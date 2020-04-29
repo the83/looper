@@ -250,8 +250,9 @@ defaults: &defaults
       - value: G#4
         duration: 1
 
-title: loopy
+title: loopy 2
 bpm: 130
+randomizeVelocity: true
 tracks:
   - name: Piano
     rate: 1
@@ -277,7 +278,7 @@ tracks:
         - value: C2
           duration: 1
         - value: ''
-          duration: 9
+          duration: 4
   - name: Closed Hat
     rate: 1
     loop: true

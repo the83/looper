@@ -33,10 +33,10 @@ export interface ITrackConfig {
 }
 
 const SONGS = Object.freeze([
-  tongue_drum,
-  dadgad,
   loopy2,
   in_c,
+  tongue_drum,
+  dadgad,
   piano_phase,
   loopy,
 ]);
