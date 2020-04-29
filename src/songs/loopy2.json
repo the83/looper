@@ -501,8 +501,9 @@
       ]
     ]
   },
-  "title": "loopy",
+  "title": "loopy 2",
   "bpm": 130,
+  "randomizeVelocity": true,
   "tracks": [
     {
       "name": "Piano",
@@ -2035,7 +2036,7 @@
           },
           {
             "value": "",
-            "duration": 9
+            "duration": 4
           }
         ]
       ]
