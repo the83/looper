@@ -1,6 +1,6 @@
 import WebMidi, { Output } from 'webmidi';
 
-const DEFAULT_MIDI_CHANNEL = 1;
+export const DEFAULT_MIDI_CHANNEL = 1;
 const DEFAULT_VELOCITY = 1;
 
 interface INote {

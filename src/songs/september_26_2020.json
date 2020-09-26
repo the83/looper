@@ -1,0 +1,178 @@
+{
+  "defaults": {
+    "patterns": [
+      [
+        {
+          "value": "E4",
+          "duration": 1
+        },
+        {
+          "value": "F#4",
+          "duration": 1
+        },
+        {
+          "value": "B4",
+          "duration": 1
+        },
+        {
+          "value": "C#5",
+          "duration": 1
+        },
+        {
+          "value": "D5",
+          "duration": 1
+        },
+        {
+          "value": "F#4",
+          "duration": 1
+        },
+        {
+          "value": "E4",
+          "duration": 1
+        },
+        {
+          "value": "C#5",
+          "duration": 1
+        },
+        {
+          "value": "B4",
+          "duration": 1
+        },
+        {
+          "value": "F#4",
+          "duration": 1
+        },
+        {
+          "value": "D5",
+          "duration": 1
+        },
+        {
+          "value": "C#5",
+          "duration": 1
+        }
+      ]
+    ]
+  },
+  "title": "2020-09-26T00:00:00.000Z",
+  "bpm": 124,
+  "tracks": [
+    {
+      "name": "Synth 1",
+      "rate": 1,
+      "loop": true,
+      "midiOutput": 1,
+      "midiChannel": 1,
+      "patterns": [
+        [
+          {
+            "value": "E4",
+            "duration": 1
+          },
+          {
+            "value": "F#4",
+            "duration": 1
+          },
+          {
+            "value": "B4",
+            "duration": 1
+          },
+          {
+            "value": "C#5",
+            "duration": 1
+          },
+          {
+            "value": "D5",
+            "duration": 1
+          },
+          {
+            "value": "F#4",
+            "duration": 1
+          },
+          {
+            "value": "E4",
+            "duration": 1
+          },
+          {
+            "value": "C#5",
+            "duration": 1
+          },
+          {
+            "value": "B4",
+            "duration": 1
+          },
+          {
+            "value": "F#4",
+            "duration": 1
+          },
+          {
+            "value": "D5",
+            "duration": 1
+          },
+          {
+            "value": "C#5",
+            "duration": 1
+          }
+        ]
+      ]
+    },
+    {
+      "name": "synth 2",
+      "rate": 1.01,
+      "loop": true,
+      "midiOutput": 1,
+      "midiChannel": 2,
+      "patterns": [
+        [
+          {
+            "value": "E4",
+            "duration": 1
+          },
+          {
+            "value": "F#4",
+            "duration": 1
+          },
+          {
+            "value": "B4",
+            "duration": 1
+          },
+          {
+            "value": "C#5",
+            "duration": 1
+          },
+          {
+            "value": "D5",
+            "duration": 1
+          },
+          {
+            "value": "F#4",
+            "duration": 1
+          },
+          {
+            "value": "E4",
+            "duration": 1
+          },
+          {
+            "value": "C#5",
+            "duration": 1
+          },
+          {
+            "value": "B4",
+            "duration": 1
+          },
+          {
+            "value": "F#4",
+            "duration": 1
+          },
+          {
+            "value": "D5",
+            "duration": 1
+          },
+          {
+            "value": "C#5",
+            "duration": 1
+          }
+        ]
+      ]
+    }
+  ]
+}

@@ -338,7 +338,7 @@ class App extends React.Component<IProps, IState> {
     this.forceUpdate(); // force re-render
   }
 
-  onNoteChange = (clockIndex, midiOutput, value, duration) => {
+  onNoteChange = (clockIndex, midiOutput, value, duration, channel) => {
     // check if track is muted
     if (!this.state.trackStatuses[clockIndex]) return;
 
@@ -351,7 +351,7 @@ class App extends React.Component<IProps, IState> {
       value,
       duration,
       velocity,
-      channel: 1,
+      channel,
     });
   }
 

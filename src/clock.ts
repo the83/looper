@@ -217,6 +217,7 @@ export default class Clock {
         patterns,
         instrumentType,
         pad,
+        midiChannel,
       } = this.config;
 
       const note = patterns[state.pattern][state.position];
@@ -234,6 +235,7 @@ export default class Clock {
         midiOutput - 1,
         noteValue,
         note.duration * tickDuration,
+        midiChannel || 1,
       );
     }
 
