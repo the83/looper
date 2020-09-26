@@ -17,12 +17,10 @@ test:
 	yarn test
 
 electron:
-	make compile-songs
-	yarn build
+	make build
 	yarn start-electron
 
 dist:
-	# make compile-songs
-	# yarn build
+	make build
 	cp ./main.js ./build/electron.js
 	yarn dist

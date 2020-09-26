@@ -1,43 +1,309 @@
-defaults: &defaults
+main: &main
   patterns:
     -
       - value: E4
         duration: 1
-      - value: F#4
-        duration: 1
       - value: B4
         duration: 1
-      - value: C#5
+      - value: C5
+        duration: 1
+      - value: A4
         duration: 1
       - value: D5
         duration: 1
-      - value: F#4
+      - value: G4
+        duration: 1
+    -
+      - value: G4
+        duration: 1
+      - value: A4
+        duration: 1
+      - value: B4
         duration: 1
       - value: E4
         duration: 1
-      - value: C#5
+      - value: D4
+        duration: 1
+      - value: C4
+        duration: 1
+    -
+      - value: C5
+        duration: 1
+      - value: G4
+        duration: 1
+      - value: A4
+        duration: 1
+      - value: D5
+        duration: 1
+      - value: E4
+        duration: 1
+      - value: A4
+        duration: 1
+    -
+      - value: F#4
+        duration: 1
+      - value: C5
+        duration: 1
+      - value: D5
+        duration: 1
+      - value: A4
+        duration: 1
+      - value: C5
+        duration: 1
+      - value: E4
+        duration: 1
+    -
+      - value: F#4
+        duration: 1
+      - value: B5
+        duration: 1
+      - value: D5
+        duration: 1
+      - value: A4
         duration: 1
       - value: B4
+        duration: 1
+      - value: E4
+        duration: 1
+    -
+      - value: F#4
+        duration: 1
+      - value: A4
+        duration: 1
+      - value: D5
+        duration: 1
+      - value: A4
+        duration: 1
+      - value: G4
+        duration: 1
+      - value: B4
+        duration: 1
+    -
+      - value: G4
+        duration: 1
+      - value: A4
+        duration: 1
+      - value: B4
+        duration: 1
+      - value: A4
         duration: 1
       - value: F#4
         duration: 1
       - value: D5
         duration: 1
-      - value: C#5
+    -
+      - value: F#4
+        duration: 1
+      - value: A4
+        duration: 1
+      - value: B4
+        duration: 1
+    -
+      - value: G4
+        duration: 1
+      - value: A4
+        duration: 1
+      - value: D5
         duration: 1
 
+synth_bass: &synth_bass
+  patterns:
+    -
+      - value: E3
+        duration: 1
+      - value: B3
+        duration: 1
+      - value: C4
+        duration: 1
+      - value: A3
+        duration: 1
+      - value: D4
+        duration: 1
+      - value: G3
+        duration: 1
+    -
+      - value: G3
+        duration: 1
+      - value: A3
+        duration: 1
+      - value: B3
+        duration: 1
+      - value: E3
+        duration: 1
+      - value: D3
+        duration: 1
+      - value: C3
+        duration: 1
+    -
+      - value: C4
+        duration: 1
+      - value: G3
+        duration: 1
+      - value: A3
+        duration: 1
+      - value: D4
+        duration: 1
+      - value: E3
+        duration: 1
+      - value: A3
+        duration: 1
+    -
+      - value: F#3
+        duration: 1
+      - value: C4
+        duration: 1
+      - value: D4
+        duration: 1
+      - value: A3
+        duration: 1
+      - value: C4
+        duration: 1
+      - value: E3
+        duration: 1
+    -
+      - value: F#3
+        duration: 1
+      - value: B4
+        duration: 1
+      - value: D4
+        duration: 1
+      - value: A3
+        duration: 1
+      - value: B3
+        duration: 1
+      - value: E3
+        duration: 1
+    -
+      - value: F#4
+        duration: 1
+      - value: A3
+        duration: 1
+      - value: D4
+        duration: 1
+      - value: A3
+        duration: 1
+      - value: G3
+        duration: 1
+      - value: B3
+        duration: 1
+    -
+      - value: G3
+        duration: 1
+      - value: A3
+        duration: 1
+      - value: B3
+        duration: 1
+      - value: A3
+        duration: 1
+      - value: F#3
+        duration: 1
+      - value: D3
+        duration: 1
+    -
+      - value: F#3
+        duration: 1
+      - value: A3
+        duration: 1
+      - value: B3
+        duration: 1
+    -
+      - value: G3
+        duration: 1
+      - value: A3
+        duration: 1
+      - value: D4
+        duration: 1
+bass: &bass
+  patterns:
+    -
+      - value: B2
+        duration: 36
+      - value: A2
+        duration: 36
+      - value: F#2
+        duration: 36
+    -
+      - value: A2
+        duration: 36
+      - value: D2
+        duration: 36
+
 title: 2020-09-26
-bpm: 124
+bpm: 85
 tracks:
   - name: Synth 1
     rate: 1
     loop: true
-    midiOutput: 1
+    midiOutput: 8
     midiChannel: 1
-    << : *defaults
+    << : *main
   - name: synth 2
     rate: 1.01
     loop: true
-    midiOutput: 1
+    midiOutput: 8
     midiChannel: 2
-    << : *defaults
+    << : *main
+  - name: synth 3
+    rate: 1.02
+    loop: true
+    midiOutput: 8
+    midiChannel: 3
+    << : *main
+  - name: 0-coast
+    rate: 1
+    loop: true
+    midiOutput: 6
+    midiChannel: 1
+    << : *synth_bass
+  - name: bass
+    rate: 1
+    loop: true
+    midiOutput: 1
+    midiChannel: 1
+    << : *bass
+  - name: Kick
+    rate: 1
+    loop: true
+    midiOutput: 7
+    midiChannel: 1
+    patterns:
+      -
+        - value: C2
+          duration: 1
+        - value: ''
+          duration: 1
+  - name: Shaker
+    rate: 1
+    loop: true
+    midiOutput: 7
+    midiChannel: 1
+    patterns:
+      -
+        - value: A#4
+          duration: 1
+        - value: ''
+          duration: 2
+  - name: Mid Conga
+    rate: 1.01
+    loop: true
+    midiOutput: 7
+    midiChannel: 1
+    patterns:
+      -
+        - value: D#4
+          duration: 1
+        - value: ''
+          duration: 3
+  - name: Rim Shot
+    rate: 1.01
+    loop: true
+    midiOutput: 7
+    midiChannel: 1
+    patterns:
+      -
+        - value: ''
+          duration: 3
+        - value: C#2
+          duration: 1
+        - value: ''
+          duration: 2
