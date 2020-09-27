@@ -431,20 +431,6 @@
     "patterns": [
       [
         {
-          "value": "B2",
-          "duration": 36
-        },
-        {
-          "value": "A2",
-          "duration": 36
-        },
-        {
-          "value": "F#2",
-          "duration": 36
-        }
-      ],
-      [
-        {
           "value": "A2",
           "duration": 36
         },
@@ -1343,20 +1329,6 @@
       "patterns": [
         [
           {
-            "value": "B2",
-            "duration": 36
-          },
-          {
-            "value": "A2",
-            "duration": 36
-          },
-          {
-            "value": "F#2",
-            "duration": 36
-          }
-        ],
-        [
-          {
             "value": "A2",
             "duration": 36
           },
@@ -1395,19 +1367,19 @@
       "patterns": [
         [
           {
-            "value": "A#4",
+            "value": "",
             "duration": 1
           },
           {
-            "value": "",
-            "duration": 2
+            "value": "C#3",
+            "duration": 1
           }
         ]
       ]
     },
     {
       "name": "Mid Conga",
-      "rate": 1.01,
+      "rate": 1,
       "loop": true,
       "midiOutput": 7,
       "midiChannel": 1,
@@ -1415,29 +1387,6 @@
         [
           {
             "value": "D#4",
-            "duration": 1
-          },
-          {
-            "value": "",
-            "duration": 3
-          }
-        ]
-      ]
-    },
-    {
-      "name": "Rim Shot",
-      "rate": 1.01,
-      "loop": true,
-      "midiOutput": 7,
-      "midiChannel": 1,
-      "patterns": [
-        [
-          {
-            "value": "",
-            "duration": 3
-          },
-          {
-            "value": "C#2",
             "duration": 1
           },
           {
